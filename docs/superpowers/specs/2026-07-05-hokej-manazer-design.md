@@ -54,6 +54,8 @@ v den zápasu se zápas odehraje → výsledky, tabulka, zprávy → opakuj.
 - Dynamické veličiny: **Forma** (kolísá zápas od zápasu), **Únava**
   (hraní bez rotace oslabuje), **Věk a potenciál** (mladíci rostou,
   po ~30 letech pozvolný pokles).
+- **Morálka týmu** (týmová, ne per hráč): zvedají ji výhry a povedené
+  odpovědi médiím, sráží prohry — mírně ovlivňuje výkon v zápase.
 - Nově generovaní hráči (odchovanci) dostávají náhodná česká jména.
 
 ## Sestava a taktika
