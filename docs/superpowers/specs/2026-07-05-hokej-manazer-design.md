@@ -45,10 +45,13 @@ v den zápasu se zápas odehraje → výsledky, tabulka, zprávy → opakuj.
 ## Hráči
 
 - Soupiska ~20 hráčů na tým: 12 útočníků, 6 obránců, 2 brankáři.
-- **Reálná jména hráčů** — do hry se přibalí reálné soupisky všech tří lig
+- **Reálná jména hráčů (tvrdý požadavek)** — do hry se přibalí reálné
+  soupisky všech tří lig, se skutečnými jmény hráčů tak, jak je známe
   (jednorázový scrape z veřejných zdrojů, např. eliteprospects / hokej.cz,
-  uložený jako JSON data). Atributy se odvodí ze skutečných statistik
-  (body, věk, pozice), takže reálné hvězdy jsou hvězdy i ve hře.
+  uložený jako JSON data v repu — hra pak funguje offline navždy).
+  Atributy se odvodí ze skutečných statistik (body, věk, pozice), takže
+  reálné hvězdy jsou hvězdy i ve hře. V milníku M1 hrají dočasně
+  generovaní hráči; reálné soupisky dodá milník M4 (lze předsunout).
 - Atributy ve stupnici **1–99**: Střelba, Přihrávky, Bruslení, Obrana,
   Fyzička; brankáři Chytání.
 - Dynamické veličiny: **Forma** (kolísá zápas od zápasu), **Únava**
