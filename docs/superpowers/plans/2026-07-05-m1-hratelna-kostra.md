@@ -97,12 +97,14 @@ npx tauri init --app-name hokej-manazer --window-title "Hokejový manažer" \
 cd src-tauri && cargo add tauri-plugin-fs && cd ..
 ```
 
-V `src-tauri/src/lib.rs` zaregistrovat plugin (řádek s `.plugin(...)`):
+V `src-tauri/src/lib.rs` zaregistrovat plugin — najdi řádek `tauri::Builder::default()` a hned za něj přidej `.plugin(...)`:
 
 ```rust
 tauri::Builder::default()
     .plugin(tauri_plugin_fs::init())
 ```
+
+(Pokud šablona nemá `lib.rs` a builder je v `src-tauri/src/main.rs`, proveď totéž tam — rozhoduje, kde je `tauri::Builder::default()`.)
 
 Do `src-tauri/capabilities/default.json` do pole `"permissions"` přidat:
 
@@ -653,9 +655,9 @@ export function generujSvet(seed: number): Record<string, Tym> {
 }
 ```
 
-Pozn.: `vychoziSestava` a `overall` vzniknou v Tasku 5 — implementuj Task 5 souběžně, testy obou tasků pak projdou najednou (nebo Task 5 předřaď).
+**DŮLEŽITÉ — pořadí kroků:** `generator.ts` importuje `vychoziSestava` a `overall` z `sestava.ts`, který vzniká až v Tasku 5 (a jehož testy naopak potřebují `generujTym`). Postupuj přesně takto: dokonči Step 1–4 tohoto tasku (testy zatím NEPOUŠTĚJ, padaly by na chybějícím importu), poté proveď Step 1–3 Tasku 5, a teprve pak se vrať sem ke Step 5 a spusť testy — projdou testy obou tasků najednou. Commity (Step 6 zde a Step 5 Tasku 5) proveď až po zelených testech.
 
-- [ ] **Step 5: Ověřit, že testy projdou** (po dokončení Tasku 5)
+- [ ] **Step 5: Ověřit, že testy projdou** (po dokončení Step 1–3 Tasku 5)
 
 Run: `npm run test` → Expected: PASS.
 
