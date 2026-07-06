@@ -372,6 +372,7 @@ export interface Serie {
 export interface Playoff {
   kola: Serie[][] // [čtvrtfinále(4), semifinále(2), finále(1)]
   vitez: string | null
+  poradi: string[] // top 8 podle tabulky základní části — pro přenasazování mezi koly
 }
 
 export interface Liga {
@@ -1308,7 +1309,7 @@ git commit -m "feat: minutová simulace zápasu s událostmi"
 
 **Interfaces:**
 - Consumes: typy `Playoff`, `Serie`, `RadekTabulky`.
-- Produces: `zalozPlayoff(tabulka: RadekTabulky[]): Playoff` (top 8: 1v8, 2v7, 3v6, 4v5); `cekajiciSerie(p: Playoff): { kolo: number; index: number; serie: Serie }[]` (série aktuálního kola, které ještě nemají 3 výhry); `zapisVysledekSerie(p: Playoff, kolo: number, index: number, vyhralDomaci: boolean): Playoff` (přičte výhru; při dohrání kola založí další kolo / vyplní `vitez`); `domaciLedSerie(s: Serie): string` (kdo hraje další zápas série doma: výše nasazený v zápasech 1, 2 a 5, jinak soupeř).
+- Produces: `zalozPlayoff(tabulka: RadekTabulky[]): Playoff` (top 8: 1v8, 2v7, 3v6, 4v5; ukládá `poradi` pro přenasazování); `cekajiciSerie(p: Playoff): { kolo: number; index: number; serie: Serie }[]` (série aktuálního kola, které ještě nemají 3 výhry); `zapisVysledekSerie(p: Playoff, kolo: number, index: number, vyhralDomaci: boolean): Playoff` (přičte výhru; při dohrání kola PŘENASADÍ vítěze podle `poradi` — nejlepší vs. nejhorší, lépe nasazený je `domaci` — a založí další kolo / vyplní `vitez`); `domaciLedSerie(s: Serie): string` (kdo hraje další zápas série doma: výše nasazený v zápasech 1, 2 a 5, jinak soupeř).
 
 - [ ] **Step 1: Failing test** — `tests/core/playoff.test.ts`:
 
@@ -1350,6 +1351,21 @@ describe('průběh série a pavouka', () => {
           p = zapisVysledekSerie(p, kolo, index, true)
     expect(p.vitez).toBe('t1')
   })
+  it('po překvapení se vítězové přenasazují podle tabulky', () => {
+    let p = zalozPlayoff(tabulka)
+    // t8 vyřadí t1, ostatní favorité postupují
+    for (let g = 0; g < 3; g++) {
+      p = zapisVysledekSerie(p, 0, 0, false)
+      p = zapisVysledekSerie(p, 0, 1, true)
+      p = zapisVysledekSerie(p, 0, 2, true)
+      p = zapisVysledekSerie(p, 0, 3, true)
+    }
+    // semifinále: nejlépe nasazený t2 hraje s nejhůř nasazeným t8 a je domácí
+    expect(p.kola[1].map((s) => [s.domaci, s.hoste])).toEqual([
+      ['t2', 't8'],
+      ['t3', 't4'],
+    ])
+  })
 })
 
 describe('domaciLedSerie', () => {
@@ -1380,7 +1396,7 @@ export function zalozPlayoff(tabulka: RadekTabulky[]): Playoff {
     vyhryDomaci: 0,
     vyhryHoste: 0,
   })
-  return { kola: [[serie(0, 7), serie(1, 6), serie(2, 5), serie(3, 4)]], vitez: null }
+  return { kola: [[serie(0, 7), serie(1, 6), serie(2, 5), serie(3, 4)]], vitez: null, poradi: top }
 }
 
 const dohrana = (s: Serie) => s.vyhryDomaci === 3 || s.vyhryHoste === 3
@@ -1405,7 +1421,11 @@ export function zapisVysledekSerie(p: Playoff, kolo: number, index: number, vyhr
   else s.vyhryHoste++
   const aktualni = novy.kola[novy.kola.length - 1]
   if (aktualni.every(dohrana)) {
-    const postupujici = aktualni.map(vitezSerie)
+    // přenasazení: vítězové se řadí podle umístění v základní části,
+    // nejlepší hraje s nejhorším a lépe nasazený má výhodu domácího ledu
+    const postupujici = aktualni
+      .map(vitezSerie)
+      .sort((a, b) => novy.poradi.indexOf(a) - novy.poradi.indexOf(b))
     if (postupujici.length === 1) {
       novy.vitez = postupujici[0]
     } else {
@@ -1683,11 +1703,13 @@ export function advanceDay(state: GameState): GameState {
 export function zahajNovouSezonu(state: GameState): GameState {
   const s = structuredClone(state)
   // postup a sestup mezi sousedními úrovněmi
+  // tabulky je nutné spočítat PŘED výměnami — po swapu už tymy nesedí na zapasy
+  const tabulky = s.ligy.map((liga) => spocitejTabulku(liga.tymy, liga.zapasy))
   for (const uroven of [1, 2]) {
     const nizsi = s.ligy[uroven]
     const vyssi = s.ligy[uroven - 1]
     const postupujici = nizsi.playoff!.vitez!
-    const tabulka = spocitejTabulku(vyssi.tymy, vyssi.zapasy)
+    const tabulka = tabulky[uroven - 1]
     const sestupujici = tabulka[tabulka.length - 1].tymId
     nizsi.tymy = [...nizsi.tymy.filter((t) => t !== postupujici), sestupujici]
     vyssi.tymy = [...vyssi.tymy.filter((t) => t !== sestupujici), postupujici]
@@ -1895,8 +1917,13 @@ export async function nactiHru(slot: number): Promise<GameState | null> {
 export async function seznamSlotu(): Promise<InfoSlotu[]> {
   const vysledek: InfoSlotu[] = []
   for (const slot of SLOTY) {
-    const json = await precti(slot)
-    if (json) vysledek.push({ slot, ...popisUlozeni(json) })
+    try {
+      const json = await precti(slot)
+      if (json) vysledek.push({ slot, ...popisUlozeni(json) })
+    } catch {
+      // poškozený/nekompatibilní slot nesmí schovat ty zdravé
+      console.warn(`Slot ${slot}: poškozené nebo nekompatibilní uložení — přeskočeno.`)
+    }
   }
   return vysledek
 }
