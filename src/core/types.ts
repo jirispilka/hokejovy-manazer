@@ -80,6 +80,7 @@ export interface Serie {
 export interface Playoff {
   kola: Serie[][] // [čtvrtfinále(4), semifinále(2), finále(1)]
   vitez: string | null
+  poradi: string[] // top 8 podle tabulky základní části — pro přenasazování mezi koly
 }
 
 export interface Liga {
