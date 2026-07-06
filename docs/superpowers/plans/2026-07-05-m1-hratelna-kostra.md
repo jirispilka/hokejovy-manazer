@@ -6,7 +6,7 @@
 
 **Architecture:** Herní jádro je čistá TypeScript knihovna v `src/core/` (žádné importy z UI ani Tauri, jen plain-JSON datové struktury, deterministická simulace se seedovaným RNG). React UI v `src/ui/` jádro pouze volá a zobrazuje `GameState`. Tauri 2 obaluje aplikaci do desktopové binárky; ukládání přes filesystem plugin s localStorage fallbackem pro vývoj v prohlížeči.
 
-**Tech Stack:** Tauri 2, React 18, TypeScript (strict), Vite, Vitest, @tauri-apps/plugin-fs
+**Tech Stack:** Tauri 2, React 19 (aktuální z Vite šablony; původně psáno „React 18", rozhodnuto ponechat verzi šablony), TypeScript (strict), Vite, Vitest, @tauri-apps/plugin-fs
 
 ## Global Constraints
 
