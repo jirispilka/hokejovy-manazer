@@ -817,8 +817,6 @@ export function vymenVSestave(s: Sestava, idA: string, idB: string): Sestava {
 }
 ```
 
-Pozn.: v `silaTymu` ponech jen přesnou variantu (`utokPresne`) — mezikrok `utok`/`void utok` z kódu výše při implementaci rovnou vypusť.
-
 - [ ] **Step 4: Ověřit, že testy projdou**
 
 Run: `npm run test` → Expected: PASS (sestava + generator + dřívější).
