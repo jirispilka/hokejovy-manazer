@@ -501,7 +501,7 @@ git commit -m "feat: datové typy jádra a reálné kluby tří lig"
 
 **Interfaces:**
 - Consumes: `Rng`, `randInt`, `pick` z `rng.ts`; typy z `types.ts`; `kluby.json`.
-- Produces: `generujHrace(rng: Rng, pozice: Pozice, uroven: number, vek?: number): Hrac`; `generujTym(rng: Rng, klub: Klub): Tym` (12 U + 6 D + 2 G, sestava viz Task 5); `generujSvet(seed: number): Record<string, Tym>` (týmy pro všech 42 klubů, klíč = klubId).
+- Produces: `generujHrace(rng: Rng, pozice: Pozice, uroven: number, vek?: number): Hrac`; `generujTym(rng: Rng, klub: Klub): Tym` (14 U + 7 D + 2 G — sestava využije 12+6+1, zbytek jsou náhradníci; viz Task 5); `generujSvet(seed: number): Record<string, Tym>` (týmy pro všech 42 klubů, klíč = klubId).
 
 - [ ] **Step 1: Jména** — `src/core/jmena.ts`:
 
@@ -565,10 +565,10 @@ describe('generujHrace', () => {
 })
 
 describe('generujTym', () => {
-  it('má 12 útočníků, 6 obránců, 2 brankáře a vyplněnou sestavu', () => {
+  it('má 14 útočníků, 7 obránců, 2 brankáře a vyplněnou sestavu', () => {
     const t = generujTym(createRng(4), klub)
-    expect(t.hraci.filter((h) => h.pozice === 'U')).toHaveLength(12)
-    expect(t.hraci.filter((h) => h.pozice === 'D')).toHaveLength(6)
+    expect(t.hraci.filter((h) => h.pozice === 'U')).toHaveLength(14)
+    expect(t.hraci.filter((h) => h.pozice === 'D')).toHaveLength(7)
     expect(t.hraci.filter((h) => h.pozice === 'G')).toHaveLength(2)
     expect(t.sestava.utoky).toHaveLength(4)
     expect(t.sestava.obrany).toHaveLength(3)
@@ -640,8 +640,9 @@ export function generujHrace(rng: Rng, pozice: Pozice, uroven: number, vek?: num
 
 export function generujTym(rng: Rng, klub: Klub): Tym {
   const hraci: Hrac[] = []
-  for (let i = 0; i < 12; i++) hraci.push(generujHrace(rng, 'U', klub.liga))
-  for (let i = 0; i < 6; i++) hraci.push(generujHrace(rng, 'D', klub.liga))
+  // 14 U + 7 D + 2 G: sestava využije 12+6+1, zbytek jsou náhradníci
+  for (let i = 0; i < 14; i++) hraci.push(generujHrace(rng, 'U', klub.liga))
+  for (let i = 0; i < 7; i++) hraci.push(generujHrace(rng, 'D', klub.liga))
   for (let i = 0; i < 2; i++) hraci.push(generujHrace(rng, 'G', klub.liga))
   return { klubId: klub.id, nazev: klub.nazev, hraci, sestava: vychoziSestava(hraci), moralka: 50 }
 }

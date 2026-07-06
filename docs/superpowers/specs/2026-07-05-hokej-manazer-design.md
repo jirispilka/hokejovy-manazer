@@ -44,7 +44,9 @@ v den zápasu se zápas odehraje → výsledky, tabulka, zprávy → opakuj.
 
 ## Hráči
 
-- Soupiska ~20 hráčů na tým: 12 útočníků, 6 obránců, 2 brankáři.
+- Soupiska ~23 hráčů na tým: 14 útočníků, 7 obránců, 2 brankáři
+  (v zápase hraje 12 útočníků + 6 obránců + 1 brankář, zbytek jsou
+  náhradníci — bez nich by nešlo střídat a skládat sestavu).
 - **Reálná jména hráčů (tvrdý požadavek)** — do hry se přibalí reálné
   soupisky všech tří lig, se skutečnými jmény hráčů tak, jak je známe
   (jednorázový scrape z veřejných zdrojů, např. eliteprospects / hokej.cz,
