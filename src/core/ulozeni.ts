@@ -1,9 +1,10 @@
-import type { GameState, TreninkDen } from './types'
+import type { GameState, TreninkDen, Tym } from './types'
 import { vychoziStadion } from './finance'
 import { doporucenyPlan, normalizujSeanci, normalizujTreninkovyPlan } from './trenink'
 import { normalizujTaktiku } from './taktika'
+import { otiskPetek } from './sestava'
 
-const VERZE = 8
+const VERZE = 10
 
 interface UlozenaHra {
   verze: number
@@ -30,6 +31,41 @@ function migrujV4(stav: Record<string, unknown>): GameState {
       if (!h.herniHistorie) h.herniHistorie = []
     }
   }
+  return s
+}
+
+function migrujChemiiNaPetky(t: Tym): void {
+  const stara = t.chemie as { utoky?: number[]; obrany?: number[]; petky?: number[] }
+  if (!stara.petky && stara.utoky && stara.obrany) {
+    t.chemie = {
+      petky: [0, 1, 2, 3].map((i) => {
+        const u = stara.utoky![i] ?? 30
+        const o = stara.obrany![Math.min(i, 2)] ?? 30
+        return Math.round(i < 3 ? u * 0.5 + o * 0.5 : u * 0.6 + o * 0.4)
+      }),
+    }
+  }
+  const staraSlozeni = t.slozeni as { utoky?: string[]; obrany?: string[]; petky?: string[] }
+  if (!staraSlozeni.petky && staraSlozeni.utoky) {
+    t.slozeni = { petky: otiskPetek(t.sestava) }
+  }
+}
+
+function migrujV10(s: GameState): GameState {
+  if (!s.stadion.vylepseni) {
+    s.stadion.vylepseni = { tribuny: 0, obcerstveni: 0, obchod: 0 }
+  }
+  if (s.stadion.cenaPiti === undefined) {
+    s.stadion.cenaPiti = Math.round((s.stadion.cenaJidla ?? 80) * 0.625) || 50
+  }
+  if (s.posledniDomaci && s.posledniDomaci.piti === undefined) {
+    s.posledniDomaci.piti = 0
+  }
+  return s
+}
+
+function migrujV9(s: GameState): GameState {
+  for (const t of Object.values(s.tymy ?? {})) migrujChemiiNaPetky(t)
   return s
 }
 
@@ -96,6 +132,14 @@ function parsuj(json: string): UlozenaHra {
   }
   if (data.verze === 7) {
     data.stav = migrujV8(data.stav)
+    data.verze = 8
+  }
+  if (data.verze === 8) {
+    data.stav = migrujV9(data.stav)
+    data.verze = 9
+  }
+  if (data.verze === 9) {
+    data.stav = migrujV10(data.stav)
     data.verze = VERZE
   }
   if (data.verze !== VERZE) {

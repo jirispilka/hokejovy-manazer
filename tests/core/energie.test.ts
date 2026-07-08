@@ -116,19 +116,19 @@ describe('úprava lajn v zápase', () => {
     const d = tym('x', 1, 0)
     const h = tym('y', 2, 1000)
     const { stav } = doPauzy(d, h, 7)
-    const puvodniChemie = [...stav.domaci.chemie.utoky]
+    const puvodniChemie = [...stav.domaci.chemie.petky]
     const a = stav.domaci.sestava.utoky[0][0]
     const b = stav.domaci.sestava.utoky[1][0]
     const po = upravSestavuVZapase(stav, 'domaci', d, vymenVSestave(stav.domaci.sestava, a, b))
     expect(po.domaci.sestava.utoky[0][0]).toBe(b)
-    expect(po.domaci.chemie.utoky[0]).toBe(30)
-    expect(po.domaci.chemie.utoky[2]).toBe(puvodniChemie[2])
-    expect(d.chemie.utoky[0]).toBe(30) // klubová chemie nedotčena (start je 30, hlavně: tym nemutován)
+    expect(po.domaci.chemie.petky[0]).toBe(30)
+    expect(po.domaci.chemie.petky[2]).toBe(puvodniChemie[2])
+    expect(d.chemie.petky[0]).toBe(30) // klubová chemie nedotčena (start je 30, hlavně: tym nemutován)
     const obrance = d.hraci.find((x) => x.pozice === 'D')!
     const spatna = vymenVSestave(stav.domaci.sestava, a, obrance.id)
     const poSpatne = upravSestavuVZapase(stav, 'domaci', d, spatna)
     expect(poSpatne.domaci.sestava.utoky.flat()).toContain(obrance.id)
-    expect(poSpatne.domaci.chemie.utoky[0]).toBeLessThan(30)
+    expect(poSpatne.domaci.chemie.petky[0]).toBeLessThan(30)
   })
   it('mimo pauzu hází chybu', () => {
     const d = tym('x', 1, 0)

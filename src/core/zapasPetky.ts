@@ -1,10 +1,22 @@
+import { POPISY_LAJEN } from './lajny'
 import type { StranaZapasu, StavZapasu } from './zapas'
 import type { Tym } from './types'
 
-/** Pětka = 3 útočníci + 2 obránci na ledě. */
+/** Pětka = spojená lajna (3 útočníci + 2 obránci), index 0–3 dle sestavy. */
 export interface Petka {
-  utok: number // 0–3
-  obrana: number // 0–2
+  index: number
+}
+
+export function utokPetky(petka: Petka): number {
+  return petka.index
+}
+
+export function obranaPetky(petka: Petka): number {
+  return Math.min(petka.index, 2)
+}
+
+export function petkaZeIndexu(index: number): Petka {
+  return { index: Math.min(Math.max(index, 0), 3) }
 }
 
 export interface PrehledLajnyUtoku {
@@ -54,7 +66,9 @@ export function vahyObranyZVytizeni(v: [number, number, number, number]): [numbe
 }
 
 export function hraciPetky(strana: StranaZapasu, petka: Petka): string[] {
-  return [...strana.sestava.utoky[petka.utok], ...strana.sestava.obrany[petka.obrana]].filter(
+  const u = utokPetky(petka)
+  const o = obranaPetky(petka)
+  return [...strana.sestava.utoky[u], ...strana.sestava.obrany[o]].filter(
     (id) => !strana.zraneni.includes(id),
   )
 }
@@ -96,22 +110,16 @@ export function energiePetky(strana: StranaZapasu, petka: Petka): number {
 }
 
 export function vsechnyPetky(): Petka[] {
-  const petky: Petka[] = []
-  for (let utok = 0; utok < 4; utok++) {
-    for (let obrana = 0; obrana < 3; obrana++) {
-      petky.push({ utok, obrana })
-    }
-  }
-  return petky
+  return [0, 1, 2, 3].map((index) => ({ index }))
 }
 
 export function popisPetky(petka: Petka): string {
-  return `${petka.utok + 1}. útok + ${petka.obrana + 1}. obrana`
+  return POPISY_LAJEN[petka.index] ?? `${petka.index + 1}. lajna`
 }
 
 export function popisPetkyDetail(tym: Tym, strana: StranaZapasu, petka: Petka): string {
   const podleId = new Map(tym.hraci.map((h) => [h.id, h]))
-  const ids = [...strana.sestava.utoky[petka.utok], ...strana.sestava.obrany[petka.obrana]]
+  const ids = hraciPetky(strana, petka)
   const jmena = ids.map((id) => {
     const h = podleId.get(id)!
     const z = strana.zraneni.includes(id) ? '🚑' : ''
@@ -139,19 +147,13 @@ export function aktivniPetkaNaLedu(strana: StranaZapasu, minuta: number): Petka 
   return aktivniLajnyEven(strana, minuta)
 }
 
-/** Která lajna právě hraje (rotace ~2 min, vážená vytížeností). */
+/** Která spojená lajna právě hraje (rotace ~2 min, vážená vytížeností). */
 export function aktivniLajnyEven(strana: StranaZapasu, minuta: number): Petka {
   const tick = Math.max(0, Math.floor(minuta / 2))
   const poradiU = strana.poradiUtoku ?? VYCHOZI_PORADI_UTOKU
-  const poradiO = strana.poradiObran ?? VYCHOZI_PORADI_OBRAN
   const vyt = normalizujVytizeniUtoku(strana.vytizeniUtoku ?? VYCHOZI_VYTIZENI)
   const slotsU = vahovePoradi(poradiU, vyt)
-  const obrVahy = vahyObranyZVytizeni(vyt)
-  const slotsO = vahovePoradi(poradiO, obrVahy)
-  return {
-    utok: slotsU[tick % slotsU.length],
-    obrana: slotsO[tick % slotsO.length],
-  }
+  return { index: slotsU[tick % slotsU.length] }
 }
 
 function indexUtoku(strana: StranaZapasu, hracId: string): number | null {
@@ -160,22 +162,17 @@ function indexUtoku(strana: StranaZapasu, hracId: string): number | null {
 }
 
 export function prumerEnergieNaLedu(strana: StranaZapasu, minuta: number): number {
-  const { utok, obrana } = aktivniLajnyEven(strana, minuta)
-  const ids = [...strana.sestava.utoky[utok], ...strana.sestava.obrany[obrana]].filter(
-    (id) => !strana.zraneni.includes(id),
-  )
-  return prumerEnergie(ids, strana)
+  return prumerEnergie(hraciPetky(strana, aktivniLajnyEven(strana, minuta)), strana)
 }
 
 /** Únava a čas na ledě za jednu odehranou minutu. */
 export function spotrebujEnergiuStrany(strana: StranaZapasu, tym: Tym, minuta: number): void {
   const podleId = new Map(tym.hraci.map((h) => [h.id, h]))
-  const { utok: aktivniUtok, obrana: aktivniObrana } = aktivniLajnyEven(strana, minuta)
+  const aktivni = aktivniLajnyEven(strana, minuta)
+  const aktivniUtok = utokPetky(aktivni)
+  const aktivniObrana = obranaPetky(aktivni)
   const vyt = normalizujVytizeniUtoku(strana.vytizeniUtoku ?? VYCHOZI_VYTIZENI)
-  const naLedu = new Set([
-    ...strana.sestava.utoky[aktivniUtok],
-    ...strana.sestava.obrany[aktivniObrana],
-  ])
+  const naLedu = new Set(hraciPetky(strana, aktivni))
   if (strana.aktivniPetka && strana.presilaDo > minuta) {
     for (const id of hraciPetky(strana, strana.aktivniPetka)) naLedu.add(id)
   }
@@ -207,26 +204,25 @@ export function spotrebujEnergiuStrany(strana: StranaZapasu, tym: Tym, minuta: n
 
 export function prehledUtoku(strana: StranaZapasu, minuta: number): PrehledLajnyUtoku[] {
   const aktivni = aktivniLajnyEven(strana, minuta)
-  const poradiU = strana.poradiUtoku ?? VYCHOZI_PORADI_UTOKU
   const cas = strana.casNaLeduUtoku ?? [0, 0, 0, 0]
   return [0, 1, 2, 3].map((index) => ({
     index,
     energie: energieUtokLajny(strana, index),
-    naLedu: index === aktivni.utok,
+    naLedu: index === aktivni.index,
     vytizeni: normalizujVytizeniUtoku(strana.vytizeniUtoku ?? VYCHOZI_VYTIZENI)[index],
     vypnuta: normalizujVytizeniUtoku(strana.vytizeniUtoku ?? VYCHOZI_VYTIZENI)[index] <= 0,
-    poradi: poradiU.indexOf(index),
+    poradi: (strana.poradiUtoku ?? VYCHOZI_PORADI_UTOKU).indexOf(index),
     casNaLedu: cas[index],
   }))
 }
 
-export function nejlepsiPetkaPP(strana: StranaZapasu, preferUtok = 0): Petka {
-  let best: Petka = { utok: preferUtok, obrana: 0 }
+export function nejlepsiPetkaPP(strana: StranaZapasu, preferIndex = 0): Petka {
+  let best: Petka = { index: preferIndex }
   let bestE = -1
   for (const petka of vsechnyPetky()) {
     if (!jePetkaKompletni(strana, petka)) continue
     const e = energiePetky(strana, petka)
-    const bonus = petka.utok === 0 ? 3 : petka.utok === 1 ? 1 : 0
+    const bonus = petka.index === 0 ? 3 : petka.index === 1 ? 1 : 0
     if (e + bonus > bestE) {
       bestE = e + bonus
       best = petka

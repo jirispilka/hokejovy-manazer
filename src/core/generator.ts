@@ -4,7 +4,7 @@ import { JMENA, PRIJMENI } from './jmena'
 import { createRng, pick, randInt, type Rng } from './rng'
 import type { Atributy, DetailPozice, HistorickaStatistika, Hrac, Klub, Pozice, Tym } from './types'
 import { detailPoziceHrace } from './lajny'
-import { vychoziSestava, overall, otiskLajn } from './sestava'
+import { vychoziSestava, overall, otiskPetek } from './sestava'
 
 // rozsah atributů podle úrovně ligy (0 = extraliga nejsilnější)
 const ROZSAHY: [number, number][] = [
@@ -151,8 +151,8 @@ export function generujTym(rng: Rng, klub: Klub): Tym {
     moralka: 50,
     kapitanId: kapitan.id,
     taktika: 'vyvazena',
-    chemie: { utoky: [30, 30, 30, 30], obrany: [30, 30, 30] },
-    slozeni: otiskLajn(sestava),
+    chemie: { petky: [30, 30, 30, 30] },
+    slozeni: { petky: otiskPetek(sestava) },
     rozpocet: START_ROZPOCET[klub.liga],
     vytizeniUtoku: [1, 1, 1, 1],
   }

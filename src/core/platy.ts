@@ -18,6 +18,72 @@ export function rocniPlatyTymu(hraci: Hrac[]): number {
 
 const clamp = (x: number, lo: number, hi: number) => Math.min(hi, Math.max(lo, x))
 
+const MIN_PLAT = 10_000
+
+function zaokrouhliPlat(castka: number): number {
+  return Math.max(MIN_PLAT, Math.round(castka / 1000) * 1000)
+}
+
+export type ZmenaPlatuTymu =
+  | { typ: 'delta'; castka: number }
+  | { typ: 'procenta'; hodnota: number }
+
+function novyPlatHrace(hrac: Hrac, zmena: ZmenaPlatuTymu): number {
+  if (zmena.typ === 'delta') return zaokrouhliPlat(hrac.plat + zmena.castka)
+  const faktor = 1 + zmena.hodnota / 100
+  return zaokrouhliPlat(hrac.plat * faktor)
+}
+
+/** Změní plat všem hráčům soupisky najednou (delta v Kč nebo procenta). */
+export function zmenPlatyVsech(state: GameState, zmena: ZmenaPlatuTymu): GameState {
+  const s = structuredClone(state)
+  const muj = s.tymy[s.mujKlubId]
+  let celkemStary = 0
+  let celkemNovy = 0
+  let moralkaDelta = 0
+  let zmeneno = 0
+  let stiznosti = 0
+  let spokojenosti = 0
+
+  for (const hrac of muj.hraci) {
+    const stary = hrac.plat
+    const novy = novyPlatHrace(hrac, zmena)
+    if (novy === stary) continue
+    const dopad = dopadPlatuHrace(hrac, novy)
+    hrac.plat = novy
+    hrac.forma = clamp(hrac.forma + dopad.forma, 30, 70)
+    moralkaDelta += dopad.moralka
+    zmeneno++
+    if (dopad.stiznost) stiznosti++
+    else if (dopad.forma > 0) spokojenosti++
+    celkemStary += stary
+    celkemNovy += novy
+  }
+
+  if (zmeneno === 0) throw new Error('Žádný plat by se nezměnil — minimum je 10 000 Kč/měs.')
+
+  muj.moralka = clamp(muj.moralka + Math.round(moralkaDelta / zmeneno), 30, 70)
+  const popisZmeny =
+    zmena.typ === 'delta'
+      ? `${zmena.castka >= 0 ? '+' : ''}${zmena.castka.toLocaleString('cs-CZ')} Kč/měs`
+      : `${zmena.hodnota >= 0 ? '+' : ''}${zmena.hodnota} %`
+  zapisFinance(
+    s,
+    `Platy celého týmu (${popisZmeny}): ${celkemStary.toLocaleString('cs-CZ')} → ${celkemNovy.toLocaleString('cs-CZ')} Kč/měs`,
+    0,
+  )
+  s.zpravy.unshift(
+    `💰 Platy upraveny pro ${zmeneno} hráčů (${popisZmeny}). Nové náklady ${celkemNovy.toLocaleString('cs-CZ')} Kč/měs.`,
+  )
+  if (stiznosti > 0) {
+    s.zpravy.unshift(`😤 ${stiznosti} hráčů si stěžuje na nízký plat.`)
+  } else if (spokojenosti > 0) {
+    s.zpravy.unshift(`✅ ${spokojenosti} hráčů je spokojených s navýšením.`)
+  }
+  s.zpravy = s.zpravy.slice(0, 50)
+  return s
+}
+
 export function dopadPlatuHrace(h: Hrac, novyPlat: number): { forma: number; moralka: number; stiznost: boolean } {
   const ocek = ocekavanyPlat(h)
   const pomer = novyPlat / Math.max(1, ocek)
@@ -33,14 +99,14 @@ export function zapisFinance(s: GameState, popis: string, castka: number): void 
 }
 
 export function zmenPlat(state: GameState, hracId: string, novyPlat: number): GameState {
-  if (novyPlat < 10_000) throw new Error('Plat musí být alespoň 10 000 Kč/měs.')
+  if (novyPlat < MIN_PLAT) throw new Error('Plat musí být alespoň 10 000 Kč/měs.')
   const s = structuredClone(state)
   const muj = s.tymy[s.mujKlubId]
   const hrac = muj.hraci.find((h) => h.id === hracId)
   if (!hrac) throw new Error('Hráč nenalezen.')
   const dopad = dopadPlatuHrace(hrac, novyPlat)
   const stary = hrac.plat
-  hrac.plat = Math.round(novyPlat / 1000) * 1000
+  hrac.plat = zaokrouhliPlat(novyPlat)
   muj.moralka = clamp(muj.moralka + dopad.moralka, 30, 70)
   hrac.forma = clamp(hrac.forma + dopad.forma, 30, 70)
   zapisFinance(s, `Plat ${hrac.jmeno} ${hrac.prijmeni}: ${stary} → ${hrac.plat}`, 0)

@@ -65,15 +65,15 @@ function miniTym(id: string): Tym {
       ],
       brankar: hraci[18].id,
     },
-    chemie: { utoky: [80, 70, 60, 50], obrany: [75, 65, 55] },
-    slozeni: { utoky: ['', '', '', ''], obrany: ['', '', ''] },
+    chemie: { petky: [80, 70, 60, 50] },
+    slozeni: { petky: ['', '', '', ''] },
     taktika: 'vyrovana' as const,
   }
 }
 
 describe('zapasPetky', () => {
-  it('má 12 kombinací pětek', () => {
-    expect(vsechnyPetky()).toHaveLength(12)
+  it('má 4 spojené lajny', () => {
+    expect(vsechnyPetky()).toHaveLength(4)
   })
 
   it('potvrdPresilovku uloží celou pětku', () => {
@@ -81,8 +81,8 @@ describe('zapasPetky', () => {
     const hoste = miniTym('host')
     let stav = zacniZapas(domaci, hoste)
     stav.cekaNaPresilovku = { strana: 'domaci', typ: 'pp', minutDo: 2, provinilecId: 'x' }
-    stav = potvrdPresilovku(stav, { petka: { utok: 2, obrana: 1 } })
-    expect(stav.domaci.aktivniPetka).toEqual({ utok: 2, obrana: 1 })
+    stav = potvrdPresilovku(stav, { petka: { index: 2 } })
+    expect(stav.domaci.aktivniPetka).toEqual({ index: 2 })
     expect(stav.cekaNaPresilovku).toBeNull()
   })
 
@@ -91,8 +91,8 @@ describe('zapasPetky', () => {
     const hoste = miniTym('host')
     let stav = zacniZapas(domaci, hoste)
     stav.cekaNaPresilovku = { strana: 'hoste', typ: 'pk', minutDo: 2, provinilecId: 'x' }
-    stav = potvrdPresilovku(stav, { petka: { utok: 3, obrana: 2 }, pkAgresivni: true })
-    expect(stav.hoste.pkPetka).toEqual({ utok: 3, obrana: 2 })
+    stav = potvrdPresilovku(stav, { petka: { index: 3 }, pkAgresivni: true })
+    expect(stav.hoste.pkPetka).toEqual({ index: 3 })
     expect(stav.hoste.pkAgresivni).toBe(true)
   })
 
@@ -125,7 +125,7 @@ describe('zapasPetky', () => {
     stav.domaci.vytizeniUtoku = [1, 1, 1, 0]
     expect(normalizujVytizeniUtoku([1, 1, 1, 0])[3]).toBe(0)
     for (let m = 1; m <= 30; m++) {
-      expect(aktivniLajnyEven(stav.domaci, m).utok).not.toBe(3)
+      expect(aktivniLajnyEven(stav.domaci, m).index).not.toBe(3)
     }
     const rng = createRng(55)
     for (let i = 0; i < 15; i++) stav = simulujMinutu(stav, domaci, hoste, rng)
@@ -184,7 +184,7 @@ describe('zapasPetky', () => {
     const stav = zacniZapas(domaci, hoste)
     for (const id of stav.domaci.sestava.utoky[0]) nastavEnergiu(stav.domaci, id, 20)
     const petka = nejlepsiPetkaPP(stav.domaci)
-    expect(petka.utok).not.toBe(0)
+    expect(petka.index).not.toBe(0)
     expect(energiePetky(stav.domaci, petka)).toBeGreaterThan(20)
   })
 
@@ -213,7 +213,7 @@ describe('zapasPetky', () => {
     const hoste = miniTym('host')
     const stav = zacniZapas(domaci, hoste)
     stav.domaci.zraneni.push(stav.domaci.sestava.utoky[0][0])
-    expect(jePetkaKompletni(stav.domaci, { utok: 0, obrana: 0 })).toBe(false)
+    expect(jePetkaKompletni(stav.domaci, { index: 0 })).toBe(false)
   })
 
   it('vyšší vytíženost 1. lajny zvyší útokovou sílu v simulaci', () => {

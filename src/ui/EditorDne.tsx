@@ -2,6 +2,7 @@ import { useState } from 'react'
 import {
   BEZ_INTENZITY,
   doplnHraciDoSeanci,
+  doplnSeanciProTym,
   IKONY_TRENINKU,
   jeKondiceTyp,
   jeLedovyTyp,
@@ -12,6 +13,7 @@ import {
   TYPY_AKTIVIT,
 } from '../core/trenink'
 import { overall } from '../core/sestava'
+import { POPISY_LAJEN } from '../core/lajny'
 import { kc } from '../core/hodnoty'
 import type { GameState, TreninkDen, TreninkIntenzita, TreninkTyp } from '../core/types'
 
@@ -34,7 +36,8 @@ export function EditorDne({
   const [novyLajna, setNovyLajna] = useState(0)
   const [vyberHraci, setVyberHraci] = useState<string[]>([])
 
-  const preview = previewDne(hra, den, seanceProp)
+  const seanceZobrazeni = kompaktni ? doplnSeanciProTym(hra, seanceProp) : seanceProp
+  const preview = previewDne(hra, den, seanceZobrazeni)
   const podleId = new Map(muj.hraci.map((h) => [h.id, h]))
   const hraciVolba = muj.hraci
     .filter((h) => h.pozice !== 'G')
@@ -47,6 +50,7 @@ export function EditorDne({
 
   function popisSeance(td: TreninkDen): string {
     const zaklad = NAZEV_TRENINKU(td.typ, td.intenzita)
+    if (kompaktni) return zaklad
     if (jeKondiceTyp(td.typ) && td.hraci?.[0]) {
       return `${zaklad} — ${podleId.get(td.hraci[0])?.prijmeni ?? '?'}`
     }
@@ -55,8 +59,7 @@ export function EditorDne({
       return `${zaklad} — ${jmena}${td.hraci.length < 2 ? ' (chybí hráč)' : ''}`
     }
     if ((td.typ === 'taktika' || td.typ === 'parta') && td.lajna !== undefined) {
-      const l = td.lajna <= 3 ? `${td.lajna + 1}. útok` : `${td.lajna - 3}. obrana`
-      return `${zaklad} — ${l}`
+      return `${zaklad} — ${POPISY_LAJEN[td.lajna] ?? `${td.lajna + 1}. lajna`}`
     }
     return zaklad
   }
@@ -64,11 +67,15 @@ export function EditorDne({
   function pridejSeanci() {
     const td: TreninkDen = { typ: novyTyp }
     if (!BEZ_INTENZITY.includes(novyTyp)) td.intenzita = novyIntenzita
-    if (jeLedovyTyp(novyTyp) && vyberHraci.length >= 2) td.hraci = vyberHraci.slice(0, 2)
-    if (jeKondiceTyp(novyTyp) && vyberHraci.length >= 1) td.hraci = [vyberHraci[0]]
-    if (novyTyp === 'taktika' || novyTyp === 'parta') td.lajna = novyLajna
+    if (!kompaktni) {
+      if (jeLedovyTyp(novyTyp) && vyberHraci.length >= 2) td.hraci = vyberHraci.slice(0, 2)
+      if (jeKondiceTyp(novyTyp) && vyberHraci.length >= 1) td.hraci = [vyberHraci[0]]
+      if (novyTyp === 'taktika' || novyTyp === 'parta') td.lajna = novyLajna
+    }
     let novy = [...seanceProp, td]
-    if ((jeLedovyTyp(novyTyp) || jeKondiceTyp(novyTyp)) && vyberHraci.length > 0) {
+    if (kompaktni) {
+      novy = doplnSeanciProTym(hra, novy)
+    } else if ((jeLedovyTyp(novyTyp) || jeKondiceTyp(novyTyp)) && vyberHraci.length > 0) {
       novy = doplnHraciDoSeanci({ [den]: novy }, den, vyberHraci)[den] ?? novy
     }
     onChange(novy)
@@ -114,13 +121,10 @@ export function EditorDne({
             <option value="tezka">Těžký</option>
           </select>
         )}
-        {potreba === 'lajna' && (
+        {potreba === 'lajna' && !kompaktni && (
           <select value={novyLajna} onChange={(e) => setNovyLajna(Number(e.target.value))}>
-            {[0, 1, 2, 3].map((i) => (
-              <option key={i} value={i}>{i + 1}. útok</option>
-            ))}
-            {[4, 5, 6].map((i) => (
-              <option key={i} value={i}>{i - 3}. obrana</option>
+            {POPISY_LAJEN.map((popis, i) => (
+              <option key={i} value={i}>{popis}</option>
             ))}
           </select>
         )}
@@ -129,7 +133,13 @@ export function EditorDne({
         </button>
       </div>
 
-      {(potreba === 'dva' || potreba === 'jeden') && (
+      {kompaktni && (potreba === 'dva' || potreba === 'jeden' || potreba === 'lajna') && (
+        <p style={{ fontSize: 12, color: 'var(--tlumeny)', marginTop: 8, marginBottom: 0 }}>
+          Hráče a lajny doplní hra automaticky — stačí vybrat typ aktivity.
+        </p>
+      )}
+
+      {!kompaktni && (potreba === 'dva' || potreba === 'jeden') && (
         <div style={{ marginTop: 10 }}>
           <p style={{ fontSize: 12, color: 'var(--tlumeny)', marginBottom: 6 }}>
             {potreba === 'dva' ? 'Vyber 2 hráče na led' : 'Vyber 1 hráče do kondice'}

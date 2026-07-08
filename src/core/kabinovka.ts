@@ -1,6 +1,7 @@
 import { formaTymu } from './hodnoty'
 import { createRng, hashSeed, randInt, type Rng } from './rng'
 import { overall } from './sestava'
+import { spojeneLajny } from './lajny'
 import { spocitejTabulku } from './tabulka'
 import type { GameState, KabinovaUdalost } from './types'
 
@@ -46,20 +47,23 @@ export function generujKabinovku(s: GameState, rng: Rng): KabinovaUdalost | null
     }
   }
 
-  // hádky v lajně s nízkou chemií
-  const slaba = tym.chemie.utoky.findIndex((c) => c < 45)
+  // hádky v pětce s nízkou chemií
+  const slaba = tym.chemie.petky.findIndex((c) => c < 45)
   if (slaba >= 0 && rng() < 0.3) {
-    const lajna = tym.sestava.utoky[slaba]
-    const a = tym.hraci.find((h) => h.id === lajna[0])!
-    const b = tym.hraci.find((h) => h.id === lajna[1])!
-    return {
-      id: 'hadka',
-      text: `${a.prijmeni} a ${b.prijmeni} si v šatně nerozumí (${slaba + 1}. útok).`,
-      moznosti: [
-        { text: 'Prohodit v sestavě', efektMoralka: 1, efektChemie: 5 },
-        { text: 'Mediovat — týmová schůzka', efektMoralka: 3, efektChemie: 8 },
-        { text: 'Nechat být', efektMoralka: -2, efektChemie: -5 },
-      ],
+    const p = spojeneLajny(tym.sestava)[slaba]
+    const ids = [...p.utok, ...p.obrana]
+    if (ids.length >= 2) {
+      const a = tym.hraci.find((h) => h.id === ids[0])!
+      const b = tym.hraci.find((h) => h.id === ids[1])!
+      return {
+        id: 'hadka',
+        text: `${a.prijmeni} a ${b.prijmeni} si v šatně nerozumí (${slaba + 1}. lajna).`,
+        moznosti: [
+          { text: 'Prohodit v sestavě', efektMoralka: 1, efektChemie: 5 },
+          { text: 'Mediovat — týmová schůzka', efektMoralka: 3, efektChemie: 8 },
+          { text: 'Nechat být', efektMoralka: -2, efektChemie: -5 },
+        ],
+      }
     }
   }
 
@@ -93,8 +97,8 @@ export function vyresKabinovku(s: GameState, volbaIndex: number): GameState {
     for (const h of tym.hraci) h.forma = clamp(h.forma + volba.efektForma!, 30, 70)
   }
   if (volba.efektChemie) {
-    const idx = tym.chemie.utoky.findIndex((c) => c === Math.min(...tym.chemie.utoky))
-    if (idx >= 0) tym.chemie.utoky[idx] = clamp(tym.chemie.utoky[idx] + volba.efektChemie!, 0, 100)
+    const idx = tym.chemie.petky.findIndex((c) => c === Math.min(...tym.chemie.petky))
+    if (idx >= 0) tym.chemie.petky[idx] = clamp(tym.chemie.petky[idx] + volba.efektChemie!, 0, 100)
   }
   ns.kabinovaUdalost = null
   ns.posledniKabinovaDen = ns.den

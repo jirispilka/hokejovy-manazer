@@ -9,7 +9,7 @@ export interface SpojenaLajna {
   popis: string
 }
 
-const POPISY_LAJEN = ['1. lajna', '2. lajna', '3. lajna', '4. útok · sdílí 3. obranu'] as const
+export const POPISY_LAJEN = ['1. lajna', '2. lajna', '3. lajna', '4. útok · sdílí 3. obranu'] as const
 
 const POPIS_DETAIL: Record<DetailPozice, string> = {
   LW: 'LK',

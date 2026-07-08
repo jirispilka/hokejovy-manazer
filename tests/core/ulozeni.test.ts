@@ -18,20 +18,28 @@ describe('serializace', () => {
   })
   it('odmítne cizí/poškozený obsah', () => {
     expect(() => deserializuj('{"foo":1}')).toThrow()
-    expect(() => deserializuj(json.replace('"verze":8', '"verze":99'))).toThrow()
+    expect(() => deserializuj(json.replace('"verze":10', '"verze":99'))).toThrow()
   })
-  it('migruje verzi 4 na 8', () => {
-    const stara = json.replace('"verze":8', '"verze":4')
+  it('migruje verzi 4 na 10', () => {
+    const stara = json.replace('"verze":10', '"verze":4')
     const s = deserializuj(stara)
     expect(s.stadion).toBeDefined()
     expect(s.financeHistorie).toEqual([])
     expect(s.treninkovyTyden).toBeDefined()
     expect(s.reklama).toEqual([])
     expect(s.nastaveni.minihryZapnuto).toBe(true)
+    expect(s.stadion.vylepseni).toEqual({ tribuny: 0, obcerstveni: 0, obchod: 0 })
+    expect(s.stadion.cenaPiti).toBeDefined()
   })
-  it('migruje verzi 6 na 8 — legacy typy tréninku', () => {
+  it('migruje verzi 9 na 10 — stadion vylepšení', () => {
+    const v9 = json.replace('"verze":10', '"verze":9').replace('"vylepseni":', '"vylepseniX":')
+    const s = deserializuj(v9)
+    expect(s.stadion.vylepseni).toEqual({ tribuny: 0, obcerstveni: 0, obchod: 0 })
+    expect(s.stadion.cenaPiti).toBeGreaterThan(0)
+  })
+  it('migruje verzi 6 na 10 — legacy typy tréninku', () => {
     const v6json = json
-      .replace('"verze":8', '"verze":6')
+      .replace('"verze":10', '"verze":6')
       .replace('"strelba"', '"led"')
       .replace('"kondice"', '"posilovna"')
     const s = deserializuj(v6json)
@@ -42,8 +50,8 @@ describe('serializace', () => {
     }
   })
 
-  it('migruje verzi 5 na 8', () => {
-    const v5 = json.replace('"verze":8', '"verze":5')
+  it('migruje verzi 5 na 10', () => {
+    const v5 = json.replace('"verze":10', '"verze":5')
     const bezV6 = v5
       .replace('"treninkovyTyden":', '"treninkovyTydenX":')
       .replace(/"treninkovyTydenOd":\d+,/, '')

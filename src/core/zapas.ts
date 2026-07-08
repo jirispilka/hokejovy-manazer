@@ -1,5 +1,6 @@
 import { pick, type Rng } from './rng'
-import { chemiePoZmeneLajny, dosadDoLajny, otiskLajn, silaTymu, vymenVSestave, chemieZaPoziceNaLede } from './sestava'
+import { chemiePoZmenePetky, chemieZaPoziceNaPetce, dosadDoLajny, hraciSpojenePetky, indexPetkyHrace, otiskPetek, silaTymu, vymenVSestave } from './sestava'
+import { spojeneLajny } from './lajny'
 import { nazevTaktiky, taktikaFaktory } from './taktika'
 import {
   clamp,
@@ -36,6 +37,7 @@ export {
   energieObranaLajny,
   energiePetky,
   energieUtokLajny,
+  hraciPetky,
   jePetkaKompletni,
   MIN_ENERGIE_ZAPAS,
   popisPetky,
@@ -80,7 +82,7 @@ export interface StranaZapasu {
   strely: number
   presilaDo: number
   zraneni: string[] // id hráčů zraněných v tomto zápase
-  chemie: { utoky: number[]; obrany: number[] } // pracovní kopie — zápasové úpravy lajn ji resetují jen v zápase
+  chemie: { petky: number[] } // pracovní kopie — zápasové úpravy pětek ji resetují jen v zápase
   energie: Record<string, number> // 0–100 per hráč (i náhradníci — ti neklesají)
   hodnoceni: Record<string, number> // 4–10 per hráč, start 6
   osobniBonus: Record<string, number> // 0.94–1.10, default chybí = 1
@@ -271,12 +273,8 @@ function energieFaktor(strana: StranaZapasu, hracId: string): number {
 }
 
 function chemieStrelce(strana: StranaZapasu, hracId: string): number {
-  for (let i = 0; i < strana.sestava.utoky.length; i++) {
-    if (strana.sestava.utoky[i].includes(hracId)) return 0.95 + strana.chemie.utoky[i] / 1000
-  }
-  for (let i = 0; i < strana.sestava.obrany.length; i++) {
-    if (strana.sestava.obrany[i].includes(hracId)) return 0.95 + strana.chemie.obrany[i] / 1000
-  }
+  const idx = indexPetkyHrace(strana.sestava, hracId)
+  if (idx !== null) return 0.95 + strana.chemie.petky[idx] / 1000
   return 1
 }
 
@@ -335,8 +333,8 @@ function maCekatNaHrace(s: StavZapasu, strana: 'domaci' | 'hoste', klubId?: stri
 
 function petkaZVolby(volba: VolbaPresilovky, typ: 'pp' | 'pk'): Petka {
   if (volba.petka) return volba.petka
-  if (typ === 'pp') return { utok: volba.ppLajna ?? 0, obrana: 0 }
-  return { utok: 3, obrana: volba.pkObrana ?? 0 }
+  if (typ === 'pp') return { index: volba.ppLajna ?? 0 }
+  return { index: 3 }
 }
 
 function aplikujPresilovkuDefault(s: StavZapasu, strana: 'domaci' | 'hoste', typ: 'pp' | 'pk'): void {
@@ -345,7 +343,7 @@ function aplikujPresilovkuDefault(s: StavZapasu, strana: 'domaci' | 'hoste', typ
     st.aktivniPetka = nejlepsiPetkaPP(st)
     st.pkPetka = null
   } else {
-    st.pkPetka = { utok: 3, obrana: 0 }
+    st.pkPetka = { index: 3 }
     st.pkAgresivni = false
     st.aktivniPetka = null
   }
@@ -872,22 +870,17 @@ function aplikujNovouSestavu(
 
   const s = structuredClone(stav)
   const cil = s[strana]
-  const stary = otiskLajn(cil.sestava)
-  const novy = otiskLajn(novaSestava)
+  const stary = otiskPetek(cil.sestava)
+  const novy = otiskPetek(novaSestava)
+  const novePetky = spojeneLajny(novaSestava)
   cil.chemie = {
-    utoky: novy.utoky.map((o, i) => {
+    petky: novePetky.map((p, i) => {
+      const novyOtisk = novy[i]
       const c =
-        o === stary.utoky[i]
-          ? cil.chemie.utoky[i]
-          : chemiePoZmeneLajny(cil.sestava.utoky[i], novaSestava.utoky[i], cil.chemie.utoky[i])
-      return chemieZaPoziceNaLede(novaSestava.utoky[i], podleId, 'utok', c)
-    }),
-    obrany: novy.obrany.map((o, i) => {
-      const c =
-        o === stary.obrany[i]
-          ? cil.chemie.obrany[i]
-          : chemiePoZmeneLajny(cil.sestava.obrany[i], novaSestava.obrany[i], cil.chemie.obrany[i])
-      return chemieZaPoziceNaLede(novaSestava.obrany[i], podleId, 'obrana', c)
+        novyOtisk === stary[i]
+          ? cil.chemie.petky[i]
+          : chemiePoZmenePetky(hraciSpojenePetky(cil.sestava, i), [...p.utok, ...p.obrana], cil.chemie.petky[i])
+      return chemieZaPoziceNaPetce(p.utok, p.obrana, podleId, c)
     }),
   }
   cil.sestava = structuredClone(novaSestava)
@@ -1022,7 +1015,7 @@ export function autoRozhodniCekani(stav: StavZapasu, domaci: Tym, hoste: Tym, rn
       stav,
       info.typ === 'pp'
         ? { petka: nejlepsiPetkaPP(stav[info.strana]) }
-        : { petka: { utok: 3, obrana: 0 }, pkAgresivni: false },
+        : { petka: { index: 3 }, pkAgresivni: false },
     )
   }
   if (stav.cekaNaKlicovyMoment) return potvrdKlicovyMoment(stav, 'nechat', domaci, hoste, rng)

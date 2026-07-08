@@ -29,6 +29,7 @@ import {
   zacniZapas,
   zmenTaktiku,
   zmenVytizeniUtoku,
+  hraciPetky,
   jePetkaKompletni,
   pocetZdravychVPetce,
   type Petka,
@@ -115,8 +116,8 @@ export function ZivyZapas({
           return potvrdPresilovku(
             s,
             info.typ === 'pp'
-              ? { petka: { utok: 0, obrana: 0 } }
-              : { petka: { utok: 3, obrana: 0 }, pkAgresivni: false },
+              ? { petka: { index: 0 } }
+              : { petka: { index: 3 }, pkAgresivni: false },
           )
         }
         if (s.cekaNaKlicovyMoment) return potvrdKlicovyMoment(s, 'nechat', domaci, hoste, rng())
@@ -525,8 +526,7 @@ export function ZivyZapas({
                   lajna={l}
                   podleId={new Map(mujTym.hraci.map((h) => [h.id, h]))}
                   rezim="zapas"
-                  chemieUtok={stav[mojeStrana].chemie.utoky[l.index]}
-                  chemieObrana={stav[mojeStrana].chemie.obrany[obrIdx]}
+                  chemie={stav[mojeStrana].chemie.petky[l.index]}
                   ovrUtok={ovr.utoky[l.index]}
                   ovrObrana={ovr.obrany[obrIdx]}
                   energie={stav[mojeStrana].energie}
@@ -626,8 +626,7 @@ function ModalPresilovky({
   const souperUtoky = [0, 1, 2, 3].map((i) => energieUtokLajny(souperStav, i))
 
   function jmenaPetky(petka: Petka): string {
-    const ids = [...strana.sestava.utoky[petka.utok], ...strana.sestava.obrany[petka.obrana]]
-    return ids
+    return hraciPetky(strana, petka)
       .map((id) => {
         const z = strana.zraneni.includes(id) ? '🚑' : ''
         return `${podleId.get(id)!.prijmeni}${z}`
@@ -645,7 +644,7 @@ function ModalPresilovky({
       <h3>{typ === 'pp' ? '⚡ Přesilovka — vyber pětku!' : '🛡️ Oslabení — vyber pětku!'}</h3>
       <p>
         {typ === 'pp'
-          ? '3 útočníci + 2 obránci. Chybí hráč? Dosad ho níže — klikni zraněného a pak náhradníka ze střídačky.'
+          ? 'Vyber celou lajnu (3+2). Chybí hráč? Dosad ho níže — klikni zraněného a pak náhradníka ze střídačky.'
           : 'Kdo bude bránit? Soupeř má tyto útoky:'}{' '}
         {typ === 'pk' && (
           <span className="petka-souper-unava">
@@ -664,7 +663,7 @@ function ModalPresilovky({
           const unavena = energie < 55
           return (
             <button
-              key={`${petka.utok}-${petka.obrana}`}
+              key={petka.index}
               className={`petka-karta tlacitko sekundarni ${unavena ? 'unavena' : ''} ${!kompletni ? 'nekompletni' : ''}`}
               disabled={!kompletni}
               title={!kompletni ? 'Nejdřív dosad chybějícího hráče' : undefined}
@@ -680,8 +679,8 @@ function ModalPresilovky({
       </div>
       {typ === 'pk' && (
         <div className="modal-tlacitka" style={{ marginTop: 10 }}>
-          <button className="tlacitko nebezpecne" onClick={() => vyber({ utok: 3, obrana: 0 }, true)}>
-            Risk blok (4. útok + 1. obrana)
+          <button className="tlacitko nebezpecne" onClick={() => vyber({ index: 3 }, true)}>
+            Risk blok (4. útok · sdílí 3. obranu)
           </button>
         </div>
       )}

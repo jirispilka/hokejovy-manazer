@@ -3,6 +3,11 @@ import type { Atributy, GameState, Hrac, TreninkDen, TreninkIntenzita, TreninkTy
 
 const clamp = (x: number, lo: number, hi: number) => Math.min(hi, Math.max(lo, x))
 
+function posilChemiiPetky(muj: import('./types').Tym, idx: number, bonus: number): void {
+  const i = Math.min(Math.max(idx, 0), 3)
+  muj.chemie.petky[i] = Math.min(100, muj.chemie.petky[i] + bonus)
+}
+
 const NAZVY: Record<TreninkTyp, string> = {
   strelba: 'střelba',
   utok: 'útok',
@@ -511,7 +516,7 @@ function aplikujSeanciPreview(
     else ctx.rust.push(`${h.prijmeni} +1 výdrž nebo fyzička${int === 'lehka' ? ' (lehký)' : ''}`)
   } else if (td.typ === 'taktika') {
     for (const h of muj.hraci) h.unava = clamp(h.unava + (int === 'lehka' ? 1 : 3), 0, 100)
-    ctx.rust.push(`Taktika: +forma 2 hráčům, +chemie lajně${int === 'lehka' ? ' (lehká)' : ''}`)
+    ctx.rust.push(`Taktika: +forma 2 hráčům, +chemie pětky${int === 'lehka' ? ' (lehká)' : ''}`)
   } else if (td.typ === 'odpocinek') {
     for (const h of muj.hraci) {
       h.unava = clamp(h.unava - 8, 0, 100)
@@ -530,10 +535,8 @@ function aplikujSeanciPreview(
   } else if (td.typ === 'parta') {
     for (const h of muj.hraci) h.unava = clamp(h.unava + 2, 0, 100)
     muj.moralka = clamp(muj.moralka + 4, 30, 70)
-    const idx = td.lajna ?? 0
-    if (idx <= 3) muj.chemie.utoky[idx] = Math.min(100, muj.chemie.utoky[idx] + 5)
-    else muj.chemie.obrany[idx - 4] = Math.min(100, muj.chemie.obrany[idx - 4] + 5)
-    ctx.rust.push('Team building: +chemie lajny, +morálka')
+    posilChemiiPetky(muj, td.lajna ?? 0, 5)
+    ctx.rust.push('Team building: +chemie pětky, +morálka')
   } else if (td.typ === 'sponzor') {
     for (const h of muj.hraci) h.unava = clamp(h.unava + 4, 0, 100)
     ctx.s.trener.duvera = clamp(ctx.s.trener.duvera + 2, 0, 100)
@@ -739,9 +742,7 @@ function aplikujSeanci(s: GameState, den: number, td: TreninkDen, index: number,
       h.forma = clamp(h.forma + formaBonus, 30, 70)
       zlepseni.push(`${h.jmeno} ${h.prijmeni} — forma`)
     }
-    const idx = td.lajna ?? 0
-    if (idx <= 3) muj.chemie.utoky[idx] = Math.min(100, muj.chemie.utoky[idx] + chemieBonus)
-    else muj.chemie.obrany[idx - 4] = Math.min(100, muj.chemie.obrany[idx - 4] + chemieBonus)
+    posilChemiiPetky(muj, td.lajna ?? 0, chemieBonus)
   } else if (typ === 'odpocinek') {
     for (const h of muj.hraci) {
       h.unava = clamp(h.unava - 8, 0, 100)
@@ -759,10 +760,8 @@ function aplikujSeanci(s: GameState, den: number, td: TreninkDen, index: number,
   } else if (typ === 'parta') {
     for (const h of muj.hraci) h.unava = clamp(h.unava + 2, 0, 100)
     muj.moralka = clamp(muj.moralka + 4, 30, 70)
-    const idx = td.lajna ?? 0
-    if (idx <= 3) muj.chemie.utoky[idx] = Math.min(100, muj.chemie.utoky[idx] + 5)
-    else muj.chemie.obrany[idx - 4] = Math.min(100, muj.chemie.obrany[idx - 4] + 5)
-    zlepseni.push('Lajna — +chemie, +morálka')
+    posilChemiiPetky(muj, td.lajna ?? 0, 5)
+    zlepseni.push('Pětka — +chemie, +morálka')
   } else if (typ === 'sponzor') {
     for (const h of muj.hraci) h.unava = clamp(h.unava + 4, 0, 100)
     s.trener.duvera = clamp(s.trener.duvera + 2, 0, 100)
@@ -787,6 +786,49 @@ export function aplikujTrenink(s: GameState, den: number, rng: () => number): vo
   const posledni = normalizujSeanci(seance[seance.length - 1])
   s.posledniTrenink = { den, zamereni: posledni.typ, zlepseni: vsechnaZlepseni }
   s.zpravy = s.zpravy.slice(0, 50)
+}
+
+/** Hráči s prostorem růstu — pro automatické doplnění v přehledu. */
+export function kandidatiNaTrenink(tym: Tym): Hrac[] {
+  return tym.hraci
+    .filter((h) => overall(h) < h.potencial && h.pozice !== 'G')
+    .sort((a, b) => b.potencial - overall(b) - (a.potencial - overall(a)))
+}
+
+/** Doplní chybějící hráče a sjednotí týmový plán (bez výběru lajny v UI). */
+export function doplnSeanciProTym(s: GameState, seance: TreninkDen[]): TreninkDen[] {
+  const tym = s.tymy[s.mujKlubId]
+  const kandidati = kandidatiNaTrenink(tym)
+  const ids =
+    kandidati.length > 0
+      ? kandidati.map((h) => h.id)
+      : tym.hraci.filter((h) => h.pozice !== 'G').map((h) => h.id)
+  let poolOffset = 0
+  const vezmiPar = (): [string, string] | null => {
+    if (ids.length < 2) return null
+    const a = ids[poolOffset % ids.length]
+    let b = ids[(poolOffset + 1) % ids.length]
+    if (a === b && ids.length > 2) b = ids[(poolOffset + 2) % ids.length]
+    poolOffset += 2
+    return [a, b]
+  }
+  return seance.map((raw) => {
+    const td = normalizujSeanci(raw)
+    if (jeKondiceTyp(td.typ) && (!td.hraci || td.hraci.length === 0) && ids.length > 0) {
+      const id = ids[poolOffset % ids.length]
+      poolOffset++
+      return { ...td, hraci: [id] }
+    }
+    if (jeLedovyTyp(td.typ) && (!td.hraci || td.hraci.length < 2)) {
+      const par = vezmiPar()
+      if (par) return { ...td, hraci: par }
+    }
+    if (td.typ === 'taktika' || td.typ === 'parta') {
+      const { lajna: _lajna, ...bezLajny } = td
+      return bezLajny
+    }
+    return td
+  })
 }
 
 /** Doplní vybrané hráče do seancí bez přiřazení (led / kondice) v daném dni. */

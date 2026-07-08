@@ -31,7 +31,7 @@ export interface TreninkDen {
   typ: TreninkTyp
   intenzita?: TreninkIntenzita
   hraci?: string[]
-  lajna?: number // 0–3 útok, 4–6 obrana
+  lajna?: number // 0–3 index pětky (spojená lajna)
 }
 
 export type MarketingTyp = 'dres' | 'led' | 'tvp'
@@ -160,8 +160,8 @@ export interface Tym {
   moralka: number // 30–70, výchozí 50
   kapitanId: string | null
   taktika: Taktika
-  chemie: { utoky: number[]; obrany: number[] } // 0–100 per lajna/dvojice
-  slozeni: { utoky: string[]; obrany: string[] } // otisk id pro detekci změn
+  chemie: { petky: number[] } // 0–100 per spojená lajna (3+2 hráči)
+  slozeni: { petky: string[] } // otisk id pětky pro detekci změn
   rozpocet: number // Kč
   /** Podíl ice timeu útočných lajn (0 = vypnuto, 0.5–2). */
   vytizeniUtoku?: [number, number, number, number]
@@ -280,16 +280,27 @@ export interface CekajiciZapas {
   playoff: { kolo: number; index: number } | null
 }
 
+export type StadionVylepseniTyp = 'tribuny' | 'obcerstveni' | 'obchod'
+
+export interface StadionVylepseni {
+  tribuny: number
+  obcerstveni: number
+  obchod: number
+}
+
 export interface StadionNastaveni {
   cenaListku: number
   cenaJidla: number
+  cenaPiti: number
   cenaMerch: number
+  vylepseni: StadionVylepseni
 }
 
 export interface DomaciTrzby {
   navstevnost: number
   vstupne: number
   jidlo: number
+  piti: number
   merch: number
   celkem: number
 }
@@ -299,6 +310,7 @@ export interface PosledniDomaci {
   navstevnost: number
   vstupne: number
   jidlo: number
+  piti: number
   merch: number
 }
 

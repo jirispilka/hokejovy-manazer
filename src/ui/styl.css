@@ -1333,6 +1333,18 @@ select {
   padding: 4px 0;
 }
 .platy-souhrn-navrh { margin: 8px 0 0; font-size: 13px; color: var(--zlata); }
+.platy-hromadne { margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--okraj); }
+.platy-hromadne-popis { display: block; font-size: 13px; color: var(--tlumeny); margin-bottom: 8px; }
+.platy-hromadne-tlacitka { display: flex; flex-wrap: wrap; gap: 6px; }
+.stadion-vylepseni { display: grid; gap: 12px; }
+.stadion-vylepseni-karta {
+  padding: 12px;
+  border: 1px solid var(--okraj);
+  border-radius: 8px;
+  background: var(--pozadi);
+}
+.stadion-vylepseni-hlavicka { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; }
+.stadion-vylepseni-uroven { font-size: 14px; margin: 0; color: var(--zlata); }
 .plat-podil {
   display: block;
   font-size: 11px;

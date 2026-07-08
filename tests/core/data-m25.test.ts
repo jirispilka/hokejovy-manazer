@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { generujTym, resetIdCitac } from '../../src/core/generator'
 import { createRng } from '../../src/core/rng'
-import { otiskLajn } from '../../src/core/sestava'
+import { otiskPetek } from '../../src/core/sestava'
 import type { Klub } from '../../src/core/types'
 
 const tym = () => {
@@ -29,16 +29,15 @@ describe('nové atributy M2.5', () => {
 describe('chemie a otisk složení', () => {
   const t = tym()
   it('startuje na 30 a otisk sedí na sestavu', () => {
-    expect(t.chemie.utoky).toEqual([30, 30, 30, 30])
-    expect(t.chemie.obrany).toEqual([30, 30, 30])
-    expect(t.slozeni).toEqual(otiskLajn(t.sestava))
+    expect(t.chemie.petky).toEqual([30, 30, 30, 30])
+    expect(t.slozeni).toEqual({ petky: otiskPetek(t.sestava) })
   })
   it('otisk je nezávislý na pořadí v lajně', () => {
-    const o1 = otiskLajn(t.sestava)
+    const o1 = otiskPetek(t.sestava)
     const prohozena = {
       ...t.sestava,
       utoky: t.sestava.utoky.map((l) => [...l].reverse()),
     }
-    expect(otiskLajn(prohozena)).toEqual(o1)
+    expect(otiskPetek(prohozena)).toEqual(o1)
   })
 })

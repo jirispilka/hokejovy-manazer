@@ -23,8 +23,7 @@ export interface SpojenaLajnaProps {
   podleId: Map<string, Hrac>
   rezim: RezimLajny
   tym?: Tym
-  chemieUtok?: number
-  chemieObrana?: number
+  chemie?: number
   ovrUtok?: number
   ovrObrana?: number
   energie?: Record<string, number>
@@ -126,8 +125,7 @@ export function SpojenaLajna({
   podleId,
   rezim,
   tym,
-  chemieUtok,
-  chemieObrana,
+  chemie,
   ovrUtok,
   ovrObrana,
   energie,
@@ -155,11 +153,8 @@ export function SpojenaLajna({
           )}
         </div>
         <div className="lajna-chemie-bary">
-          {chemieUtok !== undefined && (
-            <MiniBar hodnota={chemieUtok} popisek="Ú chemie" barva={barvaHodnoty(chemieUtok)} />
-          )}
-          {chemieObrana !== undefined && (
-            <MiniBar hodnota={chemieObrana} popisek="O chemie" barva={barvaHodnoty(chemieObrana)} />
+          {chemie !== undefined && (
+            <MiniBar hodnota={chemie} popisek="Chemie pětky" barva={barvaHodnoty(chemie)} />
           )}
         </div>
       </div>

@@ -172,8 +172,7 @@ export function Soupiska({ hra, setHra }: { hra: GameState; setHra: (s: GameStat
                   podleId={podleId}
                   rezim="prehled"
                   tym={muj}
-                  chemieUtok={muj.chemie.utoky[l.index]}
-                  chemieObrana={muj.chemie.obrany[Math.min(l.index, 2)]}
+                  chemie={muj.chemie.petky[l.index]}
                   ovrUtok={ovr.utoky[l.index]}
                   ovrObrana={ovr.obrany[Math.min(l.index, 2)]}
                   kapitanId={muj.kapitanId}

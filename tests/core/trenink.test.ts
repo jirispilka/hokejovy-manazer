@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { doplnHraciDoSeanci, doporucenyPlan, efektUnavyDne, prehledKondice, previewTydne, potvrdTreninkovyPlan, unavaPoOdpocinku, unavaPoVolnemDnu, validujPlan } from '../../src/core/trenink'
+import { doplnHraciDoSeanci, doplnSeanciProTym, doporucenyPlan, efektUnavyDne, prehledKondice, previewTydne, potvrdTreninkovyPlan, unavaPoOdpocinku, unavaPoVolnemDnu, validujPlan } from '../../src/core/trenink'
 import { newGame } from '../../src/core/sezona'
 
 describe('trenink plánovač', () => {
@@ -76,6 +76,23 @@ describe('trenink plánovač', () => {
     }
     const v = validujPlan(s, plan)
     expect(v.some((x) => x.text.includes('Přetrénink'))).toBe(true)
+  })
+
+  it('doplnSeanciProTym doplní hráče a sjednotí týmový plán', () => {
+    const s = newGame(31, 'tabor')
+    const den = s.den + 2
+    const plan = {
+      [den]: [
+        { typ: 'strelba' as const, intenzita: 'tezka' as const },
+        { typ: 'kondice' as const, intenzita: 'tezka' as const },
+        { typ: 'taktika' as const, intenzita: 'lehka' as const, lajna: 2 },
+      ],
+    }
+    const seance = doplnSeanciProTym(s, plan[den])
+    expect(seance[0].hraci).toHaveLength(2)
+    expect(seance[1].hraci).toHaveLength(1)
+    expect(seance[2].lajna).toBeUndefined()
+    expect(validujPlan(s, { [den]: seance }).some((x) => x.text.includes('Vyber'))).toBe(false)
   })
 
   it('doplnHraciDoSeanci doplní hráče do už přidané kondice', () => {

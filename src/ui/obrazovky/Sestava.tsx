@@ -209,9 +209,9 @@ export function SestavaObrazovka({ hra, setHra }: { hra: GameState; setHra: (s: 
         {chyba && <p className="napoveda-sestava napoveda-chyba_pozice">{chyba}</p>}
         <ol className="chemie-kroky">
           <li><b>Pyramida síly:</b> 1. lajna = hvězdy, 2.–3. rozlož sílu, 4. útok = udržba (méně ice time)</li>
-          <li>Můžeš dosadit kohokoli kam chceš — mimo pozici klesne OVR i chemie lajny</li>
-          <li>Lajna pohromadě roste chemie — výměna ji jen částečně sníží</li>
-          <li>Hraj zápasy — lajny na ledě získávají +6 (max 100)</li>
+          <li>Můžeš dosadit kohokoli kam chceš — mimo pozici klesne OVR i chemie pětky</li>
+          <li>Pětka pohromadě roste chemie — výměna ji jen částečně sníží</li>
+          <li>Hraj zápasy — pětky na ledě získávají +6 (max 100)</li>
         </ol>
         <p style={{ color: 'var(--tlumeny)', marginBottom: 0 }}>
           {vybrany
@@ -227,8 +227,7 @@ export function SestavaObrazovka({ hra, setHra }: { hra: GameState; setHra: (s: 
           podleId={podleId}
           rezim="editace"
           tym={tym}
-          chemieUtok={tym.chemie.utoky[l.index]}
-          chemieObrana={tym.chemie.obrany[Math.min(l.index, 2)]}
+          chemie={tym.chemie.petky[l.index]}
           ovrUtok={ovr.utoky[l.index]}
           ovrObrana={ovr.obrany[Math.min(l.index, 2)]}
           vybrany={vybrany}

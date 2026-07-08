@@ -1,7 +1,9 @@
+import { spojeneLajny } from './lajny'
 import type { Hrac, Pozice, Sestava, Tym } from './types'
 
 const VAHY_UTOKU = [0.35, 0.28, 0.22, 0.15]
 const VAHY_OBRAN = [0.4, 0.35, 0.25]
+const VAHY_PETEK = [0.375, 0.315, 0.235, 0.075]
 const chemieFaktor = (chemie: number) => 0.95 + chemie / 1000
 /** OVR na ledě mimo přirozenou pozici (obránce v útoku atd.). */
 const SPATNA_POZICE_FAKTOR = 0.72
@@ -35,9 +37,31 @@ export function jeNaSpravnePozici(h: Hrac, role: RoleNaLede): boolean {
 
 export const jeZdravy = (h: Hrac): boolean => h.zranenZapasu === 0
 
+export function otiskPetek(s: Sestava): string[] {
+  return spojeneLajny(s).map((p) => [...p.utok, ...p.obrana].sort().join('+'))
+}
+
+/** @deprecated použij otiskPetek */
 export function otiskLajn(s: Sestava): { utoky: string[]; obrany: string[] } {
   const otisk = (l: string[]) => [...l].sort().join('+')
   return { utoky: s.utoky.map(otisk), obrany: s.obrany.map(otisk) }
+}
+
+export function hraciSpojenePetky(sestava: Sestava, index: number): string[] {
+  const p = spojeneLajny(sestava)[index]
+  return [...p.utok, ...p.obrana]
+}
+
+export function indexPetkyHrace(sestava: Sestava, hracId: string): number | null {
+  for (let i = 0; i < 4; i++) {
+    if (hraciSpojenePetky(sestava, i).includes(hracId)) return i
+  }
+  return null
+}
+
+function chemieFaktorObrany(t: Tym, index: number): number {
+  if (index < 2) return chemieFaktor(t.chemie.petky[index])
+  return chemieFaktor((t.chemie.petky[2] + t.chemie.petky[3]) / 2)
 }
 
 export function vychoziSestava(hraci: Hrac[]): Sestava {
@@ -76,11 +100,11 @@ export function silaTymu(
     return l.reduce((s, id) => s + efektivniProRoli(podleId.get(id)!, role), 0) / l.length
   }
   const utok = t.sestava.utoky.reduce(
-    (s, l, i) => s + prumerLajny(l, 'utok') * (vahyUtoku[i] ?? 0) * chemieFaktor(t.chemie.utoky[i]),
+    (s, l, i) => s + prumerLajny(l, 'utok') * (vahyUtoku[i] ?? 0) * chemieFaktor(t.chemie.petky[i]),
     0,
   )
   const obrana = t.sestava.obrany.reduce(
-    (s, l, i) => s + prumerLajny(l, 'obrana') * (vahyObran[i] ?? 0) * chemieFaktor(t.chemie.obrany[i]),
+    (s, l, i) => s + prumerLajny(l, 'obrana') * (vahyObran[i] ?? 0) * chemieFaktorObrany(t, i),
     0,
   )
   const brankar = efektivniProRoli(podleId.get(t.sestava.brankar)!, 'G')
@@ -189,18 +213,40 @@ export function volneMistaObrany(dvojice: string[]): number {
   return Math.max(0, 2 - dvojice.length)
 }
 
-export function chemiePoZmeneLajny(staraLajna: string[], novaLajna: string[], staraChemie: number): number {
-  if (staraLajna.length === 0) return 30
-  const vel = staraLajna.length
-  const set = new Set(staraLajna)
-  const zachovano = novaLajna.filter((id) => set.has(id)).length / vel
+export function chemiePoZmenePetky(stariHraci: string[], noviHraci: string[], staraChemie: number): number {
+  if (stariHraci.length === 0) return 30
+  const set = new Set(stariHraci)
+  const zachovano = noviHraci.filter((id) => set.has(id)).length / stariHraci.length
   return Math.round(staraChemie * zachovano + 30 * (1 - zachovano))
 }
 
-function novaChemieLajny(staraLajna: string[], novaLajna: string[], staraChemie: number): number {
-  return chemiePoZmeneLajny(staraLajna, novaLajna, staraChemie)
+/** @deprecated použij chemiePoZmenePetky */
+export function chemiePoZmeneLajny(staraLajna: string[], novaLajna: string[], staraChemie: number): number {
+  return chemiePoZmenePetky(staraLajna, novaLajna, staraChemie)
 }
 
+function novaChemiePetky(stariHraci: string[], noviHraci: string[], staraChemie: number): number {
+  return chemiePoZmenePetky(stariHraci, noviHraci, staraChemie)
+}
+
+export function chemieZaPoziceNaPetce(
+  utok: string[],
+  obrana: string[],
+  hraci: Map<string, Hrac>,
+  chemie: number,
+): number {
+  let spatne = 0
+  for (const id of utok) {
+    if (!jeNaSpravnePozici(hraci.get(id)!, 'utok')) spatne++
+  }
+  for (const id of obrana) {
+    if (!jeNaSpravnePozici(hraci.get(id)!, 'obrana')) spatne++
+  }
+  if (spatne === 0) return chemie
+  return Math.max(15, chemie - spatne * 12)
+}
+
+/** @deprecated použij chemieZaPoziceNaPetce */
 export function chemieZaPoziceNaLede(
   lajna: string[],
   hraci: Map<string, Hrac>,
@@ -212,44 +258,36 @@ export function chemieZaPoziceNaLede(
   return Math.max(15, chemie - spatne * 18)
 }
 
-/** Po zápase: lajny s dostatečným ice time (nízká energie) získají +6 chemie. */
+/** Po zápase: pětky s dostatečným ice time získají +6 chemie. */
 export function aplikujSehravaniChemie(tym: Tym, energie: Record<string, number>): void {
-  const utokHral = (l: string[]) => l.filter((id) => (energie[id] ?? 100) < 90).length >= 2
-  const obranaHrala = (l: string[]) => l.filter((id) => (energie[id] ?? 100) < 90).length >= 1
-  tym.chemie.utoky = tym.chemie.utoky.map((c, i) =>
-    utokHral(tym.sestava.utoky[i]) ? Math.min(100, c + 6) : c,
-  )
-  tym.chemie.obrany = tym.chemie.obrany.map((c, i) =>
-    obranaHrala(tym.sestava.obrany[i]) ? Math.min(100, c + 6) : c,
-  )
+  tym.chemie.petky = spojeneLajny(tym.sestava).map((p, i) => {
+    const hraci = [...p.utok, ...p.obrana]
+    const hralo = hraci.filter((id) => (energie[id] ?? 100) < 90).length
+    const hrala = hraci.length >= 4 ? hralo >= 3 : hralo >= 2
+    return hrala ? Math.min(100, tym.chemie.petky[i] + 6) : tym.chemie.petky[i]
+  })
 }
 
 export function zmenSestavuKlubu(tym: Tym, novaSestava: Sestava): Tym {
   const novy = structuredClone(tym)
-  const novyOtisk = otiskLajn(novaSestava)
+  const novePetky = spojeneLajny(novaSestava)
   const podleId = new Map(tym.hraci.map((h) => [h.id, h]))
   novy.sestava = structuredClone(novaSestava)
   novy.chemie = {
-    utoky: novyOtisk.utoky.map((o, i) => {
+    petky: novePetky.map((p, i) => {
+      const novyOtisk = [...p.utok, ...p.obrana].sort().join('+')
       const c =
-        o === tym.slozeni.utoky[i]
-          ? tym.chemie.utoky[i]
-          : novaChemieLajny(tym.sestava.utoky[i], novaSestava.utoky[i], tym.chemie.utoky[i])
-      return chemieZaPoziceNaLede(novaSestava.utoky[i], podleId, 'utok', c)
-    }),
-    obrany: novyOtisk.obrany.map((o, i) => {
-      const c =
-        o === tym.slozeni.obrany[i]
-          ? tym.chemie.obrany[i]
-          : novaChemieLajny(tym.sestava.obrany[i], novaSestava.obrany[i], tym.chemie.obrany[i])
-      return chemieZaPoziceNaLede(novaSestava.obrany[i], podleId, 'obrana', c)
+        novyOtisk === tym.slozeni.petky[i]
+          ? tym.chemie.petky[i]
+          : novaChemiePetky(hraciSpojenePetky(tym.sestava, i), [...p.utok, ...p.obrana], tym.chemie.petky[i])
+      return chemieZaPoziceNaPetce(p.utok, p.obrana, podleId, c)
     }),
   }
-  novy.slozeni = novyOtisk
+  novy.slozeni = { petky: otiskPetek(novaSestava) }
   return novy
 }
 
-export function predikceChemie(tym: Tym, novaSestava: Sestava): { utoky: number[]; obrany: number[] } {
+export function predikceChemie(tym: Tym, novaSestava: Sestava): { petky: number[] } {
   const novy = zmenSestavuKlubu(tym, novaSestava)
   return novy.chemie
 }
@@ -277,15 +315,13 @@ export function navrhPoZapase(tym: Tym, hodnoceni: Record<string, number>): stri
 
 export function popisChemie(chemie: number): { text: string; bonus: string } {
   const bonus = `${((0.95 + chemie / 1000) * 100 - 100).toFixed(1)} %`
-  if (chemie < 40) return { text: 'Nová lajna — sehrávej zápasy', bonus }
+  if (chemie < 40) return { text: 'Nová pětka — sehrávej zápasy', bonus }
   if (chemie < 70) return { text: 'Sehrává se — pokračuj', bonus }
   return { text: 'Výborná souhra', bonus }
 }
 
 export function celkovaChemie(t: Tym): number {
-  const u = t.chemie.utoky.reduce((s, c, i) => s + c * VAHY_UTOKU[i], 0)
-  const o = t.chemie.obrany.reduce((s, c, i) => s + c * VAHY_OBRAN[i], 0)
-  return Math.round(u * 0.6 + o * 0.4)
+  return Math.round(t.chemie.petky.reduce((s, c, i) => s + c * VAHY_PETEK[i], 0))
 }
 
 /** Efektivní síla hráče pro sestavení (forma, únava). */
@@ -424,12 +460,13 @@ export function jeHracMimoPozici(tym: Tym, hracId: string): boolean {
   return !jeNaSpravnePozici(podleId.get(hracId)!, lajna.typ)
 }
 
-function chemieLajnySHracem(tym: Tym, hracId: string): { typ: 'utok' | 'obrana'; index: number } | null {
-  return lajnaHrace(tym.sestava, hracId)
+function chemieLajnySHracem(tym: Tym, hracId: string): { index: number } | null {
+  const idx = indexPetkyHrace(tym.sestava, hracId)
+  return idx !== null ? { index: idx } : null
 }
 
-function chemieHodnotaLajny(tym: Tym, lajna: { typ: 'utok' | 'obrana'; index: number }): number {
-  return lajna.typ === 'utok' ? tym.chemie.utoky[lajna.index] : tym.chemie.obrany[lajna.index]
+function chemieHodnotaLajny(tym: Tym, lajna: { index: number }): number {
+  return tym.chemie.petky[lajna.index]
 }
 
 function bonusUmisteniNaLajnu(tym: Tym, hracId: string, novaSestava: Sestava): number {
@@ -540,5 +577,5 @@ export function navrhUmisteni(tym: Tym, hracId: string): NavrhUmisteni {
 export function zpravaSpatnePozice(a: Hrac, b: Hrac): string {
   if (a.pozice === 'G' || b.pozice === 'G') return 'Brankáře vyměň jen za jiného brankáře.'
   const nazev = (p: Pozice) => (p === 'D' ? 'obránce' : 'útočníka')
-  return `${b.prijmeni} je ${nazev(b.pozice)} — můžeš ho dosadit kam chceš, ale klesne mu OVR i chemie lajny.`
+  return `${b.prijmeni} je ${nazev(b.pozice)} — můžeš ho dosadit kam chceš, ale klesne mu OVR i chemie pětky.`
 }

@@ -7,7 +7,7 @@ import { odpovezNaOtazku } from '../../core/media'
 import { prestupovyDeadlineBlizko } from '../../core/prestupy'
 import { createRng, hashSeed } from '../../core/rng'
 import { advanceDay, dalsiMujZapas, mojeLiga, zahajNovouSezonu } from '../../core/sezona'
-import { dalsiDen, IKONY_TRENINKU, NAZEV_TRENINKU, potrebujeVolbuDne, potvrdDen, prehledKondice } from '../../core/trenink'
+import { dalsiDen, doplnSeanciProTym, IKONY_TRENINKU, NAZEV_TRENINKU, potrebujeVolbuDne, potvrdDen, prehledKondice } from '../../core/trenink'
 import { spocitejTabulku } from '../../core/tabulka'
 import type { GameState, TreninkDen } from '../../core/types'
 import type { Obrazovka } from '../App'
@@ -75,7 +75,7 @@ function PrehledObsah({
   }
 
   function potvrdDenAPokracuj() {
-    let s = potvrdDen(hra, dalsiDenInfo.den, seanceDne)
+    let s = potvrdDen(hra, dalsiDenInfo.den, doplnSeanciProTym(hra, seanceDne))
     s = advanceDay(s)
     uloz(s)
     if (s.cekajiciZapas) setObrazovka('zapas')
@@ -164,7 +164,7 @@ function PrehledObsah({
         ) : (
           <>
             <p style={{ fontSize: 13, color: 'var(--tlumeny)', marginBottom: 12 }}>
-              Rozhodni, co tým dnes dělá. Můžeš naplánovat víc aktivit (led + posilovna…). Plán z Tréninku je předvyplněný.
+              Rozhodni, co celý tým dnes dělá. Stačí vybrat aktivitu — hráče doplní hra. Podrobný plán (lajny, jednotliví hráči) upravíš v záložce Trénink.
             </p>
             <EditorDne hra={hra} den={dalsiDenInfo.den} seance={seanceDne} onChange={setSeanceDne} kompaktni />
             <button type="button" className="tlacitko puls" style={{ marginTop: 12 }} onClick={potvrdDenAPokracuj}>

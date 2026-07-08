@@ -3,20 +3,24 @@ import {
   aktivniReklama,
   bonusNavstevnostiZReklamy,
   cenaReklamy,
+  cenaVylepseniStadionu,
   faktorCenyVstupneho,
   kupReklamu,
   mesicniCashflow,
   nabidkySponzora,
   oslovSponzory,
+  POPISY_VYLEPSENI,
   prodejTvPrav,
   REKLAMA_KANALY,
   vypocetDomacichTrzeb,
   vychoziStadion,
+  vylepsiStadion,
   zmenStadion,
   zvolSponzora,
 } from '../../core/finance'
+import type { StadionVylepseniTyp } from '../../core/types'
 import { kc } from '../../core/hodnoty'
-import { dopadPlatuHrace, mesicniPlatyTymu, ocekavanyPlat, rocniPlatyTymu, zmenPlat } from '../../core/platy'
+import { dopadPlatuHrace, mesicniPlatyTymu, ocekavanyPlat, rocniPlatyTymu, zmenPlat, zmenPlatyVsech, type ZmenaPlatuTymu } from '../../core/platy'
 import type { GameState } from '../../core/types'
 import { overall } from '../../core/sestava'
 import { ulozHru } from '../store'
@@ -57,10 +61,42 @@ export function Finance({ hra, setHra }: { hra: GameState; setHra: (s: GameState
     if (novy === undefined) return
     try {
       uloz(zmenPlat(hra, hracId, novy))
+      setUpravPlat((prev) => {
+        const next = { ...prev }
+        delete next[hracId]
+        return next
+      })
     } catch (e) {
       setHlaska(`❌ ${(e as Error).message}`)
     }
   }
+
+  function ulozPlatyVsech(zmena: ZmenaPlatuTymu) {
+    try {
+      uloz(zmenPlatyVsech(hra, zmena))
+      setUpravPlat({})
+    } catch (e) {
+      setHlaska(`❌ ${(e as Error).message}`)
+    }
+  }
+
+  function vylepsi(typ: StadionVylepseniTyp) {
+    try {
+      uloz(vylepsiStadion(hra, typ))
+    } catch (e) {
+      setHlaska(`❌ ${(e as Error).message}`)
+    }
+  }
+
+  const vylepseni = hra.stadion.vylepseni ?? { tribuny: 0, obcerstveni: 0, obchod: 0 }
+  const stadionPolozky: { typ: StadionVylepseniTyp; popis: string }[] = [
+    { typ: 'tribuny', popis: 'Více míst pro diváky' },
+    { typ: 'obcerstveni', popis: 'Víc prodaného jídla a pití' },
+    { typ: 'obchod', popis: 'Víc prodaného merche' },
+  ]
+  const maxJidlo = 200 + vylepseni.obcerstveni * 30
+  const maxPiti = 120 + vylepseni.obcerstveni * 20
+  const maxMerch = 600 + vylepseni.obchod * 70
 
   const Zalozky = (
     <div className="sub-zalozky">
@@ -141,6 +177,19 @@ export function Finance({ hra, setHra }: { hra: GameState; setHra: (s: GameState
             <p style={{ fontSize: 12, color: 'var(--tlumeny)', margin: '8px 0 0' }}>
               {muj.hraci.length} hráčů · uzávěrka za {cashflow.dnuDoUzaverky} dní strhne −{kc(celkemPlaty)}
             </p>
+            <div className="platy-hromadne">
+              <span className="platy-hromadne-popis">Upravit všechny platy najednou:</span>
+              <div className="platy-hromadne-tlacitka">
+                <button type="button" className="tlacitko-mini sekundarni" onClick={() => ulozPlatyVsech({ typ: 'procenta', hodnota: -10 })}>−10 %</button>
+                <button type="button" className="tlacitko-mini sekundarni" onClick={() => ulozPlatyVsech({ typ: 'procenta', hodnota: -5 })}>−5 %</button>
+                <button type="button" className="tlacitko-mini sekundarni" onClick={() => ulozPlatyVsech({ typ: 'delta', castka: -50_000 })}>−50 tis.</button>
+                <button type="button" className="tlacitko-mini sekundarni" onClick={() => ulozPlatyVsech({ typ: 'delta', castka: -10_000 })}>−10 tis.</button>
+                <button type="button" className="tlacitko-mini sekundarni" onClick={() => ulozPlatyVsech({ typ: 'delta', castka: 10_000 })}>+10 tis.</button>
+                <button type="button" className="tlacitko-mini sekundarni" onClick={() => ulozPlatyVsech({ typ: 'delta', castka: 50_000 })}>+50 tis.</button>
+                <button type="button" className="tlacitko-mini sekundarni" onClick={() => ulozPlatyVsech({ typ: 'procenta', hodnota: 5 })}>+5 %</button>
+                <button type="button" className="tlacitko-mini sekundarni" onClick={() => ulozPlatyVsech({ typ: 'procenta', hodnota: 10 })}>+10 %</button>
+              </div>
+            </div>
           </div>
           <div className="karta tabulka-scroll">
           <table>
@@ -191,17 +240,54 @@ export function Finance({ hra, setHra }: { hra: GameState; setHra: (s: GameState
       {zalozka === 'stadion' && (
         <div className="mrizka">
           <div className="karta">
+            <h3>Vylepšení stadionu</h3>
+            <p className="prestupy-napoveda">Jednorázová investice — vyšší úroveň = víc diváků nebo víc prodaného zboží.</p>
+            <div className="stadion-vylepseni">
+              {stadionPolozky.map(({ typ, popis }) => {
+                const lvl = vylepseni[typ]
+                const cena = cenaVylepseniStadionu(hra, typ)
+                const max = lvl >= 3
+                return (
+                  <div key={typ} className="stadion-vylepseni-karta">
+                    <div className="stadion-vylepseni-hlavicka">
+                      <b>{typ === 'tribuny' ? 'Tribuny' : typ === 'obcerstveni' ? 'Občerstvení' : 'Fan shop'}</b>
+                      <span className="pill">{lvl}/3</span>
+                    </div>
+                    <p className="stadion-vylepseni-uroven">{POPISY_VYLEPSENI[typ][lvl]}</p>
+                    <p style={{ fontSize: 12, color: 'var(--tlumeny)', margin: '4px 0 8px' }}>{popis}</p>
+                    {max ? (
+                      <span className="pill pill-ok">Maximální úroveň</span>
+                    ) : (
+                      <button
+                        type="button"
+                        className="tlacitko sekundarni tlacitko-mini"
+                        disabled={muj.rozpocet < (cena ?? 0)}
+                        onClick={() => vylepsi(typ)}
+                      >
+                        Vylepšit na „{POPISY_VYLEPSENI[typ][lvl + 1]}" (−{kc(cena ?? 0)})
+                      </button>
+                    )}
+                  </div>
+                )
+              })}
+            </div>
+          </div>
+          <div className="karta">
             <h3>Ceny na stadionu</h3>
             <label>Vstupné ({zakladListku} Kč základ)</label>
             <input type="range" min={Math.round(zakladListku * 0.6)} max={Math.round(zakladListku * 1.4)} value={hra.stadion.cenaListku}
               onChange={(e) => uloz(zmenStadion(hra, { cenaListku: Number(e.target.value) }))} />
             <p>{hra.stadion.cenaListku} Kč / lístek</p>
-            <label>Jídlo</label>
-            <input type="range" min={40} max={200} value={hra.stadion.cenaJidla}
+            <label>Jídlo (max {maxJidlo} Kč)</label>
+            <input type="range" min={40} max={maxJidlo} value={hra.stadion.cenaJidla}
               onChange={(e) => uloz(zmenStadion(hra, { cenaJidla: Number(e.target.value) }))} />
             <p>{hra.stadion.cenaJidla} Kč</p>
-            <label>Merch</label>
-            <input type="range" min={100} max={600} value={hra.stadion.cenaMerch}
+            <label>Pití (max {maxPiti} Kč)</label>
+            <input type="range" min={30} max={maxPiti} value={hra.stadion.cenaPiti ?? 50}
+              onChange={(e) => uloz(zmenStadion(hra, { cenaPiti: Number(e.target.value) }))} />
+            <p>{hra.stadion.cenaPiti ?? 50} Kč</p>
+            <label>Merch (max {maxMerch} Kč)</label>
+            <input type="range" min={100} max={maxMerch} value={hra.stadion.cenaMerch}
               onChange={(e) => uloz(zmenStadion(hra, { cenaMerch: Number(e.target.value) }))} />
             <p>{hra.stadion.cenaMerch} Kč</p>
             <h4>Odhad příštího domácího</h4>
@@ -215,7 +301,7 @@ export function Finance({ hra, setHra }: { hra: GameState; setHra: (s: GameState
               {' '}→ tržby <b>{kc(odhadDomaci.celkem)}</b>
             </p>
             <p style={{ fontSize: 13, color: 'var(--tlumeny)', marginTop: 4 }}>
-              Vstupné {kc(odhadDomaci.vstupne)} · jídlo {kc(odhadDomaci.jidlo)} · merch {kc(odhadDomaci.merch)}
+              Vstupné {kc(odhadDomaci.vstupne)} · jídlo {kc(odhadDomaci.jidlo)} · pití {kc(odhadDomaci.piti)} · merch {kc(odhadDomaci.merch)}
               <br />
               Při základní ceně ({zakladListku} Kč) by přišlo ~{navstevnostPriZakladu.toLocaleString('cs-CZ')} diváků.
             </p>
@@ -230,8 +316,9 @@ export function Finance({ hra, setHra }: { hra: GameState; setHra: (s: GameState
                 <div className="zprava">Diváci: {hra.posledniDomaci.navstevnost.toLocaleString('cs-CZ')}</div>
                 <div className="zprava">Vstupné: +{kc(hra.posledniDomaci.vstupne)}</div>
                 <div className="zprava">Jídlo: +{kc(hra.posledniDomaci.jidlo)}</div>
+                <div className="zprava">Pití: +{kc(hra.posledniDomaci.piti ?? 0)}</div>
                 <div className="zprava">Merch: +{kc(hra.posledniDomaci.merch)}</div>
-                <b>Celkem: +{kc(hra.posledniDomaci.vstupne + hra.posledniDomaci.jidlo + hra.posledniDomaci.merch)}</b>
+                <b>Celkem: +{kc(hra.posledniDomaci.vstupne + hra.posledniDomaci.jidlo + (hra.posledniDomaci.piti ?? 0) + hra.posledniDomaci.merch)}</b>
               </>
             )}
           </div>

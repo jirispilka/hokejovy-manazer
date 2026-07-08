@@ -13,6 +13,7 @@ import {
   SPONZOR_FIX,
   vypocetDomacichTrzeb,
   vychoziStadion,
+  vylepsiStadion,
   zmenStadion,
   zkontrolujBankrot,
   zvolSponzora,
@@ -59,6 +60,7 @@ describe('vstupné', () => {
     expect(zakladni).toBeGreaterThan(navstevnost * 60)
     s.naladaFanousku = 100
     expect(vypocetDomacichTrzeb(s, false).celkem).toBeGreaterThan(zakladni)
+    s.stadion.vylepseni = { tribuny: 2, obcerstveni: 0, obchod: 0 }
     expect(vypocetDomacichTrzeb(s, true).navstevnost).toBeGreaterThan(vypocetDomacichTrzeb(s, false).navstevnost)
   })
   it('dražší vstupné sníží návštěvnost, levnější ji zvýší', () => {
@@ -73,6 +75,30 @@ describe('vstupné', () => {
     expect(drazsi).toBeLessThan(normal)
     expect(levnejsi).toBeGreaterThan(normal)
     expect(faktorCenyVstupneho(s)).toBeGreaterThan(1)
+  })
+  it('vylepšení tribun zvýší kapacitu', () => {
+    const s = structuredClone(newGame(7, 'tabor'))
+    s.naladaFanousku = 100
+    s.stadion.cenaListku = Math.round(vychoziStadion(2).cenaListku * 0.6)
+    const pred = navstevnostDomaciho(s, false)
+    s.stadion.vylepseni = { tribuny: 3, obcerstveni: 0, obchod: 0 }
+    const po = navstevnostDomaciho(s, false)
+    expect(po).toBeGreaterThan(pred)
+  })
+  it('vylepsiStadion strhne rozpočet a zvedne úroveň', () => {
+    const s = structuredClone(newGame(7, 'tabor'))
+    s.tymy.tabor.rozpocet = 5_000_000
+    const pred = s.tymy.tabor.rozpocet
+    const po = vylepsiStadion(s, 'obcerstveni')
+    expect(po.stadion.vylepseni.obcerstveni).toBe(1)
+    expect(po.tymy.tabor.rozpocet).toBeLessThan(pred)
+    expect(po.financeHistorie[0]?.castka).toBeLessThan(0)
+  })
+  it('tržby obsahují pití odděleně od jídla', () => {
+    const s = newGame(7, 'tabor')
+    const t = vypocetDomacichTrzeb(s, false)
+    expect(t.piti).toBeGreaterThan(0)
+    expect(t.celkem).toBe(t.vstupne + t.jidlo + t.piti + t.merch)
   })
 })
 

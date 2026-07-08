@@ -116,11 +116,11 @@ describe('návrhy umístění', () => {
     const obr = tym.hraci.find((h) => h.pozice === 'D' && !tym.sestava.utoky.flat().includes(h.id))!
     const obet = tym.sestava.utoky[3][0]
     const silaPred = silaCelkem(tym)
-    const chemiePred = tym.chemie.utoky[3]
+    const chemiePred = tym.chemie.petky[3]
     const nova = vymenVSestave(tym.sestava, obet, obr.id)
     const po = zmenSestavuKlubu(tym, nova)
     expect(silaCelkem(po)).toBeLessThan(silaPred)
-    expect(po.chemie.utoky[3]).toBeLessThan(chemiePred)
+    expect(po.chemie.petky[3]).toBeLessThan(chemiePred)
   })
 
   it('mozneCileVymeny nabízí jen stejnou pozici', () => {
