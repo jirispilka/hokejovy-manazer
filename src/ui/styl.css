@@ -1336,6 +1336,22 @@ select {
 .platy-hromadne { margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--okraj); }
 .platy-hromadne-popis { display: block; font-size: 13px; color: var(--tlumeny); margin-bottom: 8px; }
 .platy-hromadne-tlacitka { display: flex; flex-wrap: wrap; gap: 6px; }
+.platy-spokojenost { margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--okraj); }
+.platy-spokojenost-popis { display: block; font-size: 13px; color: var(--tlumeny); margin-bottom: 8px; }
+.platy-spokojenost-radky { display: flex; flex-wrap: wrap; gap: 6px; }
+.platy-optimalizace { margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--okraj); }
+.platy-optimalizace .prestupy-napoveda { margin: 8px 0 0; }
+.plat-spokojenost-pill {
+  display: inline-block;
+  font-size: 12px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  border: 1px solid var(--okraj);
+  white-space: nowrap;
+}
+.plat-spokojenost-vyhra { background: rgba(47, 191, 113, 0.12); border-color: var(--vyhra); color: var(--vyhra); }
+.plat-spokojenost-varovani { background: rgba(255, 193, 7, 0.12); border-color: var(--zlata); color: var(--zlata); }
+.plat-spokojenost-prohra { background: rgba(229, 72, 77, 0.12); border-color: var(--prohra); color: #ff8a8d; }
 .stadion-vylepseni { display: grid; gap: 12px; }
 .stadion-vylepseni-karta {
   padding: 12px;
@@ -1351,6 +1367,9 @@ select {
   color: var(--tlumeny);
   margin-top: 2px;
 }
+.plat-slider-bunka { min-width: 160px; }
+.plat-slider { width: 100%; margin: 0; }
+.plat-slider-hodnota { display: block; font-size: 13px; font-weight: 600; margin-top: 2px; }
 .reklama-kanaly { display: flex; flex-direction: column; gap: 10px; }
 .reklama-karta {
   padding: 12px;

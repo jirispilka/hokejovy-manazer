@@ -20,7 +20,7 @@ import {
 } from '../../core/finance'
 import type { StadionVylepseniTyp } from '../../core/types'
 import { kc } from '../../core/hodnoty'
-import { dopadPlatuHrace, mesicniPlatyTymu, ocekavanyPlat, rocniPlatyTymu, zmenPlat, zmenPlatyVsech, type ZmenaPlatuTymu } from '../../core/platy'
+import { dopadPlatuHrace, mesicniPlatyTymu, navrhOptimalnichPlatu, ocekavanyPlat, optimalizujPlaty, POPIS_SPOKOJENOSTI_PLATU, rocniPlatyTymu, souhrnSpokojenostiPlatu, zmenPlat, zmenPlatyVsech, type SpokojenostPlatu, type ZmenaPlatuTymu } from '../../core/platy'
 import type { GameState } from '../../core/types'
 import { overall } from '../../core/sestava'
 import { ulozHru } from '../store'
@@ -45,6 +45,18 @@ export function Finance({ hra, setHra }: { hra: GameState; setHra: (s: GameState
   const celkemPlaty = mesicniPlatyTymu(muj.hraci)
   const celkemNavrh = muj.hraci.reduce((sum, h) => sum + (upravPlat[h.id] ?? h.plat), 0)
   const maZmenyPlatu = celkemNavrh !== celkemPlaty
+  const spokojenostSouhrn = souhrnSpokojenostiPlatu(muj.hraci, upravPlat)
+  const optimalniNavrhy = navrhOptimalnichPlatu(muj.hraci)
+  const optimalniCelkem = Object.values(optimalniNavrhy).reduce((sum, plat) => sum + plat, 0)
+  const optimalniRozdil = optimalniCelkem - celkemPlaty
+  const optimalniSpokojenost = souhrnSpokojenostiPlatu(muj.hraci, optimalniNavrhy)
+  const platyUzOptimalni = muj.hraci.every((h) => h.plat === ocekavanyPlat(h))
+
+  function tridaSpokojenosti(s: SpokojenostPlatu): string {
+    if (s === 'velmi_spokojeny' || s === 'spokojeny') return 'plat-spokojenost-vyhra'
+    if (s === 'nespokojeny') return 'plat-spokojenost-varovani'
+    return 'plat-spokojenost-prohra'
+  }
 
   function uloz(s: GameState, zprava?: string) {
     setHra(s)
@@ -74,6 +86,15 @@ export function Finance({ hra, setHra }: { hra: GameState; setHra: (s: GameState
   function ulozPlatyVsech(zmena: ZmenaPlatuTymu) {
     try {
       uloz(zmenPlatyVsech(hra, zmena))
+      setUpravPlat({})
+    } catch (e) {
+      setHlaska(`❌ ${(e as Error).message}`)
+    }
+  }
+
+  function optimalizuj() {
+    try {
+      uloz(optimalizujPlaty(hra))
       setUpravPlat({})
     } catch (e) {
       setHlaska(`❌ ${(e as Error).message}`)
@@ -174,9 +195,42 @@ export function Finance({ hra, setHra }: { hra: GameState; setHra: (s: GameState
                 {' '}({celkemNavrh >= celkemPlaty ? '+' : ''}{kc(celkemNavrh - celkemPlaty)})
               </p>
             )}
+            <div className="platy-spokojenost">
+              <span className="platy-spokojenost-popis">Spokojenost hráčů s platem:</span>
+              <div className="platy-spokojenost-radky">
+                {(['velmi_spokojeny', 'spokojeny', 'nespokojeny', 'stiznost'] as const).map((typ) =>
+                  spokojenostSouhrn[typ] > 0 ? (
+                    <span key={typ} className={`plat-spokojenost-pill ${tridaSpokojenosti(typ)}`}>
+                      {POPIS_SPOKOJENOSTI_PLATU[typ]}: {spokojenostSouhrn[typ]}
+                    </span>
+                  ) : null,
+                )}
+              </div>
+            </div>
             <p style={{ fontSize: 12, color: 'var(--tlumeny)', margin: '8px 0 0' }}>
               {muj.hraci.length} hráčů · uzávěrka za {cashflow.dnuDoUzaverky} dní strhne −{kc(celkemPlaty)}
             </p>
+            <div className="platy-optimalizace">
+              <button
+                type="button"
+                className="tlacitko sekundarni"
+                disabled={platyUzOptimalni}
+                onClick={optimalizuj}
+              >
+                Optimalizovat platy
+              </button>
+              <p className="prestupy-napoveda">
+                Nastaví každému hráči očekávaný plat — všichni budou spokojení bez zbytečného přeplácení.
+                {!platyUzOptimalni && (
+                  <>
+                    {' '}Náklady {optimalniRozdil >= 0 ? 'vzrostou' : 'klesnou'} o{' '}
+                    <b className={optimalniRozdil <= 0 ? 'vyhra' : 'prohra'}>{kc(Math.abs(optimalniRozdil))}/měs</b>
+                    {' '}→ {optimalniSpokojenost.spokojeny + optimalniSpokojenost.velmi_spokojeny} spokojených,
+                    {' '}{optimalniSpokojenost.nespokojeny + optimalniSpokojenost.stiznost} nespokojených.
+                  </>
+                )}
+              </p>
+            </div>
             <div className="platy-hromadne">
               <span className="platy-hromadne-popis">Upravit všechny platy najednou:</span>
               <div className="platy-hromadne-tlacitka">
@@ -194,7 +248,7 @@ export function Finance({ hra, setHra }: { hra: GameState; setHra: (s: GameState
           <div className="karta tabulka-scroll">
           <table>
             <thead>
-              <tr><th>Hráč</th><th>OVR</th><th>Plat/měs</th><th>Očekávaný</th><th>Náhled</th><th></th></tr>
+              <tr><th>Hráč</th><th>OVR</th><th>Plat/měs</th><th>Očekávaný</th><th>Spokojenost</th><th>Náhled</th><th></th></tr>
             </thead>
             <tbody>
               {[...muj.hraci].sort((a, b) => b.plat - a.plat).map((h) => {
@@ -203,16 +257,34 @@ export function Finance({ hra, setHra }: { hra: GameState; setHra: (s: GameState
                 const novaForma = Math.min(70, Math.max(30, h.forma + dopad.forma))
                 const novaMoralka = Math.min(70, Math.max(30, muj.moralka + dopad.moralka))
                 const podil = celkemPlaty > 0 ? Math.round((h.plat / celkemPlaty) * 100) : 0
+                const minPlat = 10_000
+                const maxPlat = Math.max(
+                  minPlat,
+                  Math.round(Math.max(ocekavanyPlat(h) * 1.5, h.plat, navrh) / 10_000) * 10_000,
+                )
                 return (
                   <tr key={h.id}>
                     <td>{h.jmeno} {h.prijmeni}</td>
                     <td>{overall(h)}</td>
-                    <td>
-                      <input type="number" step={10000} value={navrh}
-                        onChange={(e) => setUpravPlat({ ...upravPlat, [h.id]: Number(e.target.value) })} style={{ width: 110 }} />
+                    <td className="plat-slider-bunka">
+                      <input
+                        type="range"
+                        className="plat-slider"
+                        min={minPlat}
+                        max={maxPlat}
+                        step={10_000}
+                        value={Math.min(maxPlat, Math.max(minPlat, navrh))}
+                        onChange={(e) => setUpravPlat({ ...upravPlat, [h.id]: Number(e.target.value) })}
+                      />
+                      <span className="plat-slider-hodnota">{kc(navrh)}</span>
                       <span className="plat-podil" title="Podíl na celkových nákladech">{podil} %</span>
                     </td>
                     <td>{kc(ocekavanyPlat(h))}</td>
+                    <td>
+                      <span className={`plat-spokojenost-pill ${tridaSpokojenosti(dopad.spokojenost)}`}>
+                        {POPIS_SPOKOJENOSTI_PLATU[dopad.spokojenost]}
+                      </span>
+                    </td>
                     <td className="plat-nahled">
                       Forma {h.forma}→{novaForma} · Morálka {muj.moralka}→{novaMoralka}
                     </td>
@@ -227,7 +299,7 @@ export function Finance({ hra, setHra }: { hra: GameState; setHra: (s: GameState
               <tr className="platy-celkem">
                 <td colSpan={2}><b>Celkem</b> ({muj.hraci.length} hráčů)</td>
                 <td><b className="prohra">{kc(maZmenyPlatu ? celkemNavrh : celkemPlaty)}/měs</b></td>
-                <td colSpan={3} style={{ color: 'var(--tlumeny)', fontSize: 13 }}>
+                <td colSpan={4} style={{ color: 'var(--tlumeny)', fontSize: 13 }}>
                   Ročně {kc((maZmenyPlatu ? celkemNavrh : celkemPlaty) * 12)}
                 </td>
               </tr>

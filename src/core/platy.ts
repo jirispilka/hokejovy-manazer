@@ -84,13 +84,99 @@ export function zmenPlatyVsech(state: GameState, zmena: ZmenaPlatuTymu): GameSta
   return s
 }
 
-export function dopadPlatuHrace(h: Hrac, novyPlat: number): { forma: number; moralka: number; stiznost: boolean } {
+export type SpokojenostPlatu = 'velmi_spokojeny' | 'spokojeny' | 'nespokojeny' | 'stiznost'
+
+export const POPIS_SPOKOJENOSTI_PLATU: Record<SpokojenostPlatu, string> = {
+  velmi_spokojeny: 'Velmi spokojený',
+  spokojeny: 'Spokojený',
+  nespokojeny: 'Nespokojený',
+  stiznost: 'Stěžuje si',
+}
+
+function spokojenostZPomeru(pomer: number): SpokojenostPlatu {
+  if (pomer >= 1.1) return 'velmi_spokojeny'
+  if (pomer >= 0.9) return 'spokojeny'
+  if (pomer >= 0.7) return 'nespokojeny'
+  return 'stiznost'
+}
+
+export function dopadPlatuHrace(
+  h: Hrac,
+  novyPlat: number,
+): { forma: number; moralka: number; stiznost: boolean; spokojenost: SpokojenostPlatu } {
   const ocek = ocekavanyPlat(h)
   const pomer = novyPlat / Math.max(1, ocek)
-  if (pomer >= 1.1) return { forma: 3, moralka: 2, stiznost: false }
-  if (pomer >= 0.9) return { forma: 0, moralka: 0, stiznost: false }
-  if (pomer >= 0.7) return { forma: -4, moralka: -3, stiznost: false }
-  return { forma: -4, moralka: -3, stiznost: true }
+  const spokojenost = spokojenostZPomeru(pomer)
+  if (pomer >= 1.1) return { forma: 3, moralka: 2, stiznost: false, spokojenost }
+  if (pomer >= 0.9) return { forma: 0, moralka: 0, stiznost: false, spokojenost }
+  if (pomer >= 0.7) return { forma: -4, moralka: -3, stiznost: false, spokojenost }
+  return { forma: -4, moralka: -3, stiznost: true, spokojenost }
+}
+
+export function souhrnSpokojenostiPlatu(
+  hraci: Hrac[],
+  navrhy: Record<string, number>,
+): Record<SpokojenostPlatu, number> {
+  const souhrn: Record<SpokojenostPlatu, number> = {
+    velmi_spokojeny: 0,
+    spokojeny: 0,
+    nespokojeny: 0,
+    stiznost: 0,
+  }
+  for (const h of hraci) {
+    const plat = navrhy[h.id] ?? h.plat
+    souhrn[dopadPlatuHrace(h, plat).spokojenost]++
+  }
+  return souhrn
+}
+
+export function navrhOptimalnichPlatu(hraci: Hrac[]): Record<string, number> {
+  return Object.fromEntries(hraci.map((h) => [h.id, ocekavanyPlat(h)]))
+}
+
+/** Nastaví každému hráči očekávaný plat — spokojenost bez zbytečného přeplácení. */
+export function optimalizujPlaty(state: GameState): GameState {
+  const muj = state.tymy[state.mujKlubId]
+  const navrhy = navrhOptimalnichPlatu(muj.hraci)
+  const s = structuredClone(state)
+  const tym = s.tymy[s.mujKlubId]
+  let celkemStary = 0
+  let celkemNovy = 0
+  let moralkaDelta = 0
+  let zmeneno = 0
+  let zvyseno = 0
+  let snizeno = 0
+
+  for (const hrac of tym.hraci) {
+    const stary = hrac.plat
+    const novy = navrhy[hrac.id]!
+    if (novy === stary) continue
+    const dopad = dopadPlatuHrace(hrac, novy)
+    hrac.plat = novy
+    hrac.forma = clamp(hrac.forma + dopad.forma, 30, 70)
+    moralkaDelta += dopad.moralka
+    zmeneno++
+    if (novy > stary) zvyseno++
+    else snizeno++
+    celkemStary += stary
+    celkemNovy += novy
+  }
+
+  if (zmeneno === 0) throw new Error('Platy už jsou optimalizované — každý má očekávaný plat.')
+
+  tym.moralka = clamp(tym.moralka + Math.round(moralkaDelta / zmeneno), 30, 70)
+  const rozdil = celkemNovy - celkemStary
+  zapisFinance(
+    s,
+    `Optimalizace platů: ${celkemStary.toLocaleString('cs-CZ')} → ${celkemNovy.toLocaleString('cs-CZ')} Kč/měs`,
+    0,
+  )
+  s.zpravy.unshift(
+    `⚖️ Platy optimalizované pro ${zmeneno} hráčů (${zvyseno} navýšeno, ${snizeno} sníženo). Náklady ${rozdil >= 0 ? '+' : ''}${rozdil.toLocaleString('cs-CZ')} Kč/měs.`,
+  )
+  s.zpravy.unshift('✅ Všichni hráči mají teď férový plat — spokojení bez zbytečného přeplácení.')
+  s.zpravy = s.zpravy.slice(0, 50)
+  return s
 }
 
 export function zapisFinance(s: GameState, popis: string, castka: number): void {

@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { vypocetDomacichTrzeb, vychoziStadion, zmenStadion } from '../../src/core/finance'
-import { mesicniPlatyTymu, ocekavanyPlat, rocniPlatyTymu, zmenPlat, zmenPlatyVsech } from '../../src/core/platy'
+import { mesicniPlatyTymu, ocekavanyPlat, rocniPlatyTymu, zmenPlat, zmenPlatyVsech, dopadPlatuHrace, optimalizujPlaty, souhrnSpokojenostiPlatu } from '../../src/core/platy'
 import { newGame } from '../../src/core/sezona'
 import { overall } from '../../src/core/sestava'
 
@@ -44,6 +44,35 @@ describe('platy', () => {
     const po = zmenPlatyVsech(s, { typ: 'procenta', hodnota: 10 })
     const hrac = po.tymy.tabor.hraci.find((x) => x.id === h.id)!
     expect(hrac.plat).toBe(Math.max(10_000, Math.round((stary * 1.1) / 1000) * 1000))
+  })
+  it('dopadPlatuHrace vrací spokojenost podle poměru k očekávanému platu', () => {
+    const s = newGame(1, 'tabor')
+    const h = s.tymy.tabor.hraci[0]
+    const ocek = ocekavanyPlat(h)
+    expect(dopadPlatuHrace(h, Math.round(ocek * 1.2)).spokojenost).toBe('velmi_spokojeny')
+    expect(dopadPlatuHrace(h, ocek).spokojenost).toBe('spokojeny')
+    expect(dopadPlatuHrace(h, Math.round(ocek * 0.75)).spokojenost).toBe('nespokojeny')
+    expect(dopadPlatuHrace(h, Math.round(ocek * 0.5)).spokojenost).toBe('stiznost')
+  })
+  it('souhrnSpokojenostiPlatu sečte hráče podle návrhu', () => {
+    const s = newGame(1, 'tabor')
+    const hraci = s.tymy.tabor.hraci.slice(0, 3)
+    const navrhy = Object.fromEntries(hraci.map((h) => [h.id, Math.round(ocekavanyPlat(h) * 1.2)]))
+    const souhrn = souhrnSpokojenostiPlatu(hraci, navrhy)
+    expect(souhrn.velmi_spokojeny).toBe(3)
+    expect(souhrn.stiznost).toBe(0)
+  })
+  it('optimalizujPlaty nastaví očekávaný plat a sjednotí spokojenost', () => {
+    const s = newGame(1, 'tabor')
+    for (const h of s.tymy.tabor.hraci) h.plat = Math.round(ocekavanyPlat(h) * 0.6)
+    const pred = mesicniPlatyTymu(s.tymy.tabor.hraci)
+    const po = optimalizujPlaty(s)
+    expect(mesicniPlatyTymu(po.tymy.tabor.hraci)).toBeGreaterThan(pred)
+    for (const h of po.tymy.tabor.hraci) {
+      expect(h.plat).toBe(ocekavanyPlat(h))
+      expect(dopadPlatuHrace(h, h.plat).spokojenost).toBe('spokojeny')
+    }
+    expect(() => optimalizujPlaty(po)).toThrow(/optimalizované/)
   })
 })
 
