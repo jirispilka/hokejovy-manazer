@@ -1,5 +1,8 @@
 export type Pozice = 'G' | 'D' | 'U'
 
+/** Preferovaná ledová pozice (křídlo, střed, obranná strana). */
+export type DetailPozice = 'LW' | 'C' | 'RW' | 'LD' | 'RD'
+
 export type TypSponzora = 'jistota' | 'bonus'
 
 export interface Sponzor {
@@ -111,6 +114,7 @@ export interface Hrac {
   odehranoSezona: number // zápasy v sestavě v aktuální sezóně
   plat: number // Kč/měsíc
   trzniCena?: number // Kč, importovaný/externě odhadnutý tržní benchmark
+  detailPozice?: DetailPozice // z reálných dat nebo odvozeno z atributů
   historieStatistik?: HistorickaStatistika[]
   herniHistorie?: HernickaHistorie[]
 }

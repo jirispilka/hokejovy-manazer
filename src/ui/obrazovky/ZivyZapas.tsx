@@ -2,7 +2,8 @@ import { useEffect, useRef, useState } from 'react'
 import { formaTymu } from '../../core/hodnoty'
 import { prumernyOverall } from '../../core/kariera'
 import { createRng, hashSeed, type Rng } from '../../core/rng'
-import { celkovaChemie, jeZdravy, overall, souhrnSestavy } from '../../core/sestava'
+import { spojeneLajny } from '../../core/lajny'
+import { celkovaChemie, jeZdravy, overall, ovrLajny, souhrnSestavy } from '../../core/sestava'
 import { atmosferaZapasu, dokonciZapas, mojeLiga } from '../../core/sezona'
 import type { GameState, Taktika, Tym } from '../../core/types'
 import {
@@ -37,6 +38,7 @@ import {
 import { FormaTecky, MiniBar, MomentumGraf, OdznakKlubu, PanelTaktiky } from '../komponenty'
 import { MinihraStrelba } from '../MinihraStrelba'
 import { PanelVytizeniUtoku } from '../PanelVytizeni'
+import { SpojenaLajna } from '../SpojenaLajna'
 import { ulozHru } from '../store'
 
 const HLASKY_SOUPERE = [
@@ -508,6 +510,31 @@ export function ZivyZapas({
               })
             }}
           />
+          <h4 style={{ marginTop: 16 }}>Tvoje lajny</h4>
+          <div className="soupiska-lajny-grid">
+            {spojeneLajny(stav[mojeStrana].sestava).map((l) => {
+              const obrIdx = Math.min(l.index, 2)
+              const ovr = ovrLajny({
+                ...mujTym,
+                sestava: stav[mojeStrana].sestava,
+                chemie: stav[mojeStrana].chemie,
+              })
+              return (
+                <SpojenaLajna
+                  key={l.index}
+                  lajna={l}
+                  podleId={new Map(mujTym.hraci.map((h) => [h.id, h]))}
+                  rezim="zapas"
+                  chemieUtok={stav[mojeStrana].chemie.utoky[l.index]}
+                  chemieObrana={stav[mojeStrana].chemie.obrany[obrIdx]}
+                  ovrUtok={ovr.utoky[l.index]}
+                  ovrObrana={ovr.obrany[obrIdx]}
+                  energie={stav[mojeStrana].energie}
+                  kapitanId={mujTym.kapitanId}
+                />
+              )
+            })}
+          </div>
           <div className="mrizka">
             <div>
               <h4>Proslov v kabině (1× za přestávku)</h4>

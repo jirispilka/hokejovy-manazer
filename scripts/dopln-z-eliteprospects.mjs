@@ -82,24 +82,48 @@ async function statistikyHrace(id) {
     .slice(0, 12)
 }
 
+function mapujDetailPozici(raw) {
+  if (!raw) return undefined
+  const p = String(raw).trim().toUpperCase()
+  if (p === 'C' || p === 'CENTER') return 'C'
+  if (p === 'LW' || p === 'L' || p === 'LEFT WING') return 'LW'
+  if (p === 'RW' || p === 'R' || p === 'RIGHT WING') return 'RW'
+  if (p === 'LD' || p === 'LEFT DEFENSE' || p === 'LEFT DEFENCE') return 'LD'
+  if (p === 'RD' || p === 'D' || p === 'RIGHT DEFENSE' || p === 'RIGHT DEFENCE') return 'RD'
+  return undefined
+}
+
 async function main() {
   const kluby = JSON.parse(await readFile(KLUBY, 'utf8'))
   const data = JSON.parse(await readFile(VYSTUP, 'utf8'))
   let doplneno = 0
+  let pozice = 0
   let chyby = 0
 
   for (const klub of kluby) {
     const hraci = data[klub.id] ?? []
     for (const h of hraci) {
-      if (h.historieStatistik?.length > 1) continue
+      const potrebaHistorie = !(h.historieStatistik?.length > 1)
+      const potrebaPozice = !h.detailPozice
+      if (!potrebaHistorie && !potrebaPozice) continue
       try {
         const ep = await najdiHrace(h.jmeno, h.prijmeni)
         if (!ep) continue
-        const stats = await statistikyHrace(ep.id)
-        if (!stats.length) continue
-        const existujici = h.historieStatistik ?? []
-        const nove = stats.filter((s) => !existujici.some((e) => e.sezona === s.sezona))
-        h.historieStatistik = [...nove, ...existujici]
+        if (potrebaPozice) {
+          const dp = mapujDetailPozici(ep.position)
+          if (dp) {
+            h.detailPozice = dp
+            pozice++
+          }
+        }
+        if (potrebaHistorie) {
+          const stats = await statistikyHrace(ep.id)
+          if (stats.length) {
+            const existujici = h.historieStatistik ?? []
+            const nove = stats.filter((s) => !existujici.some((e) => e.sezona === s.sezona))
+            h.historieStatistik = [...nove, ...existujici]
+          }
+        }
         if (ep.yearOfBirth) {
           const vek = 2026 - ep.yearOfBirth
           if (vek >= 16 && vek <= 45) h.vek = vek
@@ -114,7 +138,7 @@ async function main() {
   }
 
   await writeFile(VYSTUP, `${JSON.stringify(data, null, 2)}\n`)
-  console.log(`EP doplnění: ${doplneno} hráčů, ${chyby} chyb`)
+  console.log(`EP doplnění: ${doplneno} hráčů (${pozice} pozic), ${chyby} chyb`)
 }
 
 main().catch((e) => {

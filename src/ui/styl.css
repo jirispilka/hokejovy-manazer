@@ -1124,6 +1124,21 @@ select {
 .sestava-sila small { display: block; font-size: 11px; color: var(--tlumeny); margin-top: 4px; }
 .sestava-tipy { margin: 8px 0; padding-left: 20px; color: var(--akcent); font-size: 13px; }
 .lajna-role { display: block; font-size: 12px; color: var(--tlumeny); font-weight: normal; margin-top: 2px; }
+.spojena-lajna { margin-bottom: 12px; }
+.lajna-sekce { margin-top: 6px; }
+.lajna-sekce-nadpis { font-size: 11px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--tlumeny); margin-bottom: 4px; }
+.lajna-obrana { border-top: 1px dashed var(--okraj); padding-top: 8px; margin-top: 8px; }
+.lajna-chemie-bary { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+.radek-lajny {
+  grid-template-columns: 54px minmax(110px, 1fr) 28px 34px 72px 58px 58px;
+  gap: 6px;
+}
+.radek-pozice-badges { display: flex; align-items: center; gap: 2px; flex-wrap: wrap; }
+.badge-detail-pozice { background: rgba(255, 255, 255, 0.08); color: var(--tlumeny); font-size: 10px; padding: 1px 4px; border-radius: 4px; }
+.radek-vek { font-size: 12px; color: var(--tlumeny); text-align: center; }
+.radek-hrace.unaveny { border-left: 3px solid var(--zlata); }
+.soupiska-prepinac { display: flex; gap: 8px; margin-bottom: 10px; flex-wrap: wrap; align-items: center; }
+.soupiska-lajny-grid { display: flex; flex-direction: column; gap: 0; }
 .radek-hlavicka { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; flex-wrap: wrap; gap: 8px; }
 .filtr-pozice { display: flex; gap: 4px; }
 .prestupy-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }

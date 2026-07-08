@@ -64,7 +64,8 @@
           "asistence": 8,
           "body": 14
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Michael",
@@ -130,7 +131,8 @@
           "asistence": 9,
           "body": 13
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Roman",
@@ -196,7 +198,8 @@
           "asistence": 6,
           "body": 10
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Devin",
@@ -262,7 +265,8 @@
           "asistence": 6,
           "body": 9
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Michal",
@@ -328,7 +332,8 @@
           "asistence": 0,
           "body": 6
         }
-      ]
+      ],
+      "detailPozice": "LW"
     },
     {
       "jmeno": "Pavel",
@@ -394,7 +399,8 @@
           "asistence": 2,
           "body": 4
         }
-      ]
+      ],
+      "detailPozice": "LW"
     },
     {
       "jmeno": "Martins",
@@ -460,7 +466,8 @@
           "asistence": 2,
           "body": 4
         }
-      ]
+      ],
+      "detailPozice": "LW"
     },
     {
       "jmeno": "Tomáš",
@@ -526,7 +533,8 @@
           "asistence": 3,
           "body": 4
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Kryštof",
@@ -592,7 +600,8 @@
           "asistence": 2,
           "body": 3
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Michal",
@@ -658,7 +667,8 @@
           "asistence": 2,
           "body": 3
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Adam",
@@ -724,7 +734,8 @@
           "asistence": 1,
           "body": 2
         }
-      ]
+      ],
+      "detailPozice": "LW"
     },
     {
       "jmeno": "Filip",
@@ -790,7 +801,8 @@
           "asistence": 1,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Kristian",
@@ -856,7 +868,8 @@
           "asistence": 0,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "LW"
     },
     {
       "jmeno": "Jakub",
@@ -922,7 +935,8 @@
           "asistence": 1,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Jakub",
@@ -988,7 +1002,8 @@
           "asistence": 10,
           "body": 14
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Mikael",
@@ -1054,7 +1069,8 @@
           "asistence": 1,
           "body": 4
         }
-      ]
+      ],
+      "detailPozice": "LD"
     },
     {
       "jmeno": "Mark",
@@ -1120,7 +1136,8 @@
           "asistence": 3,
           "body": 4
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Aaron",
@@ -1186,7 +1203,8 @@
           "asistence": 1,
           "body": 2
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Ronald",
@@ -1252,7 +1270,8 @@
           "asistence": 0,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "LD"
     },
     {
       "jmeno": "Niko",
@@ -1318,7 +1337,8 @@
           "asistence": 1,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Jakub",
@@ -1384,7 +1404,8 @@
           "asistence": 1,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Jakub",
@@ -1584,7 +1605,8 @@
           "asistence": 11,
           "body": 25
         }
-      ]
+      ],
+      "detailPozice": "LW"
     },
     {
       "jmeno": "Lukáš",
@@ -1650,7 +1672,8 @@
           "asistence": 14,
           "body": 22
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Jan",
@@ -1716,7 +1739,8 @@
           "asistence": 4,
           "body": 9
         }
-      ]
+      ],
+      "detailPozice": "RW"
     },
     {
       "jmeno": "Jiří",
@@ -1782,7 +1806,8 @@
           "asistence": 3,
           "body": 8
         }
-      ]
+      ],
+      "detailPozice": "RW"
     },
     {
       "jmeno": "Miloš",
@@ -1848,7 +1873,8 @@
           "asistence": 5,
           "body": 8
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Martin",
@@ -1914,7 +1940,8 @@
           "asistence": 6,
           "body": 8
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Jáchym",
@@ -1980,7 +2007,8 @@
           "asistence": 3,
           "body": 6
         }
-      ]
+      ],
+      "detailPozice": "LW"
     },
     {
       "jmeno": "Vladimír",
@@ -2046,7 +2074,8 @@
           "asistence": 2,
           "body": 5
         }
-      ]
+      ],
+      "detailPozice": "LW"
     },
     {
       "jmeno": "Tomáš",
@@ -2112,7 +2141,8 @@
           "asistence": 2,
           "body": 4
         }
-      ]
+      ],
+      "detailPozice": "LW"
     },
     {
       "jmeno": "Robert",
@@ -2178,7 +2208,8 @@
           "asistence": 3,
           "body": 4
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Jan",
@@ -2244,7 +2275,8 @@
           "asistence": 3,
           "body": 3
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Jakub",
@@ -2310,7 +2342,8 @@
           "asistence": 3,
           "body": 3
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Patrik",
@@ -2376,7 +2409,8 @@
           "asistence": 1,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Daniel",
@@ -2442,7 +2476,8 @@
           "asistence": 1,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Jan",
@@ -2508,7 +2543,8 @@
           "asistence": 6,
           "body": 7
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "John",
@@ -2574,7 +2610,8 @@
           "asistence": 6,
           "body": 7
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Peter",
@@ -2640,7 +2677,8 @@
           "asistence": 6,
           "body": 7
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Miguël",
@@ -2706,7 +2744,8 @@
           "asistence": 3,
           "body": 6
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Tomáš",
@@ -2772,7 +2811,8 @@
           "asistence": 5,
           "body": 6
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Libor",
@@ -2838,7 +2878,8 @@
           "asistence": 3,
           "body": 3
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Daniel",
@@ -2904,7 +2945,8 @@
           "asistence": 2,
           "body": 3
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Roman",
@@ -3104,7 +3146,8 @@
           "asistence": 12,
           "body": 17
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Andrej",
@@ -3170,7 +3213,8 @@
           "asistence": 10,
           "body": 16
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Libor",
@@ -3236,7 +3280,8 @@
           "asistence": 7,
           "body": 14
         }
-      ]
+      ],
+      "detailPozice": "LW"
     },
     {
       "jmeno": "Oscar",
@@ -3302,7 +3347,8 @@
           "asistence": 5,
           "body": 13
         }
-      ]
+      ],
+      "detailPozice": "LW"
     },
     {
       "jmeno": "Ondřej",
@@ -3368,7 +3414,8 @@
           "asistence": 6,
           "body": 13
         }
-      ]
+      ],
+      "detailPozice": "RW"
     },
     {
       "jmeno": "David",
@@ -3434,7 +3481,8 @@
           "asistence": 3,
           "body": 6
         }
-      ]
+      ],
+      "detailPozice": "LW"
     },
     {
       "jmeno": "Miloš",
@@ -3500,7 +3548,8 @@
           "asistence": 0,
           "body": 5
         }
-      ]
+      ],
+      "detailPozice": "LW"
     },
     {
       "jmeno": "Matěj",
@@ -3566,7 +3615,8 @@
           "asistence": 3,
           "body": 5
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Martin",
@@ -3632,7 +3682,8 @@
           "asistence": 4,
           "body": 5
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Marko",
@@ -3698,7 +3749,8 @@
           "asistence": 4,
           "body": 5
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Patrik",
@@ -3764,7 +3816,8 @@
           "asistence": 3,
           "body": 3
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Daniel",
@@ -3830,7 +3883,8 @@
           "asistence": 2,
           "body": 2
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Petr",
@@ -3896,7 +3950,8 @@
           "asistence": 1,
           "body": 2
         }
-      ]
+      ],
+      "detailPozice": "RW"
     },
     {
       "jmeno": "David",
@@ -3962,7 +4017,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "LW"
     },
     {
       "jmeno": "Marian",
@@ -4028,7 +4084,8 @@
           "asistence": 10,
           "body": 11
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Tomáš",
@@ -4094,7 +4151,8 @@
           "asistence": 7,
           "body": 10
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Jakub",
@@ -4160,7 +4218,8 @@
           "asistence": 9,
           "body": 10
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Martin",
@@ -4226,7 +4285,8 @@
           "asistence": 3,
           "body": 4
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "David",
@@ -4292,7 +4352,8 @@
           "asistence": 0,
           "body": 2
         }
-      ]
+      ],
+      "detailPozice": "LD"
     },
     {
       "jmeno": "Patrik",
@@ -4358,7 +4419,8 @@
           "asistence": 2,
           "body": 2
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Richard",
@@ -4424,7 +4486,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "LD"
     },
     {
       "jmeno": "Marek",
@@ -4624,7 +4687,8 @@
           "asistence": 1,
           "body": 5
         }
-      ]
+      ],
+      "detailPozice": "RW"
     },
     {
       "jmeno": "Jakub",
@@ -4690,7 +4754,8 @@
           "asistence": 3,
           "body": 5
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Kristián",
@@ -4756,7 +4821,8 @@
           "asistence": 3,
           "body": 5
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Šimon",
@@ -4822,7 +4888,8 @@
           "asistence": 2,
           "body": 4
         }
-      ]
+      ],
+      "detailPozice": "RW"
     },
     {
       "jmeno": "Tomáš",
@@ -4888,7 +4955,8 @@
           "asistence": 2,
           "body": 4
         }
-      ]
+      ],
+      "detailPozice": "LW"
     },
     {
       "jmeno": "Arttu",
@@ -4954,7 +5022,8 @@
           "asistence": 3,
           "body": 4
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Andrej",
@@ -5020,7 +5089,8 @@
           "asistence": 2,
           "body": 2
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Lukáš",
@@ -5086,7 +5156,8 @@
           "asistence": 2,
           "body": 2
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Jakub",
@@ -5152,7 +5223,8 @@
           "asistence": 2,
           "body": 2
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Hynek",
@@ -5218,7 +5290,8 @@
           "asistence": 1,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "David",
@@ -5284,7 +5357,8 @@
           "asistence": 1,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Danny",
@@ -5350,7 +5424,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "LW"
     },
     {
       "jmeno": "Radim",
@@ -5416,7 +5491,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "LW"
     },
     {
       "jmeno": "Jan",
@@ -5482,7 +5558,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "LW"
     },
     {
       "jmeno": "Libor",
@@ -5548,7 +5625,8 @@
           "asistence": 1,
           "body": 3
         }
-      ]
+      ],
+      "detailPozice": "LD"
     },
     {
       "jmeno": "Jan",
@@ -5614,7 +5692,8 @@
           "asistence": 1,
           "body": 2
         }
-      ]
+      ],
+      "detailPozice": "LD"
     },
     {
       "jmeno": "Filip",
@@ -5680,7 +5759,8 @@
           "asistence": 2,
           "body": 2
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Tomáš",
@@ -5746,7 +5826,8 @@
           "asistence": 1,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Marek",
@@ -5812,7 +5893,8 @@
           "asistence": 0,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "LD"
     },
     {
       "jmeno": "Jan",
@@ -5878,7 +5960,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "LD"
     },
     {
       "jmeno": "Michal",
@@ -5944,7 +6027,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "LD"
     },
     {
       "jmeno": "Aleš",
@@ -6099,7 +6183,8 @@
           "asistence": 35,
           "body": 58
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "David",
@@ -6120,7 +6205,8 @@
           "asistence": 30,
           "body": 48
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Nicolas",
@@ -6141,7 +6227,8 @@
           "asistence": 20,
           "body": 35
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Matúš",
@@ -6162,7 +6249,8 @@
           "asistence": 20,
           "body": 34
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Petr",
@@ -6183,7 +6271,8 @@
           "asistence": 18,
           "body": 31
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Lukáš",
@@ -6249,7 +6338,8 @@
           "asistence": 18,
           "body": 28
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Kristaps",
@@ -6315,7 +6405,8 @@
           "asistence": 17,
           "body": 23
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Janis",
@@ -6381,7 +6472,8 @@
           "asistence": 16,
           "body": 22
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Marek",
@@ -6447,7 +6539,8 @@
           "asistence": 12,
           "body": 16
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Matej",
@@ -6536,7 +6629,8 @@
           "asistence": 22,
           "body": 40
         }
-      ]
+      ],
+      "detailPozice": "RW"
     },
     {
       "jmeno": "Pavel",
@@ -6602,7 +6696,8 @@
           "asistence": 24,
           "body": 39
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Ondřej",
@@ -6623,7 +6718,8 @@
           "asistence": 21,
           "body": 32
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Jan",
@@ -6644,7 +6740,8 @@
           "asistence": 18,
           "body": 30
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Dominik",
@@ -6665,7 +6762,8 @@
           "asistence": 17,
           "body": 30
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Petr",
@@ -6731,7 +6829,8 @@
           "asistence": 16,
           "body": 26
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Filip",
@@ -6752,7 +6851,8 @@
           "asistence": 17,
           "body": 22
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Adam",
@@ -6773,7 +6873,8 @@
           "asistence": 14,
           "body": 18
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "David",
@@ -6794,7 +6895,8 @@
           "asistence": 12,
           "body": 15
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Filip",
@@ -6883,7 +6985,8 @@
           "asistence": 2,
           "body": 4
         }
-      ]
+      ],
+      "detailPozice": "RW"
     },
     {
       "jmeno": "Ondřej",
@@ -6949,7 +7052,8 @@
           "asistence": 1,
           "body": 3
         }
-      ]
+      ],
+      "detailPozice": "RW"
     },
     {
       "jmeno": "Adam",
@@ -7015,7 +7119,8 @@
           "asistence": 1,
           "body": 3
         }
-      ]
+      ],
+      "detailPozice": "RW"
     },
     {
       "jmeno": "Matyáš",
@@ -7081,7 +7186,8 @@
           "asistence": 1,
           "body": 3
         }
-      ]
+      ],
+      "detailPozice": "LW"
     },
     {
       "jmeno": "Michal",
@@ -7147,7 +7253,8 @@
           "asistence": 0,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "RW"
     },
     {
       "jmeno": "Adam",
@@ -7213,7 +7320,8 @@
           "asistence": 1,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Jan",
@@ -7279,7 +7387,8 @@
           "asistence": 1,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Jakub",
@@ -7345,7 +7454,8 @@
           "asistence": 1,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Christophe",
@@ -7411,7 +7521,8 @@
           "asistence": 1,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Jake",
@@ -7477,7 +7588,8 @@
           "asistence": 0,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "LW"
     },
     {
       "jmeno": "Mikko",
@@ -7543,7 +7655,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "RW"
     },
     {
       "jmeno": "Dominik",
@@ -7609,7 +7722,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "LW"
     },
     {
       "jmeno": "Ivo",
@@ -7675,7 +7789,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "RW"
     },
     {
       "jmeno": "Ville",
@@ -7741,7 +7856,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "LW"
     },
     {
       "jmeno": "Daniel",
@@ -7807,7 +7923,8 @@
           "asistence": 3,
           "body": 3
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Kristians",
@@ -7873,7 +7990,8 @@
           "asistence": 1,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Jakub",
@@ -7939,7 +8057,8 @@
           "asistence": 1,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Ville",
@@ -8005,7 +8124,8 @@
           "asistence": 1,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Stuart Thomas",
@@ -8071,7 +8191,8 @@
           "asistence": 1,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Igor",
@@ -8137,7 +8258,8 @@
           "asistence": 1,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Petr",
@@ -8203,7 +8325,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "LD"
     },
     {
       "jmeno": "Nick",
@@ -8403,7 +8526,8 @@
           "asistence": 3,
           "body": 5
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Michal",
@@ -8469,7 +8593,8 @@
           "asistence": 3,
           "body": 4
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Adrián",
@@ -8535,7 +8660,8 @@
           "asistence": 2,
           "body": 2
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Jan",
@@ -8601,7 +8727,8 @@
           "asistence": 0,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "RW"
     },
     {
       "jmeno": "Brant",
@@ -8667,7 +8794,8 @@
           "asistence": 1,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Štěpán",
@@ -8733,7 +8861,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "RW"
     },
     {
       "jmeno": "Jakub",
@@ -8799,7 +8928,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "LW"
     },
     {
       "jmeno": "Martin",
@@ -8865,7 +8995,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "LW"
     },
     {
       "jmeno": "Matěj",
@@ -8931,7 +9062,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "RW"
     },
     {
       "jmeno": "Pavel",
@@ -8997,7 +9129,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "LW"
     },
     {
       "jmeno": "Nick",
@@ -9063,7 +9196,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "LW"
     },
     {
       "jmeno": "Filip",
@@ -9129,7 +9263,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "RW"
     },
     {
       "jmeno": "Tomáš",
@@ -9195,7 +9330,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "LW"
     },
     {
       "jmeno": "Tomáš",
@@ -9261,7 +9397,8 @@
           "asistence": 2,
           "body": 3
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Šimon",
@@ -9327,7 +9464,8 @@
           "asistence": 0,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "LD"
     },
     {
       "jmeno": "Jan",
@@ -9393,7 +9531,8 @@
           "asistence": 1,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Roman",
@@ -9459,7 +9598,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Ondřej",
@@ -9525,7 +9665,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "LD"
     },
     {
       "jmeno": "Pavel",
@@ -9591,7 +9732,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "LD"
     },
     {
       "jmeno": "Ondřej",
@@ -9657,7 +9799,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Milan",
@@ -9791,7 +9934,8 @@
           "asistence": 2,
           "body": 2
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Chad",
@@ -9857,7 +10001,8 @@
           "asistence": 0,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "RW"
     },
     {
       "jmeno": "Marek",
@@ -9923,7 +10068,8 @@
           "asistence": 0,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "RW"
     },
     {
       "jmeno": "Jindřich",
@@ -9989,7 +10135,8 @@
           "asistence": 0,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "RW"
     },
     {
       "jmeno": "Anthony",
@@ -10055,7 +10202,8 @@
           "asistence": 1,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Marek",
@@ -10121,7 +10269,8 @@
           "asistence": 1,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Jan",
@@ -10187,7 +10336,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "LW"
     },
     {
       "jmeno": "Jan",
@@ -10253,7 +10403,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "RW"
     },
     {
       "jmeno": "Petr",
@@ -10319,7 +10470,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "LW"
     },
     {
       "jmeno": "Jiří",
@@ -10385,7 +10537,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "LW"
     },
     {
       "jmeno": "Martin",
@@ -10451,7 +10604,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "RW"
     },
     {
       "jmeno": "Krzysztof",
@@ -10517,7 +10671,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "RW"
     },
     {
       "jmeno": "Vojtěch",
@@ -10583,7 +10738,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "RW"
     },
     {
       "jmeno": "Matěj",
@@ -10649,7 +10805,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "RW"
     },
     {
       "jmeno": "Samuel",
@@ -10715,7 +10872,8 @@
           "asistence": 0,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "LD"
     },
     {
       "jmeno": "Patrik",
@@ -10781,7 +10939,8 @@
           "asistence": 1,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Josh",
@@ -10847,7 +11006,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "LD"
     },
     {
       "jmeno": "Joseph Francis",
@@ -10913,7 +11073,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Vojtěch",
@@ -10979,7 +11140,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Ralfs",
@@ -11045,7 +11207,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "LD"
     },
     {
       "jmeno": "Patrik",
@@ -11111,7 +11274,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "LD"
     },
     {
       "jmeno": "Dominik",
@@ -11311,7 +11475,8 @@
           "asistence": 0,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "RW"
     },
     {
       "jmeno": "Renars",
@@ -11377,7 +11542,8 @@
           "asistence": 0,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "RW"
     },
     {
       "jmeno": "Petr",
@@ -11443,7 +11609,8 @@
           "asistence": 1,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Jakub",
@@ -11509,7 +11676,8 @@
           "asistence": 1,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Lukáš",
@@ -11575,7 +11743,8 @@
           "asistence": 1,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Jakub",
@@ -11641,7 +11810,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "RW"
     },
     {
       "jmeno": "Silvester",
@@ -11707,7 +11877,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "RW"
     },
     {
       "jmeno": "Ondřej",
@@ -11773,7 +11944,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "LW"
     },
     {
       "jmeno": "Karel",
@@ -11839,7 +12011,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "LW"
     },
     {
       "jmeno": "Lukáš",
@@ -11905,7 +12078,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "RW"
     },
     {
       "jmeno": "Daniel",
@@ -11971,7 +12145,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "LW"
     },
     {
       "jmeno": "David",
@@ -12037,7 +12212,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "RW"
     },
     {
       "jmeno": "David",
@@ -12103,7 +12279,8 @@
           "asistence": 1,
           "body": 2
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Alex",
@@ -12169,7 +12346,8 @@
           "asistence": 1,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Rayen",
@@ -12235,7 +12413,8 @@
           "asistence": 1,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Evan",
@@ -12301,7 +12480,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "LD"
     },
     {
       "jmeno": "Dalibor",
@@ -12367,7 +12547,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Trevor",
@@ -12433,7 +12614,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Jiří",
@@ -12499,7 +12681,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Matěj",
@@ -12633,7 +12816,8 @@
           "asistence": 1,
           "body": 3
         }
-      ]
+      ],
+      "detailPozice": "RW"
     },
     {
       "jmeno": "Kevin",
@@ -12699,7 +12883,8 @@
           "asistence": 3,
           "body": 3
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Jakub",
@@ -12765,7 +12950,8 @@
           "asistence": 0,
           "body": 2
         }
-      ]
+      ],
+      "detailPozice": "LW"
     },
     {
       "jmeno": "Markus",
@@ -12831,7 +13017,8 @@
           "asistence": 1,
           "body": 2
         }
-      ]
+      ],
+      "detailPozice": "RW"
     },
     {
       "jmeno": "Radovan",
@@ -12897,7 +13084,8 @@
           "asistence": 2,
           "body": 2
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Patrik",
@@ -12963,7 +13151,8 @@
           "asistence": 2,
           "body": 2
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Lukáš",
@@ -13029,7 +13218,8 @@
           "asistence": 1,
           "body": 2
         }
-      ]
+      ],
+      "detailPozice": "RW"
     },
     {
       "jmeno": "Aleš",
@@ -13095,7 +13285,8 @@
           "asistence": 0,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "LW"
     },
     {
       "jmeno": "Jordann",
@@ -13161,7 +13352,8 @@
           "asistence": 1,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Connor Dave",
@@ -13227,7 +13419,8 @@
           "asistence": 1,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Martin",
@@ -13293,7 +13486,8 @@
           "asistence": 0,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "LW"
     },
     {
       "jmeno": "Dominik",
@@ -13359,7 +13553,8 @@
           "asistence": 1,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Petr",
@@ -13425,7 +13620,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "LW"
     },
     {
       "jmeno": "Štěpán",
@@ -13491,7 +13687,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "RW"
     },
     {
       "jmeno": "Michael Gabriel",
@@ -13557,7 +13754,8 @@
           "asistence": 3,
           "body": 4
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Petr",
@@ -13623,7 +13821,8 @@
           "asistence": 1,
           "body": 2
         }
-      ]
+      ],
+      "detailPozice": "LD"
     },
     {
       "jmeno": "Graeme",
@@ -13689,7 +13888,8 @@
           "asistence": 0,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "LD"
     },
     {
       "jmeno": "T.J.",
@@ -13755,7 +13955,8 @@
           "asistence": 1,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Martin",
@@ -13821,7 +14022,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Tommi Petteri",
@@ -13887,7 +14089,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "LD"
     },
     {
       "jmeno": "Dávid",
@@ -13953,7 +14156,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Stanislav",
@@ -14087,7 +14291,8 @@
           "asistence": 7,
           "body": 10
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Vít",
@@ -14153,7 +14358,8 @@
           "asistence": 5,
           "body": 9
         }
-      ]
+      ],
+      "detailPozice": "LW"
     },
     {
       "jmeno": "Jiří",
@@ -14219,7 +14425,8 @@
           "asistence": 6,
           "body": 9
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Petr",
@@ -14285,7 +14492,8 @@
           "asistence": 6,
           "body": 9
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Robin",
@@ -14351,7 +14559,8 @@
           "asistence": 2,
           "body": 6
         }
-      ]
+      ],
+      "detailPozice": "LW"
     },
     {
       "jmeno": "David",
@@ -14417,7 +14626,8 @@
           "asistence": 3,
           "body": 6
         }
-      ]
+      ],
+      "detailPozice": "RW"
     },
     {
       "jmeno": "Ondřej",
@@ -14483,7 +14693,8 @@
           "asistence": 2,
           "body": 6
         }
-      ]
+      ],
+      "detailPozice": "LW"
     },
     {
       "jmeno": "Radek",
@@ -14549,7 +14760,8 @@
           "asistence": 3,
           "body": 5
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Jakub",
@@ -14615,7 +14827,8 @@
           "asistence": 2,
           "body": 3
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Haralds",
@@ -14681,7 +14894,8 @@
           "asistence": 2,
           "body": 3
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Adam",
@@ -14747,7 +14961,8 @@
           "asistence": 0,
           "body": 2
         }
-      ]
+      ],
+      "detailPozice": "LW"
     },
     {
       "jmeno": "Filip",
@@ -14813,7 +15028,8 @@
           "asistence": 1,
           "body": 2
         }
-      ]
+      ],
+      "detailPozice": "LW"
     },
     {
       "jmeno": "Nicholas",
@@ -14879,7 +15095,8 @@
           "asistence": 1,
           "body": 2
         }
-      ]
+      ],
+      "detailPozice": "RW"
     },
     {
       "jmeno": "Tomáš",
@@ -14945,7 +15162,8 @@
           "asistence": 0,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "LW"
     },
     {
       "jmeno": "Roberts",
@@ -15011,7 +15229,8 @@
           "asistence": 2,
           "body": 3
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Matteo",
@@ -15077,7 +15296,8 @@
           "asistence": 2,
           "body": 3
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Tory",
@@ -15143,7 +15363,8 @@
           "asistence": 3,
           "body": 3
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "David",
@@ -15209,7 +15430,8 @@
           "asistence": 3,
           "body": 3
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Janis",
@@ -15275,7 +15497,8 @@
           "asistence": 2,
           "body": 2
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Josef",
@@ -15341,7 +15564,8 @@
           "asistence": 1,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Dalimil",
@@ -15407,7 +15631,8 @@
           "asistence": 1,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Dominik",
@@ -15607,7 +15832,8 @@
           "asistence": 2,
           "body": 4
         }
-      ]
+      ],
+      "detailPozice": "LW"
     },
     {
       "jmeno": "Radan",
@@ -15673,7 +15899,8 @@
           "asistence": 2,
           "body": 4
         }
-      ]
+      ],
+      "detailPozice": "RW"
     },
     {
       "jmeno": "Adam",
@@ -15739,7 +15966,8 @@
           "asistence": 3,
           "body": 4
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Servác",
@@ -15805,7 +16033,8 @@
           "asistence": 2,
           "body": 3
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Jaromír",
@@ -15871,7 +16100,8 @@
           "asistence": 2,
           "body": 3
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Filip",
@@ -15937,7 +16167,8 @@
           "asistence": 3,
           "body": 3
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Filip",
@@ -16003,7 +16234,8 @@
           "asistence": 1,
           "body": 2
         }
-      ]
+      ],
+      "detailPozice": "RW"
     },
     {
       "jmeno": "Jasper",
@@ -16069,7 +16301,8 @@
           "asistence": 1,
           "body": 2
         }
-      ]
+      ],
+      "detailPozice": "RW"
     },
     {
       "jmeno": "Jaroslav",
@@ -16135,7 +16368,8 @@
           "asistence": 0,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "RW"
     },
     {
       "jmeno": "Jakub",
@@ -16201,7 +16435,8 @@
           "asistence": 1,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Marek",
@@ -16267,7 +16502,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "LW"
     },
     {
       "jmeno": "Adam",
@@ -16333,7 +16569,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "RW"
     },
     {
       "jmeno": "Jaromír Pérez",
@@ -16399,7 +16636,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "LW"
     },
     {
       "jmeno": "Radim",
@@ -16465,7 +16703,8 @@
           "asistence": 3,
           "body": 4
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Denis",
@@ -16531,7 +16770,8 @@
           "asistence": 0,
           "body": 2
         }
-      ]
+      ],
+      "detailPozice": "LD"
     },
     {
       "jmeno": "Kristaps",
@@ -16597,7 +16837,8 @@
           "asistence": 1,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Tomáš",
@@ -16663,7 +16904,8 @@
           "asistence": 1,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Michal",
@@ -16729,7 +16971,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Layton Ford",
@@ -16795,7 +17038,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "LD"
     },
     {
       "jmeno": "Marek",
@@ -16861,7 +17105,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Petr",
@@ -16995,7 +17240,8 @@
           "asistence": 0,
           "body": 3
         }
-      ]
+      ],
+      "detailPozice": "RW"
     },
     {
       "jmeno": "Daniel",
@@ -17061,7 +17307,8 @@
           "asistence": 2,
           "body": 3
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Samuel",
@@ -17127,7 +17374,8 @@
           "asistence": 2,
           "body": 3
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Martin",
@@ -17193,7 +17441,8 @@
           "asistence": 1,
           "body": 2
         }
-      ]
+      ],
+      "detailPozice": "RW"
     },
     {
       "jmeno": "Kelly",
@@ -17259,7 +17508,8 @@
           "asistence": 1,
           "body": 2
         }
-      ]
+      ],
+      "detailPozice": "LW"
     },
     {
       "jmeno": "Jakub",
@@ -17325,7 +17575,8 @@
           "asistence": 2,
           "body": 2
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Tristen Nelson",
@@ -17391,7 +17642,8 @@
           "asistence": 0,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "LW"
     },
     {
       "jmeno": "Ondřej",
@@ -17457,7 +17709,8 @@
           "asistence": 0,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "LW"
     },
     {
       "jmeno": "Oskar",
@@ -17523,7 +17776,8 @@
           "asistence": 1,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Miroslav",
@@ -17589,7 +17843,8 @@
           "asistence": 1,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Marcel",
@@ -17655,7 +17910,8 @@
           "asistence": 1,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Antonín",
@@ -17721,7 +17977,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "LW"
     },
     {
       "jmeno": "Martin",
@@ -17787,7 +18044,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "LW"
     },
     {
       "jmeno": "Jakub",
@@ -17853,7 +18111,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "LW"
     },
     {
       "jmeno": "Wyatte Andrew",
@@ -17919,7 +18178,8 @@
           "asistence": 3,
           "body": 3
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Martin",
@@ -17985,7 +18245,8 @@
           "asistence": 0,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "LD"
     },
     {
       "jmeno": "Jan",
@@ -18051,7 +18312,8 @@
           "asistence": 1,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Phil",
@@ -18117,7 +18379,8 @@
           "asistence": 1,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Michal",
@@ -18183,7 +18446,8 @@
           "asistence": 1,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Tomáš",
@@ -18249,7 +18513,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Griffin",
@@ -18315,7 +18580,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Adam",
@@ -18449,7 +18715,8 @@
           "asistence": 7,
           "body": 13
         }
-      ]
+      ],
+      "detailPozice": "RW"
     },
     {
       "jmeno": "Richard",
@@ -18515,7 +18782,8 @@
           "asistence": 6,
           "body": 12
         }
-      ]
+      ],
+      "detailPozice": "RW"
     },
     {
       "jmeno": "Jakub",
@@ -18581,7 +18849,8 @@
           "asistence": 5,
           "body": 10
         }
-      ]
+      ],
+      "detailPozice": "RW"
     },
     {
       "jmeno": "Tomáš",
@@ -18647,7 +18916,8 @@
           "asistence": 8,
           "body": 10
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Lukáš",
@@ -18713,7 +18983,8 @@
           "asistence": 6,
           "body": 9
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Lukáš",
@@ -18779,7 +19050,8 @@
           "asistence": 4,
           "body": 8
         }
-      ]
+      ],
+      "detailPozice": "RW"
     },
     {
       "jmeno": "Robert",
@@ -18845,7 +19117,8 @@
           "asistence": 4,
           "body": 7
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Jesse",
@@ -18911,7 +19184,8 @@
           "asistence": 4,
           "body": 7
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Pavel",
@@ -18977,7 +19251,8 @@
           "asistence": 5,
           "body": 6
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Jaromír",
@@ -19043,7 +19318,8 @@
           "asistence": 4,
           "body": 5
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Bedřich",
@@ -19109,7 +19385,8 @@
           "asistence": 1,
           "body": 3
         }
-      ]
+      ],
+      "detailPozice": "RW"
     },
     {
       "jmeno": "Stanislav",
@@ -19175,7 +19452,8 @@
           "asistence": 1,
           "body": 2
         }
-      ]
+      ],
+      "detailPozice": "LW"
     },
     {
       "jmeno": "Michal",
@@ -19241,7 +19519,8 @@
           "asistence": 0,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "RW"
     },
     {
       "jmeno": "Pavel",
@@ -19307,7 +19586,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "RW"
     },
     {
       "jmeno": "Aleksi Lauri",
@@ -19373,7 +19653,8 @@
           "asistence": 3,
           "body": 6
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Jan",
@@ -19439,7 +19720,8 @@
           "asistence": 2,
           "body": 3
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Zdeněk",
@@ -19505,7 +19787,8 @@
           "asistence": 3,
           "body": 3
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Tadeáš",
@@ -19571,7 +19854,8 @@
           "asistence": 1,
           "body": 2
         }
-      ]
+      ],
+      "detailPozice": "LD"
     },
     {
       "jmeno": "Vojtěch",
@@ -19637,7 +19921,8 @@
           "asistence": 1,
           "body": 2
         }
-      ]
+      ],
+      "detailPozice": "LD"
     },
     {
       "jmeno": "Matěj",
@@ -19703,7 +19988,8 @@
           "asistence": 2,
           "body": 2
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Václav",
@@ -19769,7 +20055,8 @@
           "asistence": 1,
           "body": 2
         }
-      ]
+      ],
+      "detailPozice": "LD"
     },
     {
       "jmeno": "Daniel",
@@ -19969,7 +20256,8 @@
           "asistence": 2,
           "body": 4
         }
-      ]
+      ],
+      "detailPozice": "LW"
     },
     {
       "jmeno": "Štěpán",
@@ -20035,7 +20323,8 @@
           "asistence": 1,
           "body": 3
         }
-      ]
+      ],
+      "detailPozice": "RW"
     },
     {
       "jmeno": "Tomáš",
@@ -20101,7 +20390,8 @@
           "asistence": 1,
           "body": 2
         }
-      ]
+      ],
+      "detailPozice": "LW"
     },
     {
       "jmeno": "Matyáš",
@@ -20167,7 +20457,8 @@
           "asistence": 2,
           "body": 2
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Pavel",
@@ -20233,7 +20524,8 @@
           "asistence": 0,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "RW"
     },
     {
       "jmeno": "Štěpán",
@@ -20299,7 +20591,8 @@
           "asistence": 0,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "RW"
     },
     {
       "jmeno": "Martin",
@@ -20365,7 +20658,8 @@
           "asistence": 1,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Vít",
@@ -20431,7 +20725,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "RW"
     },
     {
       "jmeno": "Adam",
@@ -20497,7 +20792,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "LW"
     },
     {
       "jmeno": "Tomáš",
@@ -20563,7 +20859,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "LW"
     },
     {
       "jmeno": "Luboš",
@@ -20629,7 +20926,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "RW"
     },
     {
       "jmeno": "Radek",
@@ -20695,7 +20993,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "LW"
     },
     {
       "jmeno": "Erik",
@@ -20761,7 +21060,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "RW"
     },
     {
       "jmeno": "Matěj",
@@ -20827,7 +21127,8 @@
           "asistence": 3,
           "body": 3
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Jakub",
@@ -20893,7 +21194,8 @@
           "asistence": 2,
           "body": 2
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Patrik",
@@ -20959,7 +21261,8 @@
           "asistence": 0,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "LD"
     },
     {
       "jmeno": "Tomáš",
@@ -21025,7 +21328,8 @@
           "asistence": 1,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Jan",
@@ -21091,7 +21395,8 @@
           "asistence": 1,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Ondřej",
@@ -21157,7 +21462,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "LD"
     },
     {
       "jmeno": "Robin",
@@ -21223,7 +21529,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Miroslav",
@@ -21357,7 +21664,8 @@
           "asistence": 5,
           "body": 12
         }
-      ]
+      ],
+      "detailPozice": "LW"
     },
     {
       "jmeno": "Marcel",
@@ -21423,7 +21731,8 @@
           "asistence": 5,
           "body": 12
         }
-      ]
+      ],
+      "detailPozice": "LW"
     },
     {
       "jmeno": "Tomáš",
@@ -21489,7 +21798,8 @@
           "asistence": 9,
           "body": 12
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Lukáš",
@@ -21555,7 +21865,8 @@
           "asistence": 3,
           "body": 10
         }
-      ]
+      ],
+      "detailPozice": "LW"
     },
     {
       "jmeno": "Matouš",
@@ -21621,7 +21932,8 @@
           "asistence": 7,
           "body": 10
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Maxim",
@@ -21687,7 +21999,8 @@
           "asistence": 6,
           "body": 9
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Edgars",
@@ -21753,7 +22066,8 @@
           "asistence": 5,
           "body": 9
         }
-      ]
+      ],
+      "detailPozice": "LW"
     },
     {
       "jmeno": "Albert",
@@ -21819,7 +22133,8 @@
           "asistence": 5,
           "body": 7
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Richard",
@@ -21885,7 +22200,8 @@
           "asistence": 5,
           "body": 6
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Ilarion",
@@ -21951,7 +22267,8 @@
           "asistence": 2,
           "body": 5
         }
-      ]
+      ],
+      "detailPozice": "RW"
     },
     {
       "jmeno": "Tomáš",
@@ -22017,7 +22334,8 @@
           "asistence": 3,
           "body": 4
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Radek",
@@ -22083,7 +22401,8 @@
           "asistence": 1,
           "body": 3
         }
-      ]
+      ],
+      "detailPozice": "RW"
     },
     {
       "jmeno": "Tomáš",
@@ -22149,7 +22468,8 @@
           "asistence": 2,
           "body": 2
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Tomáš",
@@ -22215,7 +22535,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "RW"
     },
     {
       "jmeno": "Jan",
@@ -22281,7 +22602,8 @@
           "asistence": 4,
           "body": 8
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Filip",
@@ -22347,7 +22669,8 @@
           "asistence": 5,
           "body": 7
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Patriks",
@@ -22413,7 +22736,8 @@
           "asistence": 3,
           "body": 4
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Daniel",
@@ -22479,7 +22803,8 @@
           "asistence": 2,
           "body": 2
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Ondřej",
@@ -22545,7 +22870,8 @@
           "asistence": 1,
           "body": 2
         }
-      ]
+      ],
+      "detailPozice": "LD"
     },
     {
       "jmeno": "Marek",
@@ -22611,7 +22937,8 @@
           "asistence": 1,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Lukáš",
@@ -22677,7 +23004,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Adam",
@@ -22877,7 +23205,8 @@
           "asistence": 2,
           "body": 5
         }
-      ]
+      ],
+      "detailPozice": "LW"
     },
     {
       "jmeno": "Martin",
@@ -22943,7 +23272,8 @@
           "asistence": 4,
           "body": 4
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Jiří",
@@ -23009,7 +23339,8 @@
           "asistence": 0,
           "body": 3
         }
-      ]
+      ],
+      "detailPozice": "RW"
     },
     {
       "jmeno": "Tomáš",
@@ -23075,7 +23406,8 @@
           "asistence": 0,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "RW"
     },
     {
       "jmeno": "Milan James",
@@ -23141,7 +23473,8 @@
           "asistence": 1,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Marek",
@@ -23207,7 +23540,8 @@
           "asistence": 1,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Jan",
@@ -23273,7 +23607,8 @@
           "asistence": 1,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Stanislav",
@@ -23339,7 +23674,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "RW"
     },
     {
       "jmeno": "Daniel",
@@ -23405,7 +23741,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "LW"
     },
     {
       "jmeno": "Vojtěch",
@@ -23471,7 +23808,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "RW"
     },
     {
       "jmeno": "Roman",
@@ -23537,7 +23875,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "LW"
     },
     {
       "jmeno": "Maxim",
@@ -23603,7 +23942,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "RW"
     },
     {
       "jmeno": "Matěj",
@@ -23669,7 +24009,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "LW"
     },
     {
       "jmeno": "Štěpán",
@@ -23735,7 +24076,8 @@
           "asistence": 0,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "LD"
     },
     {
       "jmeno": "Maks",
@@ -23801,7 +24143,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Michael",
@@ -23867,7 +24210,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "LD"
     },
     {
       "jmeno": "Fabien",
@@ -23933,7 +24277,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "LD"
     },
     {
       "jmeno": "František",
@@ -23999,7 +24344,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Jan",
@@ -24065,7 +24411,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "LD"
     },
     {
       "jmeno": "Jiří",
@@ -24131,7 +24478,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Jaroslav",
@@ -24220,7 +24568,8 @@
           "asistence": 24,
           "body": 41
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Aaron",
@@ -24241,7 +24590,8 @@
           "asistence": 21,
           "body": 36
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Petr",
@@ -24262,7 +24612,8 @@
           "asistence": 18,
           "body": 32
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Vojtěch",
@@ -24328,7 +24679,8 @@
           "asistence": 19,
           "body": 31
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Lukáš",
@@ -24349,7 +24701,8 @@
           "asistence": 17,
           "body": 27
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Roman",
@@ -24415,7 +24768,8 @@
           "asistence": 15,
           "body": 24
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Marek",
@@ -24436,7 +24790,8 @@
           "asistence": 17,
           "body": 23
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Patrik",
@@ -24502,7 +24857,8 @@
           "asistence": 15,
           "body": 20
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Jan",
@@ -24523,7 +24879,8 @@
           "asistence": 12,
           "body": 15
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Ondřej",
@@ -24657,7 +25014,8 @@
           "asistence": 21,
           "body": 37
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Petr",
@@ -24678,7 +25036,8 @@
           "asistence": 19,
           "body": 32
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Tomáš",
@@ -24699,7 +25058,8 @@
           "asistence": 17,
           "body": 29
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Jakub",
@@ -24765,7 +25125,8 @@
           "asistence": 16,
           "body": 26
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Jan",
@@ -24831,7 +25192,8 @@
           "asistence": 15,
           "body": 24
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "David",
@@ -24852,7 +25214,8 @@
           "asistence": 14,
           "body": 23
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Radek",
@@ -24918,7 +25281,8 @@
           "asistence": 15,
           "body": 20
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Jakub",
@@ -24939,7 +25303,8 @@
           "asistence": 13,
           "body": 17
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Martin",
@@ -24960,7 +25325,8 @@
           "asistence": 11,
           "body": 14
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Michal",
@@ -25049,7 +25415,8 @@
           "asistence": 19,
           "body": 28
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Jiří",
@@ -25115,7 +25482,8 @@
           "asistence": 12,
           "body": 20
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Nicholas",
@@ -25181,7 +25549,8 @@
           "asistence": 15,
           "body": 20
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Jan",
@@ -25247,7 +25616,8 @@
           "asistence": 10,
           "body": 19
         }
-      ]
+      ],
+      "detailPozice": "RW"
     },
     {
       "jmeno": "Roman",
@@ -25313,7 +25683,8 @@
           "asistence": 7,
           "body": 13
         }
-      ]
+      ],
+      "detailPozice": "RW"
     },
     {
       "jmeno": "Petr",
@@ -25379,7 +25750,8 @@
           "asistence": 8,
           "body": 11
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Devon Jeffrey",
@@ -25445,7 +25817,8 @@
           "asistence": 6,
           "body": 10
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Jan",
@@ -25511,7 +25884,8 @@
           "asistence": 5,
           "body": 9
         }
-      ]
+      ],
+      "detailPozice": "RW"
     },
     {
       "jmeno": "Jakub",
@@ -25577,7 +25951,8 @@
           "asistence": 3,
           "body": 8
         }
-      ]
+      ],
+      "detailPozice": "RW"
     },
     {
       "jmeno": "Aleš",
@@ -25643,7 +26018,8 @@
           "asistence": 18,
           "body": 23
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Antonín",
@@ -25709,7 +26085,8 @@
           "asistence": 7,
           "body": 9
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Tomáš",
@@ -25909,7 +26286,8 @@
           "asistence": 5,
           "body": 8
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Šimon",
@@ -25975,7 +26353,8 @@
           "asistence": 4,
           "body": 7
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Vasyl",
@@ -26041,7 +26420,8 @@
           "asistence": 1,
           "body": 6
         }
-      ]
+      ],
+      "detailPozice": "RW"
     },
     {
       "jmeno": "Filip",
@@ -26107,7 +26487,8 @@
           "asistence": 2,
           "body": 6
         }
-      ]
+      ],
+      "detailPozice": "LW"
     },
     {
       "jmeno": "Jan",
@@ -26173,7 +26554,8 @@
           "asistence": 3,
           "body": 6
         }
-      ]
+      ],
+      "detailPozice": "RW"
     },
     {
       "jmeno": "Jan",
@@ -26239,7 +26621,8 @@
           "asistence": 4,
           "body": 5
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Jiří",
@@ -26305,7 +26688,8 @@
           "asistence": 2,
           "body": 4
         }
-      ]
+      ],
+      "detailPozice": "RW"
     },
     {
       "jmeno": "Jan",
@@ -26371,7 +26755,8 @@
           "asistence": 3,
           "body": 4
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Lukáš",
@@ -26437,7 +26822,8 @@
           "asistence": 1,
           "body": 3
         }
-      ]
+      ],
+      "detailPozice": "RW"
     },
     {
       "jmeno": "Petr",
@@ -26503,7 +26889,8 @@
           "asistence": 2,
           "body": 3
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Robert",
@@ -26569,7 +26956,8 @@
           "asistence": 0,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "RW"
     },
     {
       "jmeno": "Jakub",
@@ -26635,7 +27023,8 @@
           "asistence": 1,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Kale",
@@ -26701,7 +27090,8 @@
           "asistence": 0,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "LW"
     },
     {
       "jmeno": "Jakub",
@@ -26767,7 +27157,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "LW"
     },
     {
       "jmeno": "Dominik",
@@ -26833,7 +27224,8 @@
           "asistence": 3,
           "body": 4
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Nino",
@@ -26899,7 +27291,8 @@
           "asistence": 4,
           "body": 4
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Michael",
@@ -26965,7 +27358,8 @@
           "asistence": 3,
           "body": 3
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Jiří",
@@ -27031,7 +27425,8 @@
           "asistence": 3,
           "body": 3
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Dušan",
@@ -27097,7 +27492,8 @@
           "asistence": 1,
           "body": 2
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Jakub",
@@ -27163,7 +27559,8 @@
           "asistence": 1,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Ondřej",
@@ -27229,7 +27626,8 @@
           "asistence": 1,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Martin",
@@ -27363,7 +27761,8 @@
           "asistence": 2,
           "body": 7
         }
-      ]
+      ],
+      "detailPozice": "LW"
     },
     {
       "jmeno": "Petr",
@@ -27429,7 +27828,8 @@
           "asistence": 5,
           "body": 6
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Josef",
@@ -27495,7 +27895,8 @@
           "asistence": 0,
           "body": 2
         }
-      ]
+      ],
+      "detailPozice": "LW"
     },
     {
       "jmeno": "Matěj",
@@ -27561,7 +27962,8 @@
           "asistence": 0,
           "body": 2
         }
-      ]
+      ],
+      "detailPozice": "RW"
     },
     {
       "jmeno": "Kristers",
@@ -27627,7 +28029,8 @@
           "asistence": 0,
           "body": 2
         }
-      ]
+      ],
+      "detailPozice": "RW"
     },
     {
       "jmeno": "Martin",
@@ -27693,7 +28096,8 @@
           "asistence": 1,
           "body": 2
         }
-      ]
+      ],
+      "detailPozice": "LW"
     },
     {
       "jmeno": "Lukáš",
@@ -27759,7 +28163,8 @@
           "asistence": 2,
           "body": 2
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Pavel",
@@ -27825,7 +28230,8 @@
           "asistence": 2,
           "body": 2
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Adam",
@@ -27891,7 +28297,8 @@
           "asistence": 1,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Matěj",
@@ -27957,7 +28364,8 @@
           "asistence": 1,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Štěpán",
@@ -28023,7 +28431,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "RW"
     },
     {
       "jmeno": "Pavel",
@@ -28089,7 +28498,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "RW"
     },
     {
       "jmeno": "Jan",
@@ -28155,7 +28565,8 @@
           "asistence": 2,
           "body": 3
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Petr",
@@ -28221,7 +28632,8 @@
           "asistence": 2,
           "body": 3
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Karel",
@@ -28287,7 +28699,8 @@
           "asistence": 2,
           "body": 2
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Andrej",
@@ -28353,7 +28766,8 @@
           "asistence": 0,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "LD"
     },
     {
       "jmeno": "Tomáš",
@@ -28419,7 +28833,8 @@
           "asistence": 1,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "David",
@@ -28485,7 +28900,8 @@
           "asistence": 1,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Jakub",
@@ -28551,7 +28967,8 @@
           "asistence": 1,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Jakub",
@@ -28640,7 +29057,8 @@
           "asistence": 22,
           "body": 37
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Jaromír",
@@ -28706,7 +29124,8 @@
           "asistence": 20,
           "body": 33
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Vojtěch",
@@ -28727,7 +29146,8 @@
           "asistence": 18,
           "body": 30
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Jan",
@@ -28748,7 +29168,8 @@
           "asistence": 16,
           "body": 26
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Petr",
@@ -28814,7 +29235,8 @@
           "asistence": 15,
           "body": 24
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Martin",
@@ -28880,7 +29302,8 @@
           "asistence": 14,
           "body": 22
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Petr",
@@ -28901,7 +29324,8 @@
           "asistence": 15,
           "body": 20
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "David",
@@ -28967,7 +29391,8 @@
           "asistence": 12,
           "body": 16
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Matěj",
@@ -29033,7 +29458,8 @@
           "asistence": 11,
           "body": 14
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Martin",
@@ -29167,7 +29593,8 @@
           "asistence": 1,
           "body": 2
         }
-      ]
+      ],
+      "detailPozice": "LW"
     },
     {
       "jmeno": "David",
@@ -29233,7 +29660,8 @@
           "asistence": 2,
           "body": 2
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Michal",
@@ -29299,7 +29727,8 @@
           "asistence": 1,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Vladimír",
@@ -29365,7 +29794,8 @@
           "asistence": 1,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Lukáš",
@@ -29431,7 +29861,8 @@
           "asistence": 1,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Vojtěch",
@@ -29497,7 +29928,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "RW"
     },
     {
       "jmeno": "Robin",
@@ -29563,7 +29995,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "RW"
     },
     {
       "jmeno": "Michal",
@@ -29629,7 +30062,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "RW"
     },
     {
       "jmeno": "Adam",
@@ -29695,7 +30129,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "RW"
     },
     {
       "jmeno": "Jakub",
@@ -29761,7 +30196,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "RW"
     },
     {
       "jmeno": "Tomáš",
@@ -29827,7 +30263,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "RW"
     },
     {
       "jmeno": "Oskar",
@@ -29893,7 +30330,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "LW"
     },
     {
       "jmeno": "Pavel",
@@ -29959,7 +30397,8 @@
           "asistence": 0,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "LD"
     },
     {
       "jmeno": "Marek",
@@ -30025,7 +30464,8 @@
           "asistence": 0,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "LD"
     },
     {
       "jmeno": "Patrik",
@@ -30091,7 +30531,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Jakub",
@@ -30157,7 +30598,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "LD"
     },
     {
       "jmeno": "Alexander",
@@ -30223,7 +30665,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Roberts",
@@ -30289,7 +30732,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Patrik",
@@ -30355,7 +30799,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "LD"
     },
     {
       "jmeno": "Daniel",
@@ -30489,7 +30934,8 @@
           "asistence": 3,
           "body": 6
         }
-      ]
+      ],
+      "detailPozice": "RW"
     },
     {
       "jmeno": "Matěj",
@@ -30555,7 +31001,8 @@
           "asistence": 3,
           "body": 4
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Ladislav",
@@ -30621,7 +31068,8 @@
           "asistence": 1,
           "body": 3
         }
-      ]
+      ],
+      "detailPozice": "RW"
     },
     {
       "jmeno": "David",
@@ -30687,7 +31135,8 @@
           "asistence": 2,
           "body": 3
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Tomáš",
@@ -30753,7 +31202,8 @@
           "asistence": 1,
           "body": 2
         }
-      ]
+      ],
+      "detailPozice": "RW"
     },
     {
       "jmeno": "Michal",
@@ -30819,7 +31269,8 @@
           "asistence": 2,
           "body": 2
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Jiří",
@@ -30885,7 +31336,8 @@
           "asistence": 0,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "RW"
     },
     {
       "jmeno": "Jan",
@@ -30951,7 +31403,8 @@
           "asistence": 1,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Marek",
@@ -31017,7 +31470,8 @@
           "asistence": 1,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Vítězslav",
@@ -31083,7 +31537,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "LW"
     },
     {
       "jmeno": "Tadeáš",
@@ -31149,7 +31604,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "LW"
     },
     {
       "jmeno": "Adam",
@@ -31215,7 +31671,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "LW"
     },
     {
       "jmeno": "Tomáš",
@@ -31281,7 +31738,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "LW"
     },
     {
       "jmeno": "Miha",
@@ -31347,7 +31805,8 @@
           "asistence": 0,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "LD"
     },
     {
       "jmeno": "Tomáš",
@@ -31413,7 +31872,8 @@
           "asistence": 0,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "LD"
     },
     {
       "jmeno": "Jakub",
@@ -31479,7 +31939,8 @@
           "asistence": 1,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "David",
@@ -31545,7 +32006,8 @@
           "asistence": 1,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Michal",
@@ -31611,7 +32073,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Martin",
@@ -31677,7 +32140,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Erik",
@@ -31743,7 +32207,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "LD"
     },
     {
       "jmeno": "Ondřej",
@@ -31898,7 +32363,8 @@
           "asistence": 21,
           "body": 35
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Patrik",
@@ -31919,7 +32385,8 @@
           "asistence": 18,
           "body": 31
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Jakub",
@@ -31940,7 +32407,8 @@
           "asistence": 17,
           "body": 28
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Adam",
@@ -31961,7 +32429,8 @@
           "asistence": 16,
           "body": 26
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Radim",
@@ -31982,7 +32451,8 @@
           "asistence": 15,
           "body": 24
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "David",
@@ -32048,7 +32518,8 @@
           "asistence": 3,
           "body": 8
         }
-      ]
+      ],
+      "detailPozice": "LW"
     },
     {
       "jmeno": "Robert",
@@ -32114,7 +32585,8 @@
           "asistence": 4,
           "body": 8
         }
-      ]
+      ],
+      "detailPozice": "RW"
     },
     {
       "jmeno": "Jakub",
@@ -32135,7 +32607,8 @@
           "asistence": 14,
           "body": 19
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Jan",
@@ -32156,7 +32629,8 @@
           "asistence": 12,
           "body": 16
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Tomáš",
@@ -32222,7 +32696,8 @@
           "asistence": 11,
           "body": 14
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Dominik",
@@ -32332,7 +32807,8 @@
           "asistence": 22,
           "body": 37
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Nicolas",
@@ -32353,7 +32829,8 @@
           "asistence": 19,
           "body": 33
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Petr",
@@ -32374,7 +32851,8 @@
           "asistence": 18,
           "body": 30
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Jakub",
@@ -32395,7 +32873,8 @@
           "asistence": 16,
           "body": 27
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Jan",
@@ -32416,7 +32895,8 @@
           "asistence": 15,
           "body": 24
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "David",
@@ -32437,7 +32917,8 @@
           "asistence": 14,
           "body": 22
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Jan",
@@ -32458,7 +32939,8 @@
           "asistence": 15,
           "body": 21
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "David",
@@ -32479,7 +32961,8 @@
           "asistence": 12,
           "body": 16
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Petr",
@@ -32500,7 +32983,8 @@
           "asistence": 11,
           "body": 14
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Miroslav",
@@ -32544,7 +33028,8 @@
           "asistence": 4,
           "body": 4
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Rudolf",
@@ -32565,7 +33050,8 @@
           "asistence": 0,
           "body": 2
         }
-      ]
+      ],
+      "detailPozice": "LW"
     },
     {
       "jmeno": "Jan",
@@ -32586,7 +33072,8 @@
           "asistence": 1,
           "body": 2
         }
-      ]
+      ],
+      "detailPozice": "LW"
     },
     {
       "jmeno": "Tomáš",
@@ -32607,7 +33094,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "RW"
     },
     {
       "jmeno": "Jakub",
@@ -32628,7 +33116,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "LW"
     },
     {
       "jmeno": "Jonáš",
@@ -32649,7 +33138,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "LW"
     },
     {
       "jmeno": "Jakub",
@@ -32670,7 +33160,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "LW"
     },
     {
       "jmeno": "Tomáš",
@@ -32691,7 +33182,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "LW"
     },
     {
       "jmeno": "Matěj",
@@ -32712,7 +33204,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "RW"
     },
     {
       "jmeno": "Jakub",
@@ -32733,7 +33226,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "RW"
     },
     {
       "jmeno": "Robin",
@@ -32754,7 +33248,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "RW"
     },
     {
       "jmeno": "Milan",
@@ -32775,7 +33270,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "RW"
     },
     {
       "jmeno": "Radim",
@@ -32796,7 +33292,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "RW"
     },
     {
       "jmeno": "David",
@@ -32817,7 +33314,8 @@
           "asistence": 2,
           "body": 2
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Karel",
@@ -32838,7 +33336,8 @@
           "asistence": 0,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "LD"
     },
     {
       "jmeno": "Martin",
@@ -32859,7 +33358,8 @@
           "asistence": 0,
           "body": 1
         }
-      ]
+      ],
+      "detailPozice": "LD"
     },
     {
       "jmeno": "Jakub",
@@ -32880,7 +33380,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "LD"
     },
     {
       "jmeno": "Matyáš",
@@ -32901,7 +33402,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "LD"
     },
     {
       "jmeno": "Lukáš",
@@ -32922,7 +33424,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "LD"
     },
     {
       "jmeno": "Tomáš",
@@ -32943,7 +33446,8 @@
           "asistence": 0,
           "body": 0
         }
-      ]
+      ],
+      "detailPozice": "LD"
     },
     {
       "jmeno": "Matěj",
@@ -32987,7 +33491,8 @@
           "asistence": 18,
           "body": 32
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Petr",
@@ -33008,7 +33513,8 @@
           "asistence": 17,
           "body": 29
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Ondřej",
@@ -33029,7 +33535,8 @@
           "asistence": 15,
           "body": 26
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Patrik",
@@ -33050,7 +33557,8 @@
           "asistence": 14,
           "body": 24
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Martin",
@@ -33071,7 +33579,8 @@
           "asistence": 13,
           "body": 22
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Tomáš",
@@ -33092,7 +33601,8 @@
           "asistence": 12,
           "body": 20
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Martin",
@@ -33113,7 +33623,8 @@
           "asistence": 13,
           "body": 18
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Jan",
@@ -33134,7 +33645,8 @@
           "asistence": 11,
           "body": 15
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "David",
@@ -33155,7 +33667,8 @@
           "asistence": 10,
           "body": 13
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Tomáš",
@@ -33220,7 +33733,8 @@
           "asistence": 18,
           "body": 31
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Petr",
@@ -33241,7 +33755,8 @@
           "asistence": 16,
           "body": 28
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Jan",
@@ -33262,7 +33777,8 @@
           "asistence": 15,
           "body": 25
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Daniel",
@@ -33283,7 +33799,8 @@
           "asistence": 14,
           "body": 23
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Marek",
@@ -33304,7 +33821,8 @@
           "asistence": 13,
           "body": 21
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Tomáš",
@@ -33325,7 +33843,8 @@
           "asistence": 12,
           "body": 19
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Pavel",
@@ -33346,7 +33865,8 @@
           "asistence": 12,
           "body": 16
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Lukáš",
@@ -33367,7 +33887,8 @@
           "asistence": 11,
           "body": 14
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Martin",
@@ -33388,7 +33909,8 @@
           "asistence": 10,
           "body": 13
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Lukáš",
@@ -33453,7 +33975,8 @@
           "asistence": 17,
           "body": 30
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Jan",
@@ -33474,7 +33997,8 @@
           "asistence": 16,
           "body": 27
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Martin",
@@ -33495,7 +34019,8 @@
           "asistence": 15,
           "body": 25
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "David",
@@ -33516,7 +34041,8 @@
           "asistence": 14,
           "body": 23
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Filip",
@@ -33537,7 +34063,8 @@
           "asistence": 13,
           "body": 21
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Vojtěch",
@@ -33558,7 +34085,8 @@
           "asistence": 12,
           "body": 19
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Jakub",
@@ -33579,7 +34107,8 @@
           "asistence": 12,
           "body": 16
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Pavel",
@@ -33600,7 +34129,8 @@
           "asistence": 11,
           "body": 14
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Lukáš",
@@ -33621,7 +34151,8 @@
           "asistence": 10,
           "body": 13
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Petr",
@@ -33686,7 +34217,8 @@
           "asistence": 17,
           "body": 29
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Dominik",
@@ -33707,7 +34239,8 @@
           "asistence": 15,
           "body": 26
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Tomáš",
@@ -33728,7 +34261,8 @@
           "asistence": 14,
           "body": 24
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Lukáš",
@@ -33749,7 +34283,8 @@
           "asistence": 13,
           "body": 22
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Matěj",
@@ -33770,7 +34305,8 @@
           "asistence": 12,
           "body": 20
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Adam",
@@ -33791,7 +34327,8 @@
           "asistence": 11,
           "body": 18
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Daniel",
@@ -33812,7 +34349,8 @@
           "asistence": 12,
           "body": 16
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Petr",
@@ -33833,7 +34371,8 @@
           "asistence": 11,
           "body": 14
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Martin",
@@ -33854,7 +34393,8 @@
           "asistence": 10,
           "body": 13
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Jakub",
@@ -33898,7 +34438,8 @@
           "asistence": 16,
           "body": 28
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Tomáš",
@@ -33919,7 +34460,8 @@
           "asistence": 15,
           "body": 25
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Jakub",
@@ -33940,7 +34482,8 @@
           "asistence": 14,
           "body": 23
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "David",
@@ -33961,7 +34504,8 @@
           "asistence": 13,
           "body": 21
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Jan",
@@ -33982,7 +34526,8 @@
           "asistence": 12,
           "body": 19
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Petr",
@@ -34003,7 +34548,8 @@
           "asistence": 13,
           "body": 19
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Albert",
@@ -34024,7 +34570,8 @@
           "asistence": 7,
           "body": 18
         }
-      ]
+      ],
+      "detailPozice": "LW"
     },
     {
       "jmeno": "Tomáš",
@@ -34045,7 +34592,8 @@
           "asistence": 9,
           "body": 15
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Petr",
@@ -34066,7 +34614,8 @@
           "asistence": 9,
           "body": 12
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Vojtěch",
@@ -34087,7 +34636,8 @@
           "asistence": 12,
           "body": 16
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Ondřej",
@@ -34108,7 +34658,8 @@
           "asistence": 11,
           "body": 14
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Radek",
@@ -34129,7 +34680,8 @@
           "asistence": 10,
           "body": 13
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Josef",
@@ -34150,7 +34702,8 @@
           "asistence": 7,
           "body": 10
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "David",
@@ -34171,7 +34724,8 @@
           "asistence": 8,
           "body": 10
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Daniel",
@@ -34236,7 +34790,8 @@
           "asistence": 17,
           "body": 29
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "David",
@@ -34257,7 +34812,8 @@
           "asistence": 16,
           "body": 27
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Petr",
@@ -34278,7 +34834,8 @@
           "asistence": 14,
           "body": 24
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Jakub",
@@ -34299,7 +34856,8 @@
           "asistence": 13,
           "body": 22
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Tomáš",
@@ -34320,7 +34878,8 @@
           "asistence": 12,
           "body": 20
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Martin",
@@ -34341,7 +34900,8 @@
           "asistence": 11,
           "body": 18
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Michal",
@@ -34362,7 +34922,8 @@
           "asistence": 12,
           "body": 16
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Lukáš",
@@ -34383,7 +34944,8 @@
           "asistence": 11,
           "body": 14
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Pavel",
@@ -34404,7 +34966,8 @@
           "asistence": 10,
           "body": 13
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Dominik",
@@ -34448,7 +35011,8 @@
           "asistence": 17,
           "body": 29
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Jan",
@@ -34469,7 +35033,8 @@
           "asistence": 16,
           "body": 27
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Pavel",
@@ -34490,7 +35055,8 @@
           "asistence": 14,
           "body": 24
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "David",
@@ -34511,7 +35077,8 @@
           "asistence": 13,
           "body": 22
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Tomáš",
@@ -34532,7 +35099,8 @@
           "asistence": 12,
           "body": 20
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Jakub",
@@ -34553,7 +35121,8 @@
           "asistence": 11,
           "body": 18
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Petr",
@@ -34574,7 +35143,8 @@
           "asistence": 12,
           "body": 16
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Vladimír",
@@ -34595,7 +35165,8 @@
           "asistence": 11,
           "body": 14
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Daniel",
@@ -34616,7 +35187,8 @@
           "asistence": 10,
           "body": 13
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Lukáš",
@@ -34660,7 +35232,8 @@
           "asistence": 17,
           "body": 29
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Tomáš",
@@ -34681,7 +35254,8 @@
           "asistence": 15,
           "body": 26
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Jan",
@@ -34702,7 +35276,8 @@
           "asistence": 14,
           "body": 24
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Lukáš",
@@ -34723,7 +35298,8 @@
           "asistence": 13,
           "body": 22
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "David",
@@ -34744,7 +35320,8 @@
           "asistence": 12,
           "body": 20
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Filip",
@@ -34765,7 +35342,8 @@
           "asistence": 11,
           "body": 18
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Martin",
@@ -34786,7 +35364,8 @@
           "asistence": 12,
           "body": 16
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Jakub",
@@ -34807,7 +35386,8 @@
           "asistence": 11,
           "body": 14
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Vojtěch",
@@ -34828,7 +35408,8 @@
           "asistence": 10,
           "body": 13
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Martin",
@@ -34872,7 +35453,8 @@
           "asistence": 17,
           "body": 29
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Jakub",
@@ -34893,7 +35475,8 @@
           "asistence": 15,
           "body": 26
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Tomáš",
@@ -34914,7 +35497,8 @@
           "asistence": 14,
           "body": 24
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Dominik",
@@ -34935,7 +35519,8 @@
           "asistence": 13,
           "body": 22
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Petr",
@@ -34956,7 +35541,8 @@
           "asistence": 12,
           "body": 20
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Jan",
@@ -34977,7 +35563,8 @@
           "asistence": 11,
           "body": 18
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Martin",
@@ -34998,7 +35585,8 @@
           "asistence": 12,
           "body": 16
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Václav",
@@ -35019,7 +35607,8 @@
           "asistence": 11,
           "body": 14
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Lukáš",
@@ -35040,7 +35629,8 @@
           "asistence": 10,
           "body": 13
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Jakub",
@@ -35105,7 +35695,8 @@
           "asistence": 17,
           "body": 29
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "David",
@@ -35126,7 +35717,8 @@
           "asistence": 15,
           "body": 26
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Pavel",
@@ -35147,7 +35739,8 @@
           "asistence": 14,
           "body": 24
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Tomáš",
@@ -35168,7 +35761,8 @@
           "asistence": 13,
           "body": 22
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Martin",
@@ -35189,7 +35783,8 @@
           "asistence": 12,
           "body": 20
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Jan",
@@ -35210,7 +35805,8 @@
           "asistence": 11,
           "body": 18
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Jakub",
@@ -35231,7 +35827,8 @@
           "asistence": 12,
           "body": 16
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Petr",
@@ -35252,7 +35849,8 @@
           "asistence": 11,
           "body": 14
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Radek",
@@ -35273,7 +35871,8 @@
           "asistence": 10,
           "body": 13
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Marek",
@@ -35338,7 +35937,8 @@
           "asistence": 19,
           "body": 25
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Lukáš",
@@ -35359,7 +35959,8 @@
           "asistence": 13,
           "body": 22
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Matouš",
@@ -35380,7 +35981,8 @@
           "asistence": 13,
           "body": 21
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "David",
@@ -35401,7 +36003,8 @@
           "asistence": 9,
           "body": 20
         }
-      ]
+      ],
+      "detailPozice": "LW"
     },
     {
       "jmeno": "Roman",
@@ -35422,7 +36025,8 @@
           "asistence": 6,
           "body": 19
         }
-      ]
+      ],
+      "detailPozice": "RW"
     },
     {
       "jmeno": "Vojtěch",
@@ -35443,7 +36047,8 @@
           "asistence": 13,
           "body": 18
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Martin",
@@ -35464,7 +36069,8 @@
           "asistence": 11,
           "body": 17
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Lukáš",
@@ -35485,7 +36091,8 @@
           "asistence": 12,
           "body": 17
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Vojtěch",
@@ -35506,7 +36113,8 @@
           "asistence": 7,
           "body": 14
         }
-      ]
+      ],
+      "detailPozice": "LW"
     },
     {
       "jmeno": "Jiří",
@@ -35527,7 +36135,8 @@
           "asistence": 11,
           "body": 16
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Marcel",
@@ -35548,7 +36157,8 @@
           "asistence": 8,
           "body": 11
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Michal",
@@ -35613,7 +36223,8 @@
           "asistence": 17,
           "body": 29
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Tomáš",
@@ -35634,7 +36245,8 @@
           "asistence": 15,
           "body": 26
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Marek",
@@ -35655,7 +36267,8 @@
           "asistence": 14,
           "body": 24
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Jan",
@@ -35676,7 +36289,8 @@
           "asistence": 13,
           "body": 22
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Lukáš",
@@ -35697,7 +36311,8 @@
           "asistence": 12,
           "body": 20
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Martin",
@@ -35718,7 +36333,8 @@
           "asistence": 11,
           "body": 18
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Daniel",
@@ -35739,7 +36355,8 @@
           "asistence": 12,
           "body": 16
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Radek",
@@ -35760,7 +36377,8 @@
           "asistence": 11,
           "body": 14
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Jakub",
@@ -35781,7 +36399,8 @@
           "asistence": 10,
           "body": 13
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Jakub",
@@ -35846,7 +36465,8 @@
           "asistence": 17,
           "body": 29
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Marek",
@@ -35867,7 +36487,8 @@
           "asistence": 15,
           "body": 26
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Jan",
@@ -35888,7 +36509,8 @@
           "asistence": 14,
           "body": 24
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Petr",
@@ -35909,7 +36531,8 @@
           "asistence": 13,
           "body": 22
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "David",
@@ -35930,7 +36553,8 @@
           "asistence": 12,
           "body": 20
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Tomáš",
@@ -35951,7 +36575,8 @@
           "asistence": 11,
           "body": 18
         }
-      ]
+      ],
+      "detailPozice": "C"
     },
     {
       "jmeno": "Lukáš",
@@ -35972,7 +36597,8 @@
           "asistence": 12,
           "body": 16
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Ondřej",
@@ -35993,7 +36619,8 @@
           "asistence": 11,
           "body": 14
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Jakub",
@@ -36014,7 +36641,8 @@
           "asistence": 10,
           "body": 13
         }
-      ]
+      ],
+      "detailPozice": "RD"
     },
     {
       "jmeno": "Michal",

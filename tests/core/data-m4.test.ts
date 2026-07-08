@@ -15,6 +15,7 @@ interface ZaznamSoupisky {
   goly: number
   asistence: number
   trzniCena?: number
+  detailPozice?: 'LW' | 'C' | 'RW' | 'LD' | 'RD'
   historieStatistik?: {
     sezona: string
     soutez: string
@@ -47,6 +48,7 @@ describe('reálné soupisky', () => {
         expect(h.goly).toBeGreaterThanOrEqual(0)
         expect(h.asistence).toBeGreaterThanOrEqual(0)
         if (h.trzniCena !== undefined) expect(h.trzniCena).toBeGreaterThan(0)
+        if (h.detailPozice !== undefined) expect(['LW', 'C', 'RW', 'LD', 'RD']).toContain(h.detailPozice)
         for (const s of h.historieStatistik ?? []) {
           expect(s.sezona.length).toBeGreaterThan(0)
           expect(s.zapasy).toBeGreaterThanOrEqual(0)

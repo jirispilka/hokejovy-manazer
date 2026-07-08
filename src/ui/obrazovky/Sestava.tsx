@@ -1,5 +1,4 @@
-import { useState } from 'react'
-import { roleHrace } from '../../core/hodnoty'
+import { useMemo, useState } from 'react'
 import {
   analyzaRozestaveni,
   celkovaChemie,
@@ -9,17 +8,16 @@ import {
   overall,
   ovrLajny,
   popisChemie,
-  popisRoleLajny,
   presunHraceVSestave,
   souhrnSestavy,
-  volneMistaObrany,
-  volneMistaUtoku,
   zmenSestavuKlubu,
 } from '../../core/sestava'
+import { spojeneLajny } from '../../core/lajny'
 import type { GameState, Pozice, Taktika } from '../../core/types'
 import { zmenVytizeniTymu } from '../../core/zapas'
 import { BadgePozice, MiniBar, PanelTaktiky, Ukazatel, barvaHodnoty } from '../komponenty'
 import { PanelVytizeniUtoku } from '../PanelVytizeni'
+import { SpojenaLajna } from '../SpojenaLajna'
 import { ulozHru } from '../store'
 
 export function SestavaObrazovka({ hra, setHra }: { hra: GameState; setHra: (s: GameState) => void }) {
@@ -27,8 +25,12 @@ export function SestavaObrazovka({ hra, setHra }: { hra: GameState; setHra: (s: 
   const [filtr, setFiltr] = useState<'vse' | Pozice>('vse')
   const [chyba, setChyba] = useState<string | null>(null)
   const tym = hra.tymy[hra.mujKlubId]
-  const podleId = new Map(tym.hraci.map((h) => [h.id, h]))
-  const vSestave = new Set([...tym.sestava.utoky.flat(), ...tym.sestava.obrany.flat(), tym.sestava.brankar])
+  const podleId = useMemo(() => new Map(tym.hraci.map((h) => [h.id, h])), [tym.hraci])
+  const vSestave = useMemo(
+    () => new Set([...tym.sestava.utoky.flat(), ...tym.sestava.obrany.flat(), tym.sestava.brankar]),
+    [tym.sestava],
+  )
+  const lajny = useMemo(() => spojeneLajny(tym.sestava), [tym.sestava])
   const navrh = vybrany ? navrhUmisteni(tym, vybrany) : null
 
   function ulozTym(novyTym: typeof tym) {
@@ -112,30 +114,55 @@ export function SestavaObrazovka({ hra, setHra }: { hra: GameState; setHra: (s: 
   const ovr = ovrLajny(tym)
   const tipy = analyzaRozestaveni(tym)
 
-  const Radek = ({ id }: { id: string }) => {
+  const RadekNahradnik = ({ id }: { id: string }) => {
     const h = podleId.get(id)!
     const zraneny = !jeZdravy(h)
     const jeVybrany = vybrany === id
     const jeDoporuceny = navrh?.doporucenyId === id
-    const mimoPozici = jeHracMimoPozici(tym, id)
     return (
       <button
-        className={`radek-hrace klik ${jeVybrany ? 'vybrany' : ''} ${jeDoporuceny ? 'doporuceny-cil' : ''} ${zraneny ? 'zraneny' : ''} ${mimoPozici ? 'mimo-pozici' : ''}`}
-        disabled={zraneny && !vSestave.has(id)}
+        className={`radek-hrace radek-lajny klik ${jeVybrany ? 'vybrany' : ''} ${jeDoporuceny ? 'doporuceny-cil' : ''} ${zraneny ? 'zraneny' : ''}`}
+        disabled={zraneny}
         onClick={() => presun(id)}
-        title={jeDoporuceny ? 'Doporučená výměna' : `Střelba ${h.atributy.strelba}, Obrana ${h.atributy.obrana}, Výdrž ${h.atributy.vydrz}`}
+        title={jeDoporuceny ? 'Doporučená výměna' : undefined}
       >
-        <BadgePozice pozice={h.pozice} />
+        <span className="radek-pozice-badges"><BadgePozice pozice={h.pozice} /></span>
         <span className="radek-jmeno">
           {h.jmeno} {h.prijmeni}
           {h.id === tym.kapitanId && ' Ⓒ'}
           {zraneny && ` 🚑${h.zranenZapasu}`}
           {jeDoporuceny && ' 💡'}
         </span>
+        <span className="radek-vek">{h.vek}</span>
         <b>{overall(h)}</b>
-        <span className="radek-role">{roleHrace(h) ?? 'Brankář'}</span>
-        <MiniBar hodnota={h.forma} popisek="Forma" />
-        <MiniBar hodnota={h.unava} popisek="Únava" barva="var(--prohra)" />
+        <span className="radek-role">—</span>
+        <MiniBar hodnota={h.forma} popisek="F" />
+        <MiniBar hodnota={h.unava} popisek="Ú" barva="var(--prohra)" />
+      </button>
+    )
+  }
+
+  const RadekBrankar = ({ id }: { id: string }) => {
+    const h = podleId.get(id)!
+    const zraneny = !jeZdravy(h)
+    const jeVybrany = vybrany === id
+    return (
+      <button
+        className={`radek-hrace radek-lajny klik ${jeVybrany ? 'vybrany' : ''} ${zraneny ? 'zraneny' : ''}`}
+        disabled={zraneny}
+        onClick={() => presun(id)}
+      >
+        <span className="radek-pozice-badges"><BadgePozice pozice="G" /></span>
+        <span className="radek-jmeno">
+          {h.jmeno} {h.prijmeni}
+          {h.id === tym.kapitanId && ' Ⓒ'}
+          {zraneny && ` 🚑${h.zranenZapasu}`}
+        </span>
+        <span className="radek-vek">{h.vek}</span>
+        <b>{overall(h)}</b>
+        <span className="radek-role">—</span>
+        <MiniBar hodnota={h.forma} popisek="F" />
+        <MiniBar hodnota={h.unava} popisek="Ú" barva="var(--prohra)" />
       </button>
     )
   }
@@ -192,54 +219,32 @@ export function SestavaObrazovka({ hra, setHra }: { hra: GameState; setHra: (s: 
             : 'Klikni na hráče — ukážeme ti nejlepší místo.'}
         </p>
       </div>
-      {tym.sestava.utoky.map((lajna, i) => (
-        <div key={i} className="karta">
-          <div className="radek-hlavicka">
-            <div>
-              <b>{i + 1}. útok</b>
-              <span className="lajna-role">{popisRoleLajny('U', i)} · OVR {ovr.utoky[i]}</span>
-            </div>
-            <MiniBar hodnota={tym.chemie.utoky[i]} popisek="chemie" barva={barvaHodnoty(tym.chemie.utoky[i])} />
-          </div>
-          {lajna.map((id) => <Radek key={id} id={id} />)}
-          {Array.from({ length: volneMistaUtoku(lajna) }).map((_, slot) => (
-            <button
-              key={`prazdny-u-${i}-${slot}`}
-              type="button"
-              className={`radek-hrace radek-prazdny klik ${vybrany ? 'vybrany-cil' : ''}`}
-              onClick={() => dosad('utok', i)}
-            >
-              + Volné místo — dosadit hráče
-            </button>
-          ))}
-        </div>
+
+      {lajny.map((l) => (
+        <SpojenaLajna
+          key={l.index}
+          lajna={l}
+          podleId={podleId}
+          rezim="editace"
+          tym={tym}
+          chemieUtok={tym.chemie.utoky[l.index]}
+          chemieObrana={tym.chemie.obrany[Math.min(l.index, 2)]}
+          ovrUtok={ovr.utoky[l.index]}
+          ovrObrana={ovr.obrany[Math.min(l.index, 2)]}
+          vybrany={vybrany}
+          doporucenyId={navrh?.doporucenyId ?? null}
+          kapitanId={tym.kapitanId}
+          vSestave={vSestave}
+          onKlikHrace={presun}
+          onDosad={dosad}
+        />
       ))}
-      {tym.sestava.obrany.map((dvojice, i) => (
-        <div key={i} className="karta">
-          <div className="radek-hlavicka">
-            <div>
-              <b>{i + 1}. obrana</b>
-              <span className="lajna-role">{popisRoleLajny('D', i)} · OVR {ovr.obrany[i]}</span>
-            </div>
-            <MiniBar hodnota={tym.chemie.obrany[i]} popisek="chemie" barva={barvaHodnoty(tym.chemie.obrany[i])} />
-          </div>
-          {dvojice.map((id) => <Radek key={id} id={id} />)}
-          {Array.from({ length: volneMistaObrany(dvojice) }).map((_, slot) => (
-            <button
-              key={`prazdny-d-${i}-${slot}`}
-              type="button"
-              className={`radek-hrace radek-prazdny klik ${vybrany ? 'vybrany-cil' : ''}`}
-              onClick={() => dosad('obrana', i)}
-            >
-              + Volné místo — dosadit hráče
-            </button>
-          ))}
-        </div>
-      ))}
+
       <div className="karta">
         <b>Brankář</b>
-        <Radek id={tym.sestava.brankar} />
+        <RadekBrankar id={tym.sestava.brankar} />
       </div>
+
       <div className="karta">
         <div className="radek-hlavicka">
           <b>Náhradníci</b>
@@ -251,8 +256,9 @@ export function SestavaObrazovka({ hra, setHra }: { hra: GameState; setHra: (s: 
             ))}
           </span>
         </div>
-        {nahradnici.map((h) => <Radek key={h.id} id={h.id} />)}
+        {nahradnici.map((h) => <RadekNahradnik key={h.id} id={h.id} />)}
       </div>
+
       <div className="karta">
         <b>Kapitán Ⓒ:</b>{' '}
         <select

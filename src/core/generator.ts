@@ -2,7 +2,8 @@ import kluby from './data/kluby.json'
 import soupiskyData from './data/soupisky.json'
 import { JMENA, PRIJMENI } from './jmena'
 import { createRng, pick, randInt, type Rng } from './rng'
-import type { Atributy, HistorickaStatistika, Hrac, Klub, Pozice, Tym } from './types'
+import type { Atributy, DetailPozice, HistorickaStatistika, Hrac, Klub, Pozice, Tym } from './types'
+import { detailPoziceHrace } from './lajny'
 import { vychoziSestava, overall, otiskLajn } from './sestava'
 
 // rozsah atributů podle úrovně ligy (0 = extraliga nejsilnější)
@@ -23,6 +24,7 @@ export interface RealnyHrac {
   goly: number
   asistence: number
   trzniCena?: number
+  detailPozice?: DetailPozice
   historieStatistik?: HistorickaStatistika[]
 }
 
@@ -63,6 +65,8 @@ export function generujHrace(rng: Rng, pozice: Pozice, uroven: number, vek?: num
   const o = overall(hrac)
   hrac.potencial = hrac.vek < 24 ? Math.min(99, o + randInt(rng, 3, 15)) : o
   hrac.plat = Math.round((o * o * 25) / 1000) * 1000
+  const dp = detailPoziceHrace(hrac)
+  if (dp) hrac.detailPozice = dp
   return hrac
 }
 
@@ -99,10 +103,15 @@ export function hracZRealnych(rng: Rng, r: RealnyHrac, uroven: number, id: strin
     odehranoSezona: 0,
     plat: 0,
     trzniCena: r.trzniCena,
+    detailPozice: r.detailPozice,
   }
   const o = overall(hrac)
   hrac.potencial = hrac.vek < 24 ? Math.min(99, o + randInt(rng, 3, 15)) : o
   hrac.plat = Math.round((o * o * 25) / 1000) * 1000
+  if (!hrac.detailPozice) {
+    const dp = detailPoziceHrace(hrac)
+    if (dp) hrac.detailPozice = dp
+  }
   return hrac
 }
 
