@@ -21,9 +21,9 @@ export function Ulozeni({ hra, setHra }: { hra: GameState; setHra: (s: GameState
           <button
             className="tlacitko"
             onClick={async () => {
-              await ulozHru(n, hra)
+              const ok = await ulozHru(n, hra)
               obnov()
-              setZprava(`Uloženo do slotu ${n}.`)
+              setZprava(ok ? `Uloženo do slotu ${n}.` : '⚠️ Uložení selhalo — zkus to znovu.')
             }}
           >
             Uložit
@@ -46,6 +46,21 @@ export function Ulozeni({ hra, setHra }: { hra: GameState; setHra: (s: GameState
       ))}
       <div className="karta">
         <b>Autosave:</b> {info(0) ? popis(info(0)!) : 'zatím nic'} — ukládá se automaticky po každém tahu.
+      </div>
+      <div className="karta">
+        <h3>Nastavení hry</h3>
+        <label style={{ display: 'flex', alignItems: 'center', gap: 8, cursor: 'pointer' }}>
+          <input
+            type="checkbox"
+            checked={hra.nastaveni.minihryZapnuto}
+            onChange={(e) => {
+              const s = { ...hra, nastaveni: { ...hra.nastaveni, minihryZapnuto: e.target.checked } }
+              setHra(s)
+              void ulozHru(0, s)
+            }}
+          />
+          Minihra střelby u klíčových momentů (timing páska)
+        </label>
       </div>
       {zprava && <p>{zprava}</p>}
     </>

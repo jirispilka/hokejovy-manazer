@@ -34,8 +34,14 @@ async function precti(slot: number): Promise<string | null> {
   return localStorage.getItem(`hokej-slot-${slot}`)
 }
 
-export async function ulozHru(slot: number, stav: GameState): Promise<void> {
-  await zapis(slot, serializuj(stav, new Date().toISOString()))
+export async function ulozHru(slot: number, stav: GameState): Promise<boolean> {
+  try {
+    await zapis(slot, serializuj(stav, new Date().toISOString()))
+    return true
+  } catch (e) {
+    console.error('Uložení selhalo:', e)
+    return false
+  }
 }
 
 export async function nactiHru(slot: number): Promise<GameState | null> {

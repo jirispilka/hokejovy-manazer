@@ -5,10 +5,20 @@ Manažerská hokejová hra pro dítě (12–14 let). Česky, offline, Linux desk
 ## Kde co je
 
 - **Herní design (co stavíme):** `docs/superpowers/specs/2026-07-05-hokej-manazer-design.md`
-- **Implementační plán M1:** `docs/superpowers/plans/2026-07-05-m1-hratelna-kostra.md`
-  — vykonávej tasky po jednom, přesně podle plánu (obsahuje kompletní kód
-  i testy). Stav rozdělané práce poznáš z odškrtaných checkboxů `- [x]`
-  a z `git log`.
+- **Spec zábavnosti (M2):** `docs/superpowers/specs/2026-07-06-zabavnost-design.md`
+- **Spec hloubky a čitelnosti (M2.5):** `docs/superpowers/specs/2026-07-06-m25-hloubka-design.md`
+- **Spec vedení klubu (M3):** `docs/superpowers/specs/2026-07-06-m3-vedeni-klubu-design.md`
+- **Implementační plán M1 (hotovo):** `docs/superpowers/plans/2026-07-05-m1-hratelna-kostra.md`
+- **Implementační plán M2 (hotovo):** `docs/superpowers/plans/2026-07-06-m2-zabavnost.md`
+- **Implementační plán M2.5 (hotovo):** `docs/superpowers/plans/2026-07-06-m25-hloubka.md`
+- **Implementační plán M3 (hotovo):** `docs/superpowers/plans/2026-07-06-m3-vedeni-klubu.md`
+- **Implementační plán M4a (hotovo):** `docs/superpowers/plans/2026-07-06-m4a-realne-soupisky.md`
+- **Implementační plán M4 (hotovo):** `docs/superpowers/plans/2026-07-07-m4-ux-ekonomika.md`
+  — scrapery: `scripts/stahni-soupisky.mjs`, `scripts/obohat-historie.mjs`,
+  `scripts/dopln-z-eliteprospects.mjs` (záloha EP).
+- **Spec hratelnosti (M5):** `docs/superpowers/specs/2026-07-07-m5-hratelnost-design.md`
+- **Implementační plán M5 (hotovo):** `docs/superpowers/plans/2026-07-07-m5-hratelnost.md`
+- **Spec modelu zápasu (M6):** `docs/superpowers/specs/2026-07-08-m6-model-hratelnosti-design.md` (hotovo)
 - **Stav projektu a milníky:** `README.md`
 
 ## Tvrdá pravidla (neporušovat)
@@ -37,3 +47,7 @@ Manažerská hokejová hra pro dítě (12–14 let). Česky, offline, Linux desk
 TDD: nejdřív test, ověř že padá, pak implementace, ověř že prochází, commit.
 Commity česky s prefixem `feat:`/`test:`/`chore:`. Po každém dokončeném
 tasku plánu odškrtni jeho checkboxy v souboru plánu a commitni.
+
+**Commity se nedělají bez vyžádání uživatele.** I po dokončení tasku/plánu
+nech změny jen ve working tree (příp. `git add`), commit až na výslovný
+požadavek.

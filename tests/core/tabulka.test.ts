@@ -10,6 +10,8 @@ const vysledek = (gd: number, gh: number, prodlouzeni = false, najezdy = false):
   prodlouzeni,
   najezdy,
   udalosti: [],
+  energie: {},
+  hodnoceni: {},
 })
 
 const zapas = (domaci: string, hoste: string, v: Vysledek | null, kolo = 1): Zapas => ({

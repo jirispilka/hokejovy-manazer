@@ -1,6 +1,8 @@
 import { useState } from 'react'
+import { formaTymu, kanadskeBodovani } from '../../core/hodnoty'
 import { spocitejTabulku } from '../../core/tabulka'
 import type { GameState } from '../../core/types'
+import { FormaTecky, OdznakKlubu } from '../komponenty'
 
 const NAZVY_KOL = ['Čtvrtfinále', 'Semifinále', 'Finále']
 
@@ -26,7 +28,7 @@ export function LigaObrazovka({ hra }: { hra: GameState }) {
       <table>
         <thead>
           <tr>
-            <th>#</th><th>Tým</th><th>Z</th><th>V</th><th>VP</th><th>PP</th><th>P</th><th>Skóre</th><th>B</th>
+            <th>#</th><th>Tým</th><th>Z</th><th>V</th><th>VP</th><th>PP</th><th>P</th><th>Skóre</th><th>Forma</th><th>B</th>
           </tr>
         </thead>
         <tbody>
@@ -40,11 +42,43 @@ export function LigaObrazovka({ hra }: { hra: GameState }) {
               <td>{r.prohryP}</td>
               <td>{r.prohry}</td>
               <td>{r.vstrelene}:{r.obdrzene}</td>
+              <td><FormaTecky znaky={formaTymu(liga, r.tymId)} /></td>
               <td><b>{r.body}</b></td>
             </tr>
           ))}
         </tbody>
       </table>
+      <div className="karta">
+        <h3>Kanadské bodování — {liga.nazev}</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Hráč</th>
+              <th>Klub</th>
+              <th>G</th>
+              <th>A</th>
+              <th>B</th>
+            </tr>
+          </thead>
+          <tbody>
+            {kanadskeBodovani(hra, liga).map((r, i) => (
+              <tr key={i}>
+                <td>{i + 1}.</td>
+                <td>{r.jmeno}</td>
+                <td style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                  <OdznakKlubu klubId={r.klubId} velikost={20} /> {hra.tymy[r.klubId].nazev}
+                </td>
+                <td>{r.goly}</td>
+                <td>{r.asistence}</td>
+                <td>
+                  <b>{r.body}</b>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
       {liga.playoff && (
         <div className="karta">
           <h3>Playoff{liga.playoff.vitez ? ` — vítěz: ${hra.tymy[liga.playoff.vitez].nazev} 🏆` : ''}</h3>

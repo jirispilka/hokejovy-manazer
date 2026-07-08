@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { generujTym } from '../../src/core/generator'
 import { createRng } from '../../src/core/rng'
-import { overall, silaTymu, vychoziSestava, vymenVSestave } from '../../src/core/sestava'
+import { overall, overallProRoli, silaTymu, vychoziSestava, vymenVSestave } from '../../src/core/sestava'
 import type { Hrac } from '../../src/core/types'
 
 const tym = () => generujTym(createRng(11), { id: 'tabor', nazev: 'HC Tábor', liga: 2 })
@@ -28,6 +28,19 @@ describe('vychoziSestava', () => {
     const s = tym().sestava
     const vsichni = [...s.utoky.flat(), ...s.obrany.flat(), s.brankar]
     expect(new Set(vsichni).size).toBe(vsichni.length)
+  })
+})
+
+describe('overallProRoli', () => {
+  it('obránce v útoku má nižší OVR než na obraně', () => {
+    const t = tym()
+    const obr = t.hraci.find((h) => h.pozice === 'D')!
+    expect(overallProRoli(obr, 'utok')).toBeLessThan(overallProRoli(obr, 'obrana'))
+  })
+  it('útočník v obraně má nižší OVR než v útoku', () => {
+    const t = tym()
+    const ut = t.hraci.find((h) => h.pozice === 'U')!
+    expect(overallProRoli(ut, 'obrana')).toBeLessThan(overallProRoli(ut, 'utok'))
   })
 })
 
